@@ -1,1 +1,1 @@
-package strdash
+package strdash_test

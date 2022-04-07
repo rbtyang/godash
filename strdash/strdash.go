@@ -2,6 +2,7 @@ package strdash
 
 import (
 	"strings"
+	"unicode"
 )
 
 // 首字母大写
@@ -74,7 +75,7 @@ func CamelString(s string) string {
 	return camelStr(s, '_')
 }
 
-// 通用转换
+// 通用驼峰转换
 func camelStr(s string, sep byte) string {
 	data := make([]byte, 0, len(s))
 	j := false
@@ -97,4 +98,17 @@ func camelStr(s string, sep byte) string {
 		data = append(data, d)
 	}
 	return string(data[:])
+}
+
+// 判断是否为 纯数字 字符串
+func IsDigit(str string) bool {
+	if "" == str {
+		return false
+	}
+	for _, c := range str {
+		if !unicode.IsDigit(c) {
+			return false
+		}
+	}
+	return true
 }

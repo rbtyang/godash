@@ -1,1 +1,1 @@
-package filedash
+package filedash_test

@@ -1,26 +1,122 @@
 package errdash
 
-// 常规错误码
-const (
-	ErrSuccess = 0
-	ErrDefault = 10000000
-	ErrParam   = 10000001
+import (
+	"github.com/rbtyang/godash/logdash"
+	"github.com/spf13/cast"
+	"google.golang.org/grpc/codes"
+	"math"
 )
 
-var errDict = map[uint32]string{
-	ErrSuccess: "成功",
-	ErrDefault: "默认错误",
-	ErrParam:   "参数错误",
+// 常规错误码 errdash code [10000~20000)
+const (
+	CodeOK      = uint32(0) //成功
+	CodeDefault = 9999 + uint32(iota) //默认错误
+	CodeCanceled // 操作被取消
+	CodeUnknown // 未知错误
+	CodeInvalidArgument // 无效参数
+	CodeDeadlineExceeded // 操作超过截止日期
+	CodeNotFound // 请求实体未找到
+	CodeAlreadyExists // 请求实体已存在
+	CodePermissionDenied // 权限拒绝
+	CodeResourceExhausted // 资源已经耗尽
+	CodeFailedPrecondition // 先决条件失败
+	CodeAborted // 操作已中止
+	CodeOutOfRange // 操作值溢出
+	CodeUnimplemented // 未实现操作
+	CodeInternal // 内部错误
+	CodeUnavailable // 服务当前不可用
+	CodeDataLoss // 数据丢失或损坏
+	CodeUnauthenticated // 未认证或凭证无效
+	CodeExternalGrpcError // 外部通信错误
+	CodeMax = 19999 // Errdash Max Code
+)
+
+// errdash code => msgtext
+var code2text = map[uint32]string{
+	CodeOK:                 "成功",
+	CodeDefault:            "默认错误",
+	CodeCanceled:           "操作被取消",
+	CodeUnknown:            "未知错误",
+	CodeInvalidArgument:    "无效参数",
+	CodeDeadlineExceeded:   "操作超过截止日期",
+	CodeNotFound:           "请求实体未找到",
+	CodeAlreadyExists:      "请求实体已存在",
+	CodePermissionDenied:   "权限拒绝",
+	CodeResourceExhausted:  "资源已经耗尽",
+	CodeFailedPrecondition: "先决条件失败",
+	CodeAborted:            "操作已中止",
+	CodeOutOfRange:         "操作值溢出",
+	CodeUnimplemented:      "未实现操作",
+	CodeInternal:           "内部错误",
+	CodeUnavailable:        "服务当前不可用",
+	CodeDataLoss:           "数据丢失或损坏",
+	CodeUnauthenticated:    "未认证或凭证无效",
+	CodeExternalGrpcError:  "外部通信错误",
+	CodeMax:                "Errdash Max Code",
 }
 
-// 注册错误字典
-func RegisterDict(dict map[uint32]string) {
+// grpc code => errdash code
+var grpc2code = map[codes.Code]uint32{
+	codes.OK:                 CodeOK,
+	codes.Canceled:           CodeCanceled,
+	codes.Unknown:            CodeUnknown,
+	codes.InvalidArgument:    CodeInvalidArgument,
+	codes.DeadlineExceeded:   CodeDeadlineExceeded,
+	codes.NotFound:           CodeNotFound,
+	codes.AlreadyExists:      CodeAlreadyExists,
+	codes.PermissionDenied:   CodePermissionDenied,
+	codes.ResourceExhausted:  CodeResourceExhausted,
+	codes.FailedPrecondition: CodeFailedPrecondition,
+	codes.Aborted:            CodeAborted,
+	codes.OutOfRange:         CodeOutOfRange,
+	codes.Unimplemented:      CodeUnimplemented,
+	codes.Internal:           CodeInternal,
+	codes.Unavailable:        CodeUnavailable,
+	codes.DataLoss:           CodeDataLoss,
+	codes.Unauthenticated:    CodeUnauthenticated,
+}
+
+// 注册 错误字典;
+// 建议尽量注册 >= 20000 的 code
+func RegisterCode(dict map[uint32]string) {
 	for code, errMsg := range dict {
-		errDict[code] = errMsg
+		code2text[code] = errMsg
 	}
 }
 
-// 转义code为对应中文含义
-func TransCodeMsg(code uint32) string {
-	return errDict[code]
+// 转义 code 为对应中文含义;
+// @code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+func GetCodeMsg(code uint32) string {
+	if txt, ok := code2text[code]; ok {
+		return txt
+	} else {
+		logdash.Errorf("GetCodeMsg code not defied text, code:%#v", code)
+		return ""
+	}
+}
+
+// 解析 code 对应的 errdash code;
+// @code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+func ParseCode(code interface{}) uint32 {
+	var cCode codes.Code = math.MaxUint32
+	switch code.(type) {
+	case nil:
+		cCode = codes.Internal
+		logdash.Errorf("ParseCode code is nil, code:%#v", code)
+	case codes.Code:
+		cCode = code.(codes.Code)
+	default:
+		co := cast.ToUint32(code)
+		if co == uint32(0) {
+			logdash.Errorf("ParseCode code is not uint32, code:%#v", code)
+			cCode = codes.Internal
+		} else {
+			cCode = codes.Code(co)
+		}
+	}
+	if co, ok := grpc2code[cCode]; ok {
+		return co //存在映射
+	} else {
+		return cast.ToUint32(code) //不存在映射，则认为是 errdash code，原样返回
+	}
 }

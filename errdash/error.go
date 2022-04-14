@@ -3,9 +3,8 @@ package errdash
 import (
 	"fmt"
 	"github.com/go-playground/validator/v10"
-	"google.golang.org/grpc/codes"
+	"github.com/rbtyang/godash/logdash"
 	"google.golang.org/grpc/status"
-	"log"
 )
 
 //来访登记错误类 ----------------------------------------------------
@@ -25,13 +24,13 @@ type Errdash struct {
 //使用前请先阅读 errUtil/README.md；
 //每一次都需要初始化新的，避免Code和Msg因为后续覆盖而对不上号
 func New(err ...error) *Errdash {
-	mErr := &Errdash{
-		Codes: ErrDefault,
+	dsErr := &Errdash{
+		Codes: CodeDefault,
 	}
 	for _, er := range err {
-		_ = mErr.Err(er)
+		_ = dsErr.Err(er)
 	}
-	return mErr
+	return dsErr
 }
 
 func Err(err ...error) *Errdash {
@@ -69,7 +68,7 @@ func Logf(format string, a ...interface{}) *Errdash {
 func (m *Errdash) Err(err error) *Errdash {
 	switch err.(type) {
 	case nil:
-		m.Codes = ErrDefault
+		m.Codes = CodeDefault
 		m.Msgs = m.withPre("内部错误")
 		m.Logs = append(m.Logs, m.withPre("错误类err为nil"))
 	case *Errdash:
@@ -77,26 +76,24 @@ func (m *Errdash) Err(err error) *Errdash {
 		m.Msgs = err.(*Errdash).Msgs
 		m.Logs = append(m.Logs, err.(*Errdash).Logs...)
 	case validator.ValidationErrors:
-		m.Codes = ErrParam
+		m.Codes = CodeInvalidArgument
 		m.Msgs = err.(validator.ValidationErrors).Error()
 		m.Logs = append(m.Logs, err.(validator.ValidationErrors).Error())
 	case RpcError: //如果是grpc类型的错误
 		s, _ := status.FromError(err)
-		if s.Code() != codes.Unknown {
-			m.Codes = ErrDefault
-			m.Msgs = m.withPre(err.Error())
-			m.Logs = append(m.Logs, m.withPre(err.Error()))
-			return m
-		} else { //只有自定义的错误，grpc会返回unknown错误码
-			m.Codes = uint32(s.Code())
-			m.Msgs = m.withPre(s.Message())
-			m.Logs = append(m.Logs, m.withPre(err.Error()))
-			if len(s.Details()) > 0 {
-				log.Printf("[errdash.Details] %#v", s.Details())
-			}
+		code := ParseCode(s.Code()) //解析 code 对应的 errdash code;
+		msg := s.Message()
+		if msg == "" {
+			msg = GetCodeMsg(code) //转义 code 为对应中文含义;
 		}
+		if len(s.Details()) > 0 { //记录 详情日志
+			logdash.Infof("Errdash.Err() RpcError s.Details(): %#v", s.Details())
+		}
+		m.Codes = code
+		m.Msgs = m.withPre(msg)
+		m.Logs = append(m.Logs, m.withPre(msg))
 	default:
-		m.Codes = ErrDefault
+		m.Codes = CodeDefault
 		m.Msgs = m.withPre(err.Error())
 		m.Logs = append(m.Logs, m.withPre(err.Error()))
 	}
@@ -125,7 +122,7 @@ func (m *Errdash) withPre(errStr string) string {
 //Code 一般是 gRpc 要求的 正整数
 //但也可能是 不规范的 PHP负数 retCode
 func (m *Errdash) Code(code uint32) *Errdash {
-	msg := TransCodeMsg(code)
+	msg := GetCodeMsg(code)
 	m.Codes = code
 	m.Msgs = m.withPre(msg)
 	m.Logs = append(m.Logs, m.withPre(msg))
@@ -135,7 +132,7 @@ func (m *Errdash) Code(code uint32) *Errdash {
 //设置 错误消息（用户看）
 func (m *Errdash) Msg(msg string) *Errdash {
 	if msg == "" {
-		msg = TransCodeMsg(m.Codes)
+		msg = GetCodeMsg(m.Codes)
 	}
 	m.Msgs = m.withPre(msg)
 	m.Logs = append(m.Logs, m.withPre(msg))

@@ -1,4 +1,4 @@
-package validash
+package validdash
 
 import (
 	"github.com/go-playground/locales/zh"

@@ -1,4 +1,4 @@
-package validash_test
+package errdash_test
 
 import (
 	"log"

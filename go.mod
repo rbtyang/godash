@@ -9,5 +9,6 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/spf13/cast v1.4.1
 	github.com/stretchr/testify v1.7.0
+	golang.org/x/sync v0.0.0-20190423024810-112230192c58
 	google.golang.org/grpc v1.45.0
 )

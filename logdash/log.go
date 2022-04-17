@@ -1,53 +1,77 @@
 package logdash
 
 import (
+	"fmt"
 	"log"
 )
 
+// 用户 自定义前缀
+var cuspre string
+
+// 设置 自定义msg前缀
+// @return.error always nil
+func Pre(pre string) (func(), error) {
+	cuspre = pre
+	return func() {
+		// 去除 自定义msg前缀
+		cuspre = ""
+	}, nil
+}
+
 func Debug(args ...interface{}) {
-	log.Printf("[logdash.Debug] %#v", args)
+	log.Printf(withPre("logdash.Debug")+"%#v", args)
 }
 
 func Debugf(format string, args ...interface{}) {
-	log.Printf("[logdash.Debugf] "+format, args...)
+	log.Printf(withPre("logdash.Debugf")+format, args...)
 }
 
 func Info(args ...interface{}) {
-	log.Printf("[logdash.Info] %#v", args)
+	log.Printf(withPre("logdash.Info")+"%#v", args)
 }
 
 func Infof(format string, args ...interface{}) {
-	log.Printf("[logdash.Infof] "+format, args...)
+	log.Printf(withPre("logdash.Infof")+format, args...)
 }
 
 func Warn(args ...interface{}) {
-	log.Printf("[logdash.Warn] %#v", args)
+	log.Printf(withPre("logdash.Warn")+"%#v", args)
 }
 
 func Warnf(format string, args ...interface{}) {
-	log.Printf("[logdash.Warnf] "+format, args...)
+	log.Printf(withPre("logdash.Warnf")+format, args...)
 }
 
 func Error(args ...interface{}) {
-	log.Printf("[logdash.Error] %#v", args)
+	log.Printf(withPre("logdash.Error")+"%#v", args)
 }
 
 func Errorf(format string, args ...interface{}) {
-	log.Printf("[logdash.Errorf] "+format, args...)
+	log.Printf(withPre("logdash.Errorf")+format, args...)
 }
 
 func Panic(args ...interface{}) {
-	log.Panicf("[logdash.Panic] %#v", args)
+	log.Panicf(withPre("logdash.Panic")+"%#v", args)
 }
 
 func Panicf(format string, args ...interface{}) {
-	log.Panicf("[logdash.Panicf] "+format, args...)
+	log.Panicf(withPre("logdash.Panicf")+format, args...)
 }
 
 func Fatal(args ...interface{}) {
-	log.Fatalf("[logdash.Fatal] %#v", args)
+	log.Fatalf(withPre("logdash.Fatal")+"%#v", args)
 }
 
 func Fatalf(format string, args ...interface{}) {
-	log.Fatalf("[logdash.Fatalf] "+format, args...)
+	log.Fatalf(withPre("logdash.Fatalf")+format, args...)
+}
+
+func withPre(dashpre string) string {
+	var prefix string
+	if cuspre == "" {
+		prefix = fmt.Sprintf("[%v] ", dashpre)
+	} else {
+		prefix = fmt.Sprintf("[%v] [%v] ", dashpre, cuspre)
+	}
+	return prefix
 }

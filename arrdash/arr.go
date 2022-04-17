@@ -6,7 +6,7 @@ import (
 )
 
 // Contains 判断一个 needle值 是否存在于 haystack值数组 当中
-// @haystack must be slice/array/map
+// @param.haystack must be slice/array/map
 func Contains(haystack interface{}, needle interface{}) bool {
 	return inArrayFunc(haystack, func(hayitem interface{}) bool {
 		return reflect.DeepEqual(hayitem, needle)

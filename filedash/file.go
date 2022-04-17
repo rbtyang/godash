@@ -9,20 +9,6 @@ import (
 	"strings"
 )
 
-// 判断 所给路径 是否为文件夹
-func IsDir(path string) bool {
-	s, err := os.Stat(path)
-	if err != nil {
-		return false
-	}
-	return s.IsDir()
-}
-
-// 判断 所给路径 是否为文件
-func IsFile(path string) bool {
-	return !IsDir(path)
-}
-
 // 判断 文件或文件夹 是否存在；
 // 如果返回的 错误 为nil,说明文件或文件夹存在；
 // 如果返回的 错误类型 使用os.IsNotExist() 判断为true, 说明 文件或文件夹 不存在；
@@ -41,14 +27,28 @@ func IsExist(path string) bool {
 	return true
 }
 
+// 判断 所给路径 是否为文件夹
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
+
+// 判断 所给路径 是否为文件
+func IsFile(path string) bool {
+	return !IsDir(path)
+}
+
 // 判断 文件 是否存在；
 func IsExistFile(filePath string) bool {
-	return IsFile(filePath) && IsExist(filePath)
+	return IsExist(filePath) && IsFile(filePath)
 }
 
 // 判断 文件夹 是否存在；
 func IsExistDir(dirPath string) bool {
-	return IsDir(dirPath) && IsExist(dirPath)
+	return IsExist(dirPath) && IsDir(dirPath)
 }
 
 func Create(filePath string) (*os.File, error) {

@@ -85,7 +85,7 @@ func RegisterCode(dict map[uint32]string) {
 }
 
 // 转义 code 为对应中文含义;
-// @code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+// @param.code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
 func GetCodeMsg(code uint32) string {
 	if txt, ok := code2text[code]; ok {
 		return txt
@@ -96,7 +96,7 @@ func GetCodeMsg(code uint32) string {
 }
 
 // 解析 code 对应的 errdash code;
-// @code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+// @param.code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
 func ParseCode(code interface{}) uint32 {
 	var cCode codes.Code = math.MaxUint32
 	switch code.(type) {

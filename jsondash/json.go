@@ -17,7 +17,7 @@ func Marshal(v interface{}) (string, error) {
 		return "", errors.New("invalid memory address or nil pointer dereference")
 	}
 	msByte, err := MarshalToByte(v)
-	return convdash.Byte2Str(msByte), err
+	return convdash.ByteToStrByUnsafe(msByte), err
 }
 
 func MarshalNoError(v interface{}) string {
@@ -35,7 +35,7 @@ func MarshalToByte(v interface{}) ([]byte, error) {
 
 func Unmarshal(data string, v interface{}) error {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	return json.Unmarshal(convdash.Str2ByteByReflect(data), v)
+	return json.Unmarshal(convdash.StrToByteByReflect(data), v)
 }
 
 func UnmarshalFuzzyDecoders(data string, v interface{}) error {

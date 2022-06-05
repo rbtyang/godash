@@ -74,3 +74,14 @@ func TestContains(t *testing.T) {
 	}
 
 }
+
+func TestArrayToString(t *testing.T) {
+	{
+		data := []interface{}{"asdfasdf", "1123323", "sdf23134"}
+		{
+			want := "asdfasdf,1123323,sdf23134"
+			recv := errdash.ArrayToString(data)
+			assert.Equal(t, want, recv)
+		}
+	}
+}

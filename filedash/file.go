@@ -112,3 +112,36 @@ func GetLastDirWithCheck(path string) (string, error) {
 	}
 	return GetLastDir(path), nil
 }
+
+
+func GetFileList(path string) ([]string, error) {
+	return getFileList(path, nil)
+}
+
+func GetFileListExcept(path string, except []string) ([]string, error) {
+	return getFileList(path, except)
+}
+
+func getFileList(path string, except []string) ([]string, error) {
+	var pathList []string
+	err := filepath.Walk(path, func(path string, f os.FileInfo, err error) error {
+		if f == nil {
+			return err
+		}
+		if f.IsDir() { //目录的
+			return nil
+		}
+		for _, exp := range except { //排除的
+			if strings.Contains(path, exp) {
+				return nil
+			}
+		}
+		pathList = append(pathList, path)
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return pathList, nil
+}

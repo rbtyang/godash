@@ -1,8 +1,10 @@
 package errdash
 
 import (
+	"fmt"
 	"github.com/rbtyang/godash/logdash"
 	"reflect"
+	"strings"
 )
 
 // Contains 判断一个 needle值 是否存在于 haystack值数组 当中
@@ -62,4 +64,13 @@ func StringsHas(ss []string, val string) bool {
 		}
 	}
 	return false
+}
+
+//@author: [piexlmax](https://github.com/piexlmax)
+//@function: ArrayToString
+//@description: 将数组格式化为字符串
+//@param: array []interface{}
+//@return: string
+func ArrayToString(array []interface{}) string {
+	return strings.Replace(strings.Trim(fmt.Sprint(array), "[]"), " ", ",", -1)
 }

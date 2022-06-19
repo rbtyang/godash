@@ -32,4 +32,9 @@ func TestMd5(t *testing.T) {
 		enStr := hashdash.Sha512("hello world 123")
 		assert.Equal(t, want, enStr)
 	}
+	{
+		want := "f1b90b4efd0e5c7db52dfa0efd6521a3"
+		enStr := hashdash.Hmac("key2", "hello")
+		assert.Equal(t, want, enStr)
+	}
 }

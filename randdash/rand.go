@@ -33,3 +33,11 @@ func Str(mode RandMode, n uint16) string {
 func Num(min, max int) int {
 	return rand.Intn(max-min) + min
 }
+
+func IntSli(len, min, max int) []int {
+	sli := make([]int, len)
+	for i := 0; i < len; i++ {
+		sli[i] = Num(min, max)
+	}
+	return sli
+}

@@ -44,3 +44,10 @@ func TestRandNum(t *testing.T) {
 		t.Log(recv)
 	}
 }
+
+func TestRandIntSli(t *testing.T) {
+	{
+		recv := randdash.IntSli(100, 10, 30)
+		t.Log(recv)
+	}
+}

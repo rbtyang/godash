@@ -3,6 +3,7 @@ module github.com/rbtyang/godash
 go 1.15
 
 require (
+	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394 // indirect
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/go-playground/locales v0.14.0
 	github.com/go-playground/universal-translator v0.18.0
@@ -19,5 +20,6 @@ require (
 	github.com/walkert/go-evp v0.1.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
+	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/grpc v1.45.0
 )

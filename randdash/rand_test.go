@@ -37,10 +37,16 @@ func TestRandStr(t *testing.T) {
 	}
 }
 
-
 func TestRandNum(t *testing.T) {
 	{
 		recv := randdash.Num(10, 30)
+		t.Log(recv)
+	}
+}
+
+func TestRandCode(t *testing.T) {
+	{
+		recv := randdash.NumCode(6)
 		t.Log(recv)
 	}
 }

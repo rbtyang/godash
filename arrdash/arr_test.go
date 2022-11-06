@@ -1,75 +1,70 @@
-package errdash_test
+package arrdash_test
 
 import (
-	errdash "github.com/rbtyang/godash/arrdash"
+	"github.com/rbtyang/godash/arrdash"
 	"github.com/stretchr/testify/assert"
-	"log"
 	"testing"
 )
-
-func init() {
-	log.Println("Before this tests")
-}
 
 func TestContains(t *testing.T) {
 	// array
 	{
-		var data [2][3]int = [...][3]int{{1, 2, 3}, {7, 8, 9}}
+		var data = [...][3]int{{8, 5, 5}, {9, 5, 5}}
 		{
 			want := true
-			recv := errdash.Contains(data, [3]int{1, 2, 3})
+			recv := arrdash.Contains(data, [3]int{9, 5, 5})
 			assert.Equal(t, want, recv)
 		}
 		{
-			want := true
-			recv := errdash.Contains(data, [3]int{1, 2, 5})
-			assert.NotEqual(t, want, recv)
+			want := false
+			recv := arrdash.Contains(data, [3]int{9, 9, 6})
+			assert.Equal(t, want, recv)
 		}
 	}
 
 	// slice
 	{
-		data := []string{"123", "asd", "11xx"}
+		data := []string{"rbtyang", "robotyang", "大绵羊"}
 		{
 			want := true
-			recv := errdash.Contains(data, "123")
+			recv := arrdash.Contains(data, "rbtyang")
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := true
-			recv := errdash.Contains(data, "asd")
+			recv := arrdash.Contains(data, "robotyang")
 			assert.Equal(t, want, recv)
 		}
 		{
-			want := true
-			recv := errdash.Contains(data, "asdxxx")
-			assert.NotEqual(t, want, recv)
+			want := false
+			recv := arrdash.Contains(data, "jackma")
+			assert.Equal(t, want, recv)
 		}
 	}
 
 	// map
 	{
 		data := map[string]string{
-			"123": "qwer",
-			"asd": "asdf",
-			"asd3": "asdf",
+			"123":   "qwer",
+			"asd":   "asdf",
+			"asd3":  "asdf",
 			"11asd": "zxcv",
 		}
 		{
 			want := true
-			recv := errdash.Contains(data, "qwer")
-			//recv := errdash.Contains(data, map[string]string{"123":"asdfasfasd"})
+			recv := arrdash.Contains(data, "qwer")
+			//recv := arrdash.Contains(data, map[string]string{"123":"asdfasfasd"})
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := true
-			recv := errdash.Contains(data, "asdf")
+			recv := arrdash.Contains(data, "asdf")
 			assert.Equal(t, want, recv)
 		}
 		{
-			want := true
-			recv := errdash.Contains(data, "asdxxx")
-			assert.NotEqual(t, want, recv)
+			want := false
+			recv := arrdash.Contains(data, "asdxxx")
+			assert.Equal(t, want, recv)
 		}
 	}
 
@@ -77,10 +72,16 @@ func TestContains(t *testing.T) {
 
 func TestArrayToString(t *testing.T) {
 	{
-		data := []interface{}{"asdfasdf", "1123323", "sdf23134"}
 		{
-			want := "asdfasdf,1123323,sdf23134"
-			recv := errdash.ArrayToString(data)
+			data := []interface{}{"rbtyang", "num", 9527}
+			want := "rbtyang,num,9527"
+			recv := arrdash.JoinAny(data, ",")
+			assert.Equal(t, want, recv)
+		}
+		{
+			data := []interface{}{"rbt yang", "num", 9527}
+			want := "rbt yang,num,9527"
+			recv := arrdash.JoinAny(data, ",")
 			assert.Equal(t, want, recv)
 		}
 	}

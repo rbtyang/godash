@@ -1,10 +1,14 @@
-package errdash_test
+package testdash_test
 
 import (
 	"log"
 	"os"
 	"testing"
 )
+
+func init() {
+	log.Println("Init all tests")
+}
 
 //如果测试文件中包含函数 TestMain，那么生成的测试将调用 TestMain(m)，而不是直接运行测试。
 func TestMain(m *testing.M) {

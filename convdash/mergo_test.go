@@ -32,7 +32,7 @@ func TestMergo(t *testing.T) {
 			DbName:   "222sfsffas",
 			DbUser:   "222zhangsan",
 			DbPwd:    "", //没值
-			MaxConn:  0, //没值
+			MaxConn:  0,  //没值
 			MinConn:  2227,
 			IdleConn: 2229,
 			Label:    []string{"222asdfa", "2222334", "222asdf1334"},

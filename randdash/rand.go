@@ -13,8 +13,8 @@ const (
 	Modeaz         RandMode = "abcdefghijklmnopqrstuvwxyz" //小写字符
 	ModeAZ         RandMode = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //大写字符
 	ModeSp         RandMode = "!@#$%^&*()_+~"              //特殊字符
-	ModeNumAlpha   RandMode = ModeNum + Modeaz + ModeAZ
-	ModeNumAlphaSp RandMode = ModeNum + Modeaz + ModeAZ + ModeSp
+	ModeNumAlpha            = ModeNum + Modeaz + ModeAZ
+	ModeNumAlphaSp          = ModeNum + Modeaz + ModeAZ + ModeSp
 )
 
 // @return str

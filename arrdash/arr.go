@@ -1,21 +1,31 @@
-package errdash
+package arrdash
 
 import (
 	"fmt"
 	"github.com/rbtyang/godash/logdash"
+	"github.com/spf13/cast"
 	"reflect"
 	"strings"
 )
 
-// Contains 判断一个 needle值 是否存在于 haystack值数组 当中
-// @param.haystack must be slice/array/map
-func Contains(haystack interface{}, needle interface{}) bool {
-	return inArrayFunc(haystack, func(hayitem interface{}) bool {
+func init() {
+	_ = fmt.Sprintf("fortest")
+}
+
+/*
+Contains 利用反射 判断一个 needle值 是否存在于 haystack数组当中
+
+@Param haystack 只能是 slice/array/map
+
+@Param needle 是 haystack[0] 类型的值
+*/
+func Contains(haystack any, needle any) bool {
+	return inArrayFunc(haystack, func(hayitem any) bool {
 		return reflect.DeepEqual(hayitem, needle)
 	})
 }
 
-func inArrayFunc(haystack interface{}, f func(interface{}) bool) bool {
+func inArrayFunc(haystack any, f func(any) bool) bool {
 	val := reflect.ValueOf(haystack)
 	switch val.Kind() {
 	case reflect.Slice, reflect.Array:
@@ -36,7 +46,7 @@ func inArrayFunc(haystack interface{}, f func(interface{}) bool) bool {
 	return false
 }
 
-// IntsHas check the []int contains the given value
+//IntsHas 检查 []int 包含给定的值
 func IntsHas(ints []int, val int) bool {
 	for _, ele := range ints {
 		if ele == val {
@@ -46,7 +56,7 @@ func IntsHas(ints []int, val int) bool {
 	return false
 }
 
-// Int64sHas check the []int64 contains the given value
+//Int64sHas 检查 []int64 包含给定的值
 func Int64sHas(ints []int64, val int64) bool {
 	for _, ele := range ints {
 		if ele == val {
@@ -56,9 +66,9 @@ func Int64sHas(ints []int64, val int64) bool {
 	return false
 }
 
-// StringsHas check the []string contains the given element
-func StringsHas(ss []string, val string) bool {
-	for _, ele := range ss {
+//StringsHas 检查 []string 包含给定的值
+func StringsHas(strs []string, val string) bool {
+	for _, ele := range strs {
 		if ele == val {
 			return true
 		}
@@ -66,11 +76,33 @@ func StringsHas(ss []string, val string) bool {
 	return false
 }
 
-//@author: [piexlmax](https://github.com/piexlmax)
-//@function: ArrayToString
-//@description: 将数组格式化为字符串
-//@param: array []interface{}
-//@return: string
-func ArrayToString(array []interface{}) string {
-	return strings.Replace(strings.Trim(fmt.Sprint(array), "[]"), " ", ",", -1)
+/*
+JoinAny 将任意类型切片，格式化为字符串（切片值类型 仅支持数值、字符串 或者两者的混合）
+
+@Param separator 分隔符
+
+@Reference strings.Join
+*/
+func JoinAny(elems []any, sep string) string {
+	switch len(elems) {
+	case 0:
+		return ""
+	case 1:
+		return cast.ToString(elems[0])
+	}
+
+	n := len(sep) * (len(elems) - 1)
+	for i := 0; i < len(elems); i++ {
+		n += len(cast.ToString(elems[i]))
+	}
+
+	var b strings.Builder
+	b.Grow(n)
+	b.WriteString(cast.ToString(elems[0]))
+	for _, s := range elems[1:] {
+		b.WriteString(sep)
+		b.WriteString(cast.ToString(s))
+	}
+
+	return b.String()
 }

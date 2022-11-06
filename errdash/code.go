@@ -9,26 +9,26 @@ import (
 
 // 常规错误码 errdash code [10000~20000)
 const (
-	CodeOK      = uint32(0) //成功
-	CodeDefault = 9999 + uint32(iota) //默认错误
-	CodeCanceled // 操作被取消
-	CodeUnknown // 未知错误
-	CodeInvalidArgument // 无效参数
-	CodeDeadlineExceeded // 操作超过截止日期
-	CodeNotFound // 请求实体未找到
-	CodeAlreadyExists // 请求实体已存在
-	CodePermissionDenied // 权限拒绝
-	CodeResourceExhausted // 资源已经耗尽
-	CodeFailedPrecondition // 先决条件失败
-	CodeAborted // 操作已中止
-	CodeOutOfRange // 操作值溢出
-	CodeUnimplemented // 未实现操作
-	CodeInternal // 内部错误
-	CodeUnavailable // 服务当前不可用
-	CodeDataLoss // 数据丢失或损坏
-	CodeUnauthenticated // 未认证或凭证无效
-	CodeExternalGrpcError // 外部通信错误
-	CodeMax = 19999 // Errdash Max Code
+	CodeOK                 = uint32(0)           //成功
+	CodeDefault            = 9999 + uint32(iota) //默认错误
+	CodeCanceled                                 // 操作被取消
+	CodeUnknown                                  // 未知错误
+	CodeInvalidArgument                          // 无效参数
+	CodeDeadlineExceeded                         // 操作超过截止日期
+	CodeNotFound                                 // 请求实体未找到
+	CodeAlreadyExists                            // 请求实体已存在
+	CodePermissionDenied                         // 权限拒绝
+	CodeResourceExhausted                        // 资源已经耗尽
+	CodeFailedPrecondition                       // 先决条件失败
+	CodeAborted                                  // 操作已中止
+	CodeOutOfRange                               // 操作值溢出
+	CodeUnimplemented                            // 未实现操作
+	CodeInternal                                 // 内部错误
+	CodeUnavailable                              // 服务当前不可用
+	CodeDataLoss                                 // 数据丢失或损坏
+	CodeUnauthenticated                          // 未认证或凭证无效
+	CodeExternalGrpcError                        // 外部通信错误
+	CodeMax                = 19999               // Errdash Max Code
 )
 
 // errdash code => msgtext

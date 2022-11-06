@@ -113,16 +113,26 @@ func GetLastDirWithCheck(path string) (string, error) {
 	return GetLastDir(path), nil
 }
 
-
 func GetFileList(path string) ([]string, error) {
-	return getFileList(path, nil)
+	return getFileList(path, nil, nil)
+}
+
+func GetFileListFilter(path string, accept, except []string) ([]string, error) {
+	return getFileList(path, accept, except)
+}
+
+func GetFileListAccept(path string, accept []string) ([]string, error) {
+	return getFileList(path, accept, nil)
 }
 
 func GetFileListExcept(path string, except []string) ([]string, error) {
-	return getFileList(path, except)
+	return getFileList(path, nil, except)
 }
 
-func getFileList(path string, except []string) ([]string, error) {
+//getFileList 方法名
+//@param path 根目录
+//@param except 排除的 目录、文件 的关键词
+func getFileList(path string, accept, except []string) ([]string, error) {
 	var pathList []string
 	err := filepath.Walk(path, func(path string, f os.FileInfo, err error) error {
 		if f == nil {
@@ -131,8 +141,13 @@ func getFileList(path string, except []string) ([]string, error) {
 		if f.IsDir() { //目录的
 			return nil
 		}
-		for _, exp := range except { //排除的
-			if strings.Contains(path, exp) {
+		for _, acpt := range accept { //包含的
+			if !strings.Contains(path, acpt) {
+				return nil
+			}
+		}
+		for _, ecpt := range except { //排除的
+			if strings.Contains(path, ecpt) {
 				return nil
 			}
 		}

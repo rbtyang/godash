@@ -61,6 +61,8 @@
 --- 
 
 ## 推荐的包
+
+#### 后端
 ```shell script
 "github.com/stretchr/testify/assert" //单测类型断言，参考 各个_test.go
 "github.com/spf13/cast" //各种类型转换
@@ -71,4 +73,11 @@
 "golang.org/x/sync/errgroup" //并发编程，参考 godash\demodash\errgroup_test.go
 "github.com/bwmarrin/snowflake" //雪花ID生成，参考 godash\randdash\snow_test.go
 "github.com/google/uuid" //UUID生成，参考 godash\randdash\uuid_test.go
+```
+
+#### 前端
+```shell script
+crypto-js //加解密、哈希
+assert //断言
+mocha //单测
 ```

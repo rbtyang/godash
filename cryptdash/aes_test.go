@@ -1,6 +1,7 @@
 package cryptdash_test
 
 import (
+	"encoding/hex"
 	"github.com/rbtyang/godash/cryptdash"
 	"github.com/rbtyang/godash/randdash"
 	"github.com/stretchr/testify/assert"
@@ -10,6 +11,30 @@ import (
 
 func init() {
 	log.Println("Before this tests")
+}
+func TestAesDecryptJs(t *testing.T) {
+	secret := "ABCDEF1234123412"
+	ciphertext := "9e2819811c90f03c407ecfc7253b240556ff169e3371127c46a651ae1920d8df"
+	wanttext := "123123阿斯蒂芬!@#asdasd"
+	{
+		bs, err := hex.DecodeString(ciphertext)
+		if err != nil {
+			t.Error(err)
+		}
+		recvbyt, err := cryptdash.AesDecryptJs(bs, []byte(secret))
+		if err != nil {
+			t.Error(err)
+		}
+		assert.Equal(t, string(recvbyt), wanttext)
+	}
+	{
+		recvtext, err := cryptdash.AesDecryptJsHex(ciphertext, secret)
+		if err != nil {
+			return
+		}
+		assert.Equal(t, recvtext, wanttext)
+	}
+	t.Log("done")
 }
 
 func TestAesEncrypt(t *testing.T) {

@@ -5,6 +5,8 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
+	"encoding/hex"
+	"fmt"
 )
 
 func AesEncrypt(plaintext, secret []byte) (string, error) {
@@ -113,3 +115,56 @@ func zeroUnFill(plaintext []byte) []byte {
 	})
 	return plaintext
 }
+
+//---------------------------------------------------------------------------------------------------------------------
+
+// AesDecryptJs
+// ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）
+// secret 秘钥
+// @reference https://mojotv.cn/go/crypto-js-with-golang
+func AesDecryptJs(ciphertext, secret []byte) ([]byte, error) {
+	pkey := paddingLeft(secret, '0', 16) //和js的key补码方法一致
+
+	block, err := aes.NewCipher(pkey) //选择加密算法
+	if err != nil {
+		return nil, fmt.Errorf("secret 长度必须 16/24/32长度: %s", err)
+	}
+	blockModel := cipher.NewCBCDecrypter(block, pkey) //和前端代码对应:   mode: CryptoJS.mode.CBC,// CBC算法
+	plantText := make([]byte, len(ciphertext))
+	blockModel.CryptBlocks(plantText, ciphertext)
+	plantText = pKCS7UnPadding(plantText) //和前端代码对应:  padding: CryptoJS.pad.Pkcs7
+	return plantText, nil
+}
+
+// AesDecryptJsHex
+// ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）
+// secret 秘钥
+// @reference https://mojotv.cn/go/crypto-js-with-golang
+func AesDecryptJsHex(ciphertext, secret string) (string, error) {
+	byt, err := hex.DecodeString(ciphertext)
+	if err != nil {
+		return "", err
+	}
+	str, err := AesDecryptJs(byt, []byte(secret))
+	if err != nil {
+		return "", err
+	}
+	return string(str), nil
+}
+
+func pKCS7UnPadding(plantText []byte) []byte {
+	length := len(plantText)
+	unpadding := int(plantText[length-1])
+	return plantText[:(length - unpadding)]
+}
+
+//这个方案必须和js的方法是一样的
+func paddingLeft(ori []byte, pad byte, length int) []byte {
+	if len(ori) >= length {
+		return ori[:length]
+	}
+	pads := bytes.Repeat([]byte{pad}, length-len(ori))
+	return append(pads, ori...)
+}
+
+//---------------------------------------------------------------------------------------------------------------------

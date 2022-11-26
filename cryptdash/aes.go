@@ -118,6 +118,22 @@ func zeroUnFill(plaintext []byte) []byte {
 
 //---------------------------------------------------------------------------------------------------------------------
 
+// AesDecryptJsHex
+// ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）
+// secret 秘钥
+// @reference https://mojotv.cn/go/crypto-js-with-golang
+func AesDecryptJsHex(ciphertext, secret string) (string, error) {
+	byt, err := hex.DecodeString(ciphertext)
+	if err != nil {
+		return "", err
+	}
+	str, err := AesDecryptJs(byt, []byte(secret))
+	if err != nil {
+		return "", err
+	}
+	return string(str), nil
+}
+
 // AesDecryptJs
 // ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）
 // secret 秘钥
@@ -134,22 +150,6 @@ func AesDecryptJs(ciphertext, secret []byte) ([]byte, error) {
 	blockModel.CryptBlocks(plantText, ciphertext)
 	plantText = pKCS7UnPadding(plantText) //和前端代码对应:  padding: CryptoJS.pad.Pkcs7
 	return plantText, nil
-}
-
-// AesDecryptJsHex
-// ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）
-// secret 秘钥
-// @reference https://mojotv.cn/go/crypto-js-with-golang
-func AesDecryptJsHex(ciphertext, secret string) (string, error) {
-	byt, err := hex.DecodeString(ciphertext)
-	if err != nil {
-		return "", err
-	}
-	str, err := AesDecryptJs(byt, []byte(secret))
-	if err != nil {
-		return "", err
-	}
-	return string(str), nil
 }
 
 func pKCS7UnPadding(plantText []byte) []byte {

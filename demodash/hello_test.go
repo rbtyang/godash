@@ -4,6 +4,7 @@ import (
 	"github.com/rbtyang/godash/demodash"
 	"github.com/stretchr/testify/assert"
 	"log"
+	"strconv"
 	"testing"
 )
 
@@ -19,7 +20,7 @@ func TestHelloWorld(t *testing.T) {
 	}
 	{
 		want := "LiSi Ni Hao"
-		recv := demodash.HelloWorld("ZhangSan")
+		recv := demodash.HelloWorld("LiSi")
 		assert.Equal(t, want, recv)
 	}
 }
@@ -38,6 +39,6 @@ func BenchmarkHelloWorld(b *testing.B) {
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
 
 	for n := 0; n < b.N; n++ {
-		demodash.HelloWorld("ZhangSan" + string(n))
+		demodash.HelloWorld("ZhangSan" + strconv.Itoa(n))
 	}
 }

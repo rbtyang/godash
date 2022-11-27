@@ -1,15 +1,17 @@
 package filedash
 
 import (
+	"crypto/md5"
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
-// 判断 文件或文件夹 是否存在；
+// IsExist 判断 文件或文件夹 是否存在；
 // 如果返回的 错误 为nil,说明文件或文件夹存在；
 // 如果返回的 错误类型 使用os.IsNotExist() 判断为true, 说明 文件或文件夹 不存在；
 // 如果返回的 错误 为其它类型, 则不确定 是否在存在；
@@ -27,7 +29,7 @@ func IsExist(path string) bool {
 	return true
 }
 
-// 判断 所给路径 是否为文件夹
+// IsDir 判断 所给路径 是否为文件夹
 func IsDir(path string) bool {
 	s, err := os.Stat(path)
 	if err != nil {
@@ -36,30 +38,33 @@ func IsDir(path string) bool {
 	return s.IsDir()
 }
 
-// 判断 所给路径 是否为文件
+// IsFile 判断 所给路径 是否为文件
 func IsFile(path string) bool {
 	return !IsDir(path)
 }
 
-// 判断 文件 是否存在；
+// IsExistFile 判断 文件 是否存在；
 func IsExistFile(filePath string) bool {
 	return IsExist(filePath) && IsFile(filePath)
 }
 
-// 判断 文件夹 是否存在；
+// IsExistDir 判断 文件夹 是否存在；
 func IsExistDir(dirPath string) bool {
 	return IsExist(dirPath) && IsDir(dirPath)
 }
 
-func Create(filePath string) (*os.File, error) {
+// Rebuild 重建文件（会自动创建目录，文件存在则清空，不存在则创建）
+func Rebuild(filePath string) (*os.File, error) {
 	dirPath, _ := filepath.Split(filePath)
 	if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
 		return nil, err
 	}
+
 	return os.Create(filePath)
 }
 
-func CreateIfNotExist(filePath string) (*os.File, error) {
+// RebuildOrOpen 重建或打开文件（会自动创建目录，文件存在则打开，不存在则创建）
+func RebuildOrOpen(filePath string) (*os.File, error) {
 	dirPath, _ := filepath.Split(filePath)
 	if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
 		return nil, err
@@ -72,7 +77,38 @@ func CreateIfNotExist(filePath string) (*os.File, error) {
 	}
 }
 
-// 从一个文件 拷贝到 另一个文件
+//ReadByFilePath 读取文件内容
+//@reference https://haicoder.net/golang/golang-read.html
+func ReadByFilePath(filePath string) ([]byte, error) {
+	file, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	return ReadByFile(file)
+}
+
+//ReadByFile 读取文件内容
+//@reference https://haicoder.net/golang/golang-read.html
+func ReadByFile(file *os.File) ([]byte, error) {
+	var chunk []byte
+	buf := make([]byte, 1024)
+	for {
+		n, err := file.Read(buf)
+		if err != nil && err != io.EOF {
+			return nil, err
+		}
+		//说明读取结束
+		if n == 0 {
+			break
+		}
+		//读取到最终的缓冲区中
+		chunk = append(chunk, buf[:n]...)
+	}
+	return chunk, nil
+}
+
+// CopyFile 从一个文件 拷贝到 另一个文件
 func CopyFile(srcFilePath, dstFilePath string) (writeen int64, err error) {
 	//打开 原文件
 	srcFile, err := os.Open(srcFilePath)
@@ -94,7 +130,33 @@ func CopyFile(srcFilePath, dstFilePath string) (writeen int64, err error) {
 	return io.Copy(dstFile, srcFile)
 }
 
-// 获取 最后一个 目录名
+// CompareFileBySum 通过计算文件签名，判断两个文件是否一致
+func CompareFileBySum(filePath1, filePath2 string) bool {
+	return calculateFileSum(filePath1) == calculateFileSum(filePath2)
+}
+
+// calculateFileSum 计算文件校验签名
+// @reference https://blog.csdn.net/neweastsun/article/details/123666235
+func calculateFileSum(filePath string) string {
+	f, err := os.Open(filePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	h := md5.New()
+	//h := sha256.New()
+	//h := sha1.New()
+	//h := sha512.New()
+	if _, err := io.Copy(h, f); err != nil {
+		log.Fatal(err)
+	}
+
+	// 格式化为16进制字符串
+	return fmt.Sprintf("%x", h.Sum(nil))
+}
+
+// GetLastDir 获取 最后一个 目录名
 func GetLastDir(path string) string {
 	sep := string(os.PathSeparator)
 	path, _ = filepath.Abs(path)
@@ -106,6 +168,7 @@ func GetLastDir(path string) string {
 	return lastDir
 }
 
+// GetLastDirWithCheck 先检查 目录是否存在，存在则 获取 最后一个 目录名
 func GetLastDirWithCheck(path string) (string, error) {
 	if !IsExist(path) || !IsDir(path) {
 		return "", errors.New(path + "非有效目录路径")

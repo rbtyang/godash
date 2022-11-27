@@ -2,8 +2,13 @@ package cryptdash_test
 
 import (
 	"github.com/rbtyang/godash/cryptdash"
+	"log"
 	"testing"
 )
+
+func init() {
+	log.Println("Before sign_test.go tests")
+}
 
 type Order struct {
 	Id      int

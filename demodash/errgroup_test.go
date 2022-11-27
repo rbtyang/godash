@@ -21,11 +21,11 @@ func TestErrGroup(t *testing.T) {
 		return nil
 	})
 	eg.Go(func() error {
-		assert.Equal(t, "ZhangSan Ni Hao", demodash.SomeFunc("LiSi"))
+		assert.Equal(t, "LiSi Ni Hao", demodash.SomeFunc("LiSi"))
 		return nil
 	})
 	eg.Go(func() error {
-		assert.Equal(t, "ZhangSan Bu Hao", demodash.SomeFunc("WangWu"))
+		assert.Equal(t, "WangWu Ni Hao", demodash.SomeFunc("WangWu"))
 		return nil
 	})
 

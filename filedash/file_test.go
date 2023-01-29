@@ -31,12 +31,12 @@ func TestGetFileListFilter(t *testing.T) {
 	}
 	{
 		want := true
-		recv := arrdash.Contains(filelist, "..\\arrdash\\arr.go")
+		recv := arrdash.Contain(filelist, "..\\arrdash\\arr.go")
 		assert.Equal(t, want, recv)
 	}
 	{
 		want := false
-		recv := arrdash.Contains(filelist, []string{
+		recv := arrdash.Contain(filelist, []string{
 			"..\\arrdash\\rbtyang.go",
 		})
 		assert.Equal(t, want, recv)

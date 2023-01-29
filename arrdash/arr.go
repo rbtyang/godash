@@ -13,13 +13,31 @@ func init() {
 }
 
 /*
-Contains 利用反射 判断一个 needle值 是否存在于 haystack数组当中
+SliceHas 判断一个 needle值 是否存在于 haystack切片 当中
+
+@Param haystack 只能是 slice
+
+@Param needle 是 haystack[0] 类型的值
+
+@Tips comparable 表示go里面 所有内置的 可比较类型：int、uint、float、bool、struct、指针 等一切可以比较的类型
+*/
+func SliceHas[T comparable](haystack []T, needle T) bool {
+	for _, ele := range haystack {
+		if ele == needle {
+			return true
+		}
+	}
+	return false
+}
+
+/*
+Contain 利用反射 判断一个 needle值 是否存在于 haystack集合 当中
 
 @Param haystack 只能是 slice/array/map
 
 @Param needle 是 haystack[0] 类型的值
 */
-func Contains(haystack any, needle any) bool {
+func Contain(haystack any, needle any) bool {
 	return inArrayFunc(haystack, func(hayitem any) bool {
 		return reflect.DeepEqual(hayitem, needle)
 	})
@@ -41,37 +59,7 @@ func inArrayFunc(haystack any, f func(any) bool) bool {
 			}
 		}
 	default:
-		logdash.Errorf("arrdash.Contains haystack type must be slice/array/map, Yours %#v", haystack)
-	}
-	return false
-}
-
-//IntsHas 检查 []int 包含给定的值
-func IntsHas(ints []int, val int) bool {
-	for _, ele := range ints {
-		if ele == val {
-			return true
-		}
-	}
-	return false
-}
-
-//Int64sHas 检查 []int64 包含给定的值
-func Int64sHas(ints []int64, val int64) bool {
-	for _, ele := range ints {
-		if ele == val {
-			return true
-		}
-	}
-	return false
-}
-
-//StringsHas 检查 []string 包含给定的值
-func StringsHas(strs []string, val string) bool {
-	for _, ele := range strs {
-		if ele == val {
-			return true
-		}
+		logdash.Errorf("arrdash.Contain haystack type must be slice/array/map, Yours %#v", haystack)
 	}
 	return false
 }

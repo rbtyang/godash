@@ -63,8 +63,8 @@ type (
 		Imports    []Import
 		Structs    []Struct
 		Interfaces []Interface
-		cfg        config
 		Funcs      []Func
+		cfg        config
 	}
 	config struct {
 		field []FieldFilter

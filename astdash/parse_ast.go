@@ -1,7 +1,6 @@
 package astdash
 
 import (
-	"github.com/rbtyang/godash/logdash"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -21,7 +20,7 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 
 	f, err := parser.ParseFile(fset, inputPath, nil, parser.ParseComments)
 	if err != nil {
-		logdash.Errorf("ParseFile parser.ParseFile err:%v", err)
+		log.Fatalf("[Error] ParseFile parser.ParseFile err:%v", err)
 		return
 	}
 
@@ -32,13 +31,13 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 
 	err = a.ParseScopes(f.Scope)
 	if err != nil {
-		logdash.Errorf("ParseFile ParseScope err:%v", err)
+		log.Fatalf("[Error] ParseFile ParseScope err:%v", err)
 		return
 	}
 
 	err = a.ParseDecls(f.Decls)
 	if err != nil {
-		logdash.Errorf("ParseFile ParseDecls err:%v", err)
+		log.Fatalf("[Error] ParseFile ParseDecls err:%v", err)
 		return err
 	}
 

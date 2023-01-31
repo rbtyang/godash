@@ -12,12 +12,12 @@ func TestSliceHas(t *testing.T) {
 		var data = []int{8, 5, 5}
 		{
 			want := true
-			recv := arrdash.SliceHas(data, 8)
+			recv := arrdash.Include(data, 8)
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := false //-
-			recv := arrdash.SliceHas(data, 9)
+			recv := arrdash.Include(data, 9)
 			assert.Equal(t, want, recv)
 		}
 	}
@@ -26,12 +26,12 @@ func TestSliceHas(t *testing.T) {
 		var data = []float32{8.1, 5.23, 5.456}
 		{
 			want := true
-			recv := arrdash.SliceHas(data, float32(5.456))
+			recv := arrdash.Include(data, float32(5.456))
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := false //-
-			recv := arrdash.SliceHas(data, float32(9))
+			recv := arrdash.Include(data, float32(9))
 			assert.Equal(t, want, recv)
 		}
 	}
@@ -40,12 +40,12 @@ func TestSliceHas(t *testing.T) {
 		var data = []string{"aaa", "bbb", "ccc"}
 		{
 			want := true
-			recv := arrdash.SliceHas(data, "aaa")
+			recv := arrdash.Include(data, "aaa")
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := false //-
-			recv := arrdash.SliceHas(data, "ddd")
+			recv := arrdash.Include(data, "ddd")
 			assert.Equal(t, want, recv)
 		}
 	}
@@ -70,14 +70,14 @@ func TestSliceHas(t *testing.T) {
 		var data = []*Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := arrdash.SliceHas(data, coderLS)
+			recv := arrdash.Include(data, coderLS)
 			assert.Equal(t, want, recv)
 		}
 	}
 }
 
 func TestContains(t *testing.T) {
-	//array L1
+	//array int L1
 	{
 		var data = [...]int{8, 5, 5}
 		{
@@ -91,7 +91,7 @@ func TestContains(t *testing.T) {
 			assert.Equal(t, want, recv)
 		}
 	}
-	//array L2
+	//array int L2
 	{
 		var data = [...][3]int{{8, 5, 5}, {9, 5, 5}}
 		{
@@ -102,6 +102,56 @@ func TestContains(t *testing.T) {
 		{
 			want := false //-
 			recv := arrdash.Contain(data, [3]int{9, 9, 6})
+			assert.Equal(t, want, recv)
+		}
+	}
+	//array struct
+	{
+		type Coder struct {
+			Name  string
+			Hobby []string
+		}
+		coderZS := Coder{
+			Name:  "ZhangSan",
+			Hobby: []string{"唱", "跳"},
+		}
+		coderLS := Coder{
+			Name:  "LiSi",
+			Hobby: []string{"rap", "篮球"},
+		}
+		coderWW := Coder{
+			Name:  "WangWu",
+			Hobby: []string{"吃饭", "睡觉", "打豆豆"},
+		}
+		var data = [...]Coder{coderZS, coderLS, coderWW}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderLS)
+			assert.Equal(t, want, recv)
+		}
+	}
+	//array *struct
+	{
+		type Coder struct {
+			Name  string
+			Hobby []string
+		}
+		coderZS := &Coder{
+			Name:  "ZhangSan",
+			Hobby: []string{"唱", "跳"},
+		}
+		coderLS := &Coder{
+			Name:  "LiSi",
+			Hobby: []string{"rap", "篮球"},
+		}
+		coderWW := &Coder{
+			Name:  "WangWu",
+			Hobby: []string{"吃饭", "睡觉", "打豆豆"},
+		}
+		var data = [...]*Coder{coderZS, coderLS, coderWW}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderLS)
 			assert.Equal(t, want, recv)
 		}
 	}
@@ -205,28 +255,117 @@ func TestContains(t *testing.T) {
 		}
 	}
 
-	//map
+	//map string
 	{
 		data := map[string]string{
-			"123":   "qwer",
-			"asd":   "asdf",
-			"asd3":  "asdf",
-			"11asd": "zxcv",
+			"123": "asdf",
+			"qwe": "ghjk",
+			"rty": "zxcv",
+			"uio": "bnmla",
 		}
 		{
 			want := true
-			recv := arrdash.Contain(data, "qwer")
+			recv := arrdash.Contain(data, "asdf")
 			//recv := arrdash.Contain(data, map[string]string{"123":"asdfasfasd"})
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := true
-			recv := arrdash.Contain(data, "asdf")
+			recv := arrdash.Contain(data, "ghjk")
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := false //-
 			recv := arrdash.Contain(data, "asdxxx")
+			assert.Equal(t, want, recv)
+		}
+	}
+
+	//map struct
+	{
+		type Coder struct {
+			Name  string
+			Hobby []string
+		}
+		coderZS := Coder{
+			Name:  "ZhangSan",
+			Hobby: []string{"唱", "跳"},
+		}
+		coderLS := Coder{
+			Name:  "LiSi",
+			Hobby: []string{"rap", "篮球"},
+		}
+		coderWW := Coder{
+			Name:  "WangWu",
+			Hobby: []string{"吃饭", "睡觉", "打豆豆"},
+		}
+		coderQL := Coder{
+			Name:  "QianLiu",
+			Hobby: []string{"吃饭", "睡觉", "搞王者"},
+		}
+		data := map[string]Coder{
+			"123": coderZS,
+			"qwe": coderLS,
+			"rty": coderWW,
+		}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderZS)
+			//recv := arrdash.Contain(data, map[string]string{"123":"asdfasfasd"})
+			assert.Equal(t, want, recv)
+		}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderLS)
+			assert.Equal(t, want, recv)
+		}
+		{
+			want := false //-
+			recv := arrdash.Contain(data, coderQL)
+			assert.Equal(t, want, recv)
+		}
+	}
+	//map *struct
+	{
+		type Coder struct {
+			Name  string
+			Hobby []string
+		}
+		coderZS := &Coder{
+			Name:  "ZhangSan",
+			Hobby: []string{"唱", "跳"},
+		}
+		coderLS := &Coder{
+			Name:  "LiSi",
+			Hobby: []string{"rap", "篮球"},
+		}
+		coderWW := &Coder{
+			Name:  "WangWu",
+			Hobby: []string{"吃饭", "睡觉", "打豆豆"},
+		}
+		coderQL := &Coder{
+			Name:  "QianLiu",
+			Hobby: []string{"吃饭", "睡觉", "搞王者"},
+		}
+		data := map[string]*Coder{
+			"123": coderZS,
+			"qwe": coderLS,
+			"rty": coderWW,
+		}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderZS)
+			//recv := arrdash.Contain(data, map[string]string{"123":"asdfasfasd"})
+			assert.Equal(t, want, recv)
+		}
+		{
+			want := true
+			recv := arrdash.Contain(data, coderLS)
+			assert.Equal(t, want, recv)
+		}
+		{
+			want := false //-
+			recv := arrdash.Contain(data, coderQL)
 			assert.Equal(t, want, recv)
 		}
 	}

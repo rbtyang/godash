@@ -1,15 +1,11 @@
 package arrdash
 
 import (
-	"fmt"
+	"github.com/rbtyang/godash/logdash"
 	"github.com/spf13/cast"
 	"reflect"
 	"strings"
 )
-
-func init() {
-	_ = fmt.Sprintf("fortest")
-}
 
 /*
 Include 判断一个 needle值 是否存在于 haystack切片 当中
@@ -58,7 +54,7 @@ func inArrayFunc(haystack any, f func(any) bool) bool {
 			}
 		}
 	default:
-		panic("[Error] haystack type must be array/slice/map")
+		logdash.Panicf("haystack type must be array/slice/map")
 	}
 	return false
 }

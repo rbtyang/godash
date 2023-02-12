@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-//返回true可以继续执行，返回false过滤掉这个数据
+//返回true 可以继续执行，返回false 过滤掉这个数据
 type (
 	FieldFilter  func(*ast.Field) bool
 	StructFilter func(*ast.TypeSpec) bool
@@ -40,7 +40,7 @@ type FilterFuncOpt struct {
 	Recv     *Field
 }
 
-//只返回符合的函数列表
+//只返回 符合的 函数列表
 func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	return func(f *Func) bool {
 		for _, v := range funcList {
@@ -65,7 +65,7 @@ func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	}
 }
 
-//新版proto内部字段需要过滤
+//新版proto 内部字段 需要过滤
 var protoField = []string{
 	"state",
 	"sizeCache",
@@ -75,7 +75,7 @@ var protoField = []string{
 func FilterProtoInner(field *ast.Field) bool {
 	name := field.Names[0].Name
 	if strings.HasPrefix(name, "XXX_") {
-		//老版proto生成的内部字段是XXX_开头的 需要过滤了
+		//老版proto 生成的内部字段 是XXX_开头的 需要过滤了
 		return false
 	}
 	for _, v := range protoField {
@@ -86,7 +86,7 @@ func FilterProtoInner(field *ast.Field) bool {
 	return true
 }
 
-//过滤小写字段
+//过滤 小写字段
 func FilterInnerField(field *ast.Field) bool {
 	name := field.Names[0].Name
 	if len(name) == 0 {

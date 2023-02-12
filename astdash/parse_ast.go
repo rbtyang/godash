@@ -1,15 +1,15 @@
 package astdash
 
 import (
+	"github.com/rbtyang/godash/logdash"
 	"go/ast"
 	"go/parser"
 	"go/token"
-	"log"
 )
 
 func NewAst(options ...*Option) *Ast {
 	a := new(Ast)
-	for _, opt := range options { // 在reqOpts上应用通过options设置的选项
+	for _, opt := range options { // 在reqOpts上应用 通过options设置 的选项
 		opt.apply(a)
 	}
 	return a
@@ -20,7 +20,7 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 
 	f, err := parser.ParseFile(fset, inputPath, nil, parser.ParseComments)
 	if err != nil {
-		log.Fatalf("[Error] ParseFile parser.ParseFile err:%v", err)
+		logdash.Errorf("ParseFile parser.ParseFile err:%v", err)
 		return
 	}
 
@@ -31,13 +31,13 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 
 	err = a.ParseScopes(f.Scope)
 	if err != nil {
-		log.Fatalf("[Error] ParseFile ParseScope err:%v", err)
+		logdash.Errorf("ParseFile ParseScope err:%v", err)
 		return
 	}
 
 	err = a.ParseDecls(f.Decls)
 	if err != nil {
-		log.Fatalf("[Error] ParseFile ParseDecls err:%v", err)
+		logdash.Errorf("ParseFile ParseDecls err:%v", err)
 		return err
 	}
 
@@ -62,7 +62,7 @@ func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 		switch typeSpec.(type) {
 		case *ast.StructType:
 			if !(obj.Name[0] >= 'A' && obj.Name[0] <= 'Z') {
-				//如果不是可以导出的结构体不进行处理,proto.pb.go中存在该类内部结构体
+				//如果不是 可以导出的结构体，不进行处理，proto.pb.go中 存在该类的 内部结构体
 				continue
 			}
 			typeSpec := obj.Decl.(*ast.TypeSpec)
@@ -186,7 +186,7 @@ func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 	for _, method := range it.Methods.List {
 		f, ok := method.Type.(*ast.FuncType)
 		if ok != true {
-			log.Fatalf("interface just suppot func")
+			logdash.Panicf("interface just support function")
 		}
 		funcT := a.ParseFunc(f)
 		funcT.Name = getIdent(method.Names[0])

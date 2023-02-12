@@ -23,7 +23,7 @@ func Debug(args ...interface{}) {
 }
 
 func Debugf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Debugf")+format, args...)
+	log.Printf(withPre("logdash.Debug")+format, args...)
 }
 
 func Info(args ...interface{}) {
@@ -31,7 +31,7 @@ func Info(args ...interface{}) {
 }
 
 func Infof(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Infof")+format, args...)
+	log.Printf(withPre("logdash.Info")+format, args...)
 }
 
 func Warn(args ...interface{}) {
@@ -39,7 +39,7 @@ func Warn(args ...interface{}) {
 }
 
 func Warnf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Warnf")+format, args...)
+	log.Printf(withPre("logdash.Warn")+format, args...)
 }
 
 func Error(args ...interface{}) {
@@ -47,7 +47,7 @@ func Error(args ...interface{}) {
 }
 
 func Errorf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Errorf")+format, args...)
+	log.Printf(withPre("logdash.Error")+format, args...)
 }
 
 func Panic(args ...interface{}) {
@@ -55,7 +55,7 @@ func Panic(args ...interface{}) {
 }
 
 func Panicf(format string, args ...interface{}) {
-	log.Panicf(withPre("logdash.Panicf")+format, args...)
+	log.Panicf(withPre("logdash.Panic")+format, args...)
 }
 
 func Fatal(args ...interface{}) {
@@ -63,7 +63,7 @@ func Fatal(args ...interface{}) {
 }
 
 func Fatalf(format string, args ...interface{}) {
-	log.Fatalf(withPre("logdash.Fatalf")+format, args...)
+	log.Fatalf(withPre("logdash.Fatal")+format, args...)
 }
 
 func withPre(dashpre string) string {

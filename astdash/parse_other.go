@@ -16,7 +16,7 @@ const (
 	ArrayType            //切片或数组
 	ChanType             //通道类型
 	MapType              //map类型
-	InterfaceType        // interface类型
+	InterfaceType        //interface类型
 	FuncType             //函数类型
 )
 

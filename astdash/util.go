@@ -61,7 +61,7 @@ func getIdentsName(i []*ast.Ident) string {
 	return i[0].String()
 }
 
-//检查是不是内部使用的结构体
+//检查是不是 内部使用的结构体
 func CheckInnerStruct(name string) bool {
 	_, t := innerType[name]
 	return !t

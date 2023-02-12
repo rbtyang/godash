@@ -18,7 +18,7 @@ Include 判断一个 needle值 是否存在于 haystack切片 当中
 
 @Param needle 是 haystack[0] 类型的值
 
-@Tips comparable 表示go里面 所有内置的 可比较类型：int、uint、float、bool、struct、指针 等一切可以比较的类型
+@Tips comparable 表示go里面 所有内置的 可比较类型：int、uint、float、bool、struct、指针 等一切 可以比较的类型
 */
 func Include[T comparable](haystack []T, needle T) bool {
 	for _, ele := range haystack {

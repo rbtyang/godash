@@ -11,10 +11,20 @@ import assert from 'assert'
 
 describe('aes', function () {
     describe('encrypt', function () {
-        it('mixed plaintext', function () {
+        it('mixed plaintext 1', function () {
             const ciphertext = aes.Encrypt('123123阿斯蒂芬!@#asdasd', 'ABCDEF1234123412')
             console.log('       > ciphertext=', ciphertext);
             assert.equal(ciphertext, "9e2819811c90f03c407ecfc7253b240556ff169e3371127c46a651ae1920d8df")
+        })
+        it('mixed plaintext 2 diff secret', function () {
+            const ciphertext = aes.Encrypt('123123阿斯蒂芬!@#asdasd', 'M8xMxeX6rgBsveTF')
+            console.log('       > ciphertext=', ciphertext);
+            assert.equal(ciphertext, "3c258944eb76163936f7b01aa453425f28110783c85d6241b319aa24c25e9023")
+        })
+        it('mixed plaintext 3 long secret', function () {
+            const ciphertext = aes.Encrypt('123123阿斯蒂芬!@#asdasd', 'M8xMxeX6rgBsveTFM8xMxeX6rgBsveTF')
+            console.log('       > ciphertext=', ciphertext);
+            assert.equal(ciphertext, "3c258944eb76163936f7b01aa453425f28110783c85d6241b319aa24c25e9023")
         })
     })
 })

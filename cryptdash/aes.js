@@ -12,7 +12,7 @@ import CryptoJS from 'crypto-js'
 // @param string secret 对称加密的密钥  必须是16长度,为了和后端交互 key字符串必须是16进制字符串,否在给golang进行string -> []byte带来困难
 // @reference https://mojotv.cn/go/crypto-js-with-golang
 const Encrypt = (plaintext, secret) => {
-    secret = _paddingLeft(secret, 16)// 保证key的长度为16byte,进行'0'补位
+    secret = _paddingLeft(secret.slice(0, 16), 16)// 保证key的长度为16byte,进行'0'补位
     secret = CryptoJS.enc.Utf8.parse(secret)
     // 加密结果返回的是CipherParams object类型
     // key 和 iv 使用同一个值

@@ -16,9 +16,11 @@ require (
 	github.com/shirou/gopsutil/v3 v3.22.10
 	github.com/spf13/cast v1.5.0
 	github.com/stretchr/testify v1.8.1
+	golang.org/x/exp v0.0.0-20230213192124-5e25df0256eb
 	golang.org/x/sync v0.1.0
 	golang.org/x/text v0.4.0
 	google.golang.org/grpc v1.50.1
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -37,8 +39,7 @@ require (
 	github.com/tklauser/numcpus v0.4.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3 // indirect
-	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/sys v0.1.0 // indirect
 	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

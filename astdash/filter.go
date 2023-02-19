@@ -19,6 +19,7 @@ func WithFieldFilter(filter ...FieldFilter) *Option {
 		},
 	}
 }
+
 func WithStructFilter(filter ...StructFilter) *Option {
 	return &Option{
 		apply: func(a *Ast) {

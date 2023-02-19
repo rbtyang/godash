@@ -9,7 +9,7 @@ import (
 
 func NewAst(options ...*Option) *Ast {
 	a := new(Ast)
-	for _, opt := range options { // 在reqOpts上应用 通过options设置 的选项
+	for _, opt := range options { // 应用 options设置 的选项
 		opt.apply(a)
 	}
 	return a
@@ -20,7 +20,7 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 
 	f, err := parser.ParseFile(fset, inputPath, nil, parser.ParseComments)
 	if err != nil {
-		logdash.Errorf("ParseFile parser.ParseFile err:%v", err)
+		logdash.Errorf("ParseFile ParseFile err:%v", err)
 		return
 	}
 
@@ -54,9 +54,6 @@ func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 		if _, ok := obj.Decl.(*ast.TypeSpec); !ok {
 			continue
 		}
-		//if _,ok := obj.Decl.(*ast.TypeSpec).Type.(*ast.StructType);!ok{
-		//	continue
-		//}
 
 		typeSpec := obj.Decl.(*ast.TypeSpec).Type
 		switch typeSpec.(type) {

@@ -1,12 +1,13 @@
 package sortdash
 
 import (
+	"golang.org/x/exp/constraints"
 	"golang.org/x/sync/errgroup"
 )
 
 //冒泡排序：
 //  依次两两交换，大的往前冒，不断重复遍历，直到有序
-func Bubble(sli []int) []int {
+func Bubble[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for true {
 		isSwap := false
@@ -20,12 +21,10 @@ func Bubble(sli []int) []int {
 			break
 		}
 	}
-
-	return sli
 }
 
 //冒泡排序：
-func Bubble2(sli []int) []int {
+func Bubble2[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	//该层循环控制 需要冒泡的轮数
 	for i := 1; i < leng; i++ {
@@ -36,12 +35,11 @@ func Bubble2(sli []int) []int {
 			}
 		}
 	}
-	return sli
 }
 
 //插入排序：
 //  将 b区 中的 val 依次插到 a区中 最合适的位置
-func Insertion(sli []int) []int {
+func Insertion[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for b := 0; b < leng; b++ { //b区
 		tmp := sli[b]
@@ -53,11 +51,10 @@ func Insertion(sli []int) []int {
 			}
 		}
 	}
-	return sli
 }
 
 //选择排序：
-func Insertion2(sli []int) []int {
+func Insertion2[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for i := 0; i < leng; i++ {
 		tmp := sli[i]
@@ -72,12 +69,11 @@ func Insertion2(sli []int) []int {
 			}
 		}
 	}
-	return sli
 }
 
 //选择排序：
 //  b区 中最小的 val 排到 a区 最后
-func Selection(sli []int) []int {
+func Selection[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	//双重循环完成，外层控制轮数，内层控制比较次数
 	for pos := 0; pos < leng-1; pos++ {
@@ -95,14 +91,13 @@ func Selection(sli []int) []int {
 			sli[pos], sli[minK] = sli[minK], sli[pos]
 		}
 	}
-	return sli
 }
 
 //快速排序：
 //  1、先从数列中 取出一个数 作为基准数 val
 //  2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
 //  3、再对左右区间 重复第二步，直到各区间 只有一个数
-func Quick(sli []int) []int {
+func Quick[T constraints.Ordered](sli []T) []T {
 	leng := len(sli)
 	//先判断是否需要继续进行
 	if leng <= 1 {
@@ -112,8 +107,7 @@ func Quick(sli []int) []int {
 	//选择第一个元素作为基准
 	kVal := sli[0]
 	//初始化左右两个切片
-	lfSli := []int{}
-	rtSli := []int{}
+	lfSli, rtSli := []T{}, []T{}
 
 	//遍历除了标尺外的所有元素，按照大小关系放入左右两个切片内
 	for i := 1; i < leng; i++ {
@@ -138,7 +132,7 @@ func Quick(sli []int) []int {
 //  1、先从数列中 取出一个数 作为基准数 val
 //  2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
 //  3、再对左右区间 重复第二步，直到各区间 只有一个数
-func QuickParallel(sli []int) []int {
+func QuickParallel[T constraints.Ordered](sli []T) []T {
 
 	leng := len(sli)
 	//先判断是否需要继续进行
@@ -149,7 +143,7 @@ func QuickParallel(sli []int) []int {
 	//选择第一个元素作为基准
 	kVal := sli[0]
 	//初始化左右两个切片
-	lfSli, rtSli := []int{}, []int{}
+	lfSli, rtSli := []T{}, []T{}
 
 	//遍历除了标尺外的所有元素，按照大小关系放入左右两个切片内
 	for i := 1; i < leng; i++ {
@@ -163,7 +157,7 @@ func QuickParallel(sli []int) []int {
 	}
 
 	//再分别对左边和右边的切片进行相同的排序处理方式递归调用这个函数
-	lfSort, rtSort := []int{}, []int{}
+	lfSort, rtSort := []T{}, []T{}
 	var eg errgroup.Group
 	eg.Go(func() error {
 		lfSort = Quick(lfSli)

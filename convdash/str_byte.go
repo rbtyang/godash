@@ -23,9 +23,8 @@ func ByteToStrByUnsafe(b []byte) string {
 	return *(*string)(unsafe.Pointer(&b))
 }
 
-// converts string to a byte slice without memory allocation.
-// Note it may break if string and/or slice header will change
-// in the future go versions.
+// StrToByteByReflect converts string to a byte slice without memory allocation.
+// Note it may break if string and/or slice header will change in the future go versions.
 func StrToByteByReflect(s string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&s))
 	bh := reflect.SliceHeader{Data: sh.Data, Len: sh.Len, Cap: sh.Len}

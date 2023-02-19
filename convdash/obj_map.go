@@ -6,10 +6,14 @@ import (
 	"reflect"
 )
 
-// 转换 数据为Map结构；
-// @param.data 支持 struct、map、slice 以及它们的指针类型；
-// @return.maps map[string]interface{}、[]interface{}；
-func ObjToMap(data interface{}) (maps interface{}, err error) {
+/*
+ObjToMap 转换 数据为Map结构
+
+@Param data 支持 struct、map、slice 以及它们的指针类型
+
+@Return maps 可为 map[string]interface{}、[]interface{}
+*/
+func ObjToMap(data any) (maps any, err error) {
 	jsonb, err := json.Marshal(data)
 	if err != nil {
 		return nil, err

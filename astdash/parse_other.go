@@ -21,12 +21,17 @@ const (
 )
 
 var m = map[int]string{
-	Unsupport:    "未支持",
-	Ident:        "非指针",
-	StructType:   "结构体",
-	StarExpr:     "指针",
-	SelectorExpr: "表达式",
-	ArrayType:    "切片",
+	Unsupport:     "未支持",
+	Ident:         "非指针",
+	StructType:    "结构体",
+	StarExpr:      "指针",
+	SelectorExpr:  "表达式",
+	Ellipsis:      "可变参",
+	ArrayType:     "切片",
+	ChanType:      "通道",
+	MapType:       "映射",
+	InterfaceType: "接口",
+	FuncType:      "函数",
 }
 
 var innerType = map[string]struct{}{

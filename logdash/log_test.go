@@ -6,10 +6,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestLog is a ...
+
+@Editor robotyang at 2023
+*/
 func TestLog(t *testing.T) {
 	clsPre, _ := logdash.Pre("哈哈哈")
 	logdash.Debug("1111", "aaaa", "bbbb")

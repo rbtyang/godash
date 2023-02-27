@@ -9,7 +9,12 @@ import (
 //@param srcFilePath 需加密的 文件路径；
 //@param dstFilePath 加密后 文件路径；
 //@param secret 密钥；
-//@reference https://www.jianshu.com/p/0caab60fea9f
+
+/*
+FileEncryptByZyx @reference https://www.jianshu.com/p/0caab60fea9f
+
+@Editor robotyang at 2023
+*/
 func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error) {
 	f, err := os.Open(srcFilePath)
 	if err != nil { //未找到文件
@@ -68,7 +73,12 @@ func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error
 //@param srcFilePath 需解密的 文件路径；
 //@param dstFilePath 解密后 文件路径；
 //@param secret 密钥；
-//@reference https://www.jianshu.com/p/0caab60fea9f
+
+/*
+FileDecryptByZyx @reference https://www.jianshu.com/p/0caab60fea9f
+
+@Editor robotyang at 2023
+*/
 func FileDecryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error) {
 	f, err := os.Open(srcFilePath)
 	if err != nil { //未找到文件

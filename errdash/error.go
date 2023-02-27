@@ -22,7 +22,12 @@ type Errdash struct {
 }
 
 //使用前请先阅读 errUtil/README.md；
-//每一次都需要初始化新的，避免Code和Msg因为后续覆盖而对不上号
+
+/*
+New 每一次都需要初始化新的，避免Code和Msg因为后续覆盖而对不上号
+
+@Editor robotyang at 2023
+*/
 func New(err ...error) *Errdash {
 	dsErr := &Errdash{
 		Codes: CodeDefault,
@@ -33,34 +38,74 @@ func New(err ...error) *Errdash {
 	return dsErr
 }
 
+/*
+Err is a ...
+
+@Editor robotyang at 2023
+*/
 func Err(err ...error) *Errdash {
 	return New(err...)
 }
 
+/*
+Code is a ...
+
+@Editor robotyang at 2023
+*/
 func Code(code uint32) *Errdash {
 	return New().Code(code)
 }
 
+/*
+Pre is a ...
+
+@Editor robotyang at 2023
+*/
 func Pre(msg string) *Errdash {
 	return New().Pre(msg)
 }
 
+/*
+Pref is a ...
+
+@Editor robotyang at 2023
+*/
 func Pref(format string, a ...interface{}) *Errdash {
 	return New().Pref(format, a...)
 }
 
+/*
+Msg is a ...
+
+@Editor robotyang at 2023
+*/
 func Msg(msg string) *Errdash {
 	return New().Msg(msg)
 }
 
+/*
+Msgf is a ...
+
+@Editor robotyang at 2023
+*/
 func Msgf(format string, a ...interface{}) *Errdash {
 	return New().Msgf(format, a...)
 }
 
+/*
+Log is a ...
+
+@Editor robotyang at 2023
+*/
 func Log(log string) *Errdash {
 	return New().Log(log)
 }
 
+/*
+Logf is a ...
+
+@Editor robotyang at 2023
+*/
 func Logf(format string, a ...interface{}) *Errdash {
 	return New().Logf(format, a...)
 }

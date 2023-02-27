@@ -6,6 +6,11 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before sign_test.go tests")
 }
@@ -31,6 +36,11 @@ type Stock struct {
 	Quantity int
 }
 
+/*
+TestSignFlatMap is a ...
+
+@Editor robotyang at 2023
+*/
 func TestSignFlatMap(t *testing.T) {
 	secret := "9adceaa7c1c1979214becf7747e05daa"
 	data := map[string]string{

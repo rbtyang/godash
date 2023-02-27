@@ -26,7 +26,11 @@ func Utf8ToGbk(s []byte) ([]byte, error) {
 	return d, nil
 }
 
-//转换编码类型
+/*
+TransEncoding 转换编码类型
+
+@Editor robotyang at 2023
+*/
 func TransEncoding(src string, srcCode string, dstCode string) string {
 	srcCoder := mahonia.NewDecoder(srcCode)
 	srcResult := srcCoder.ConvertString(src)

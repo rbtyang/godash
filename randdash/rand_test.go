@@ -6,10 +6,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestRandStr is a ...
+
+@Editor robotyang at 2023
+*/
 func TestRandStr(t *testing.T) {
 	{
 		recv := randdash.Str(randdash.ModeNum, 32)
@@ -37,6 +47,11 @@ func TestRandStr(t *testing.T) {
 	}
 }
 
+/*
+TestRandNum is a ...
+
+@Editor robotyang at 2023
+*/
 func TestRandNum(t *testing.T) {
 	{
 		recv := randdash.Num(10, 30)
@@ -44,6 +59,11 @@ func TestRandNum(t *testing.T) {
 	}
 }
 
+/*
+TestRandCode is a ...
+
+@Editor robotyang at 2023
+*/
 func TestRandCode(t *testing.T) {
 	{
 		recv := randdash.NumCode(6)
@@ -51,6 +71,11 @@ func TestRandCode(t *testing.T) {
 	}
 }
 
+/*
+TestRandIntSli is a ...
+
+@Editor robotyang at 2023
+*/
 func TestRandIntSli(t *testing.T) {
 	{
 		recv := randdash.IntSli(100, 10, 30)

@@ -31,7 +31,11 @@ func Sha512(str string) string {
 	return fmt.Sprintf("%x", sha512.Sum512(convdash.StrToByteByReflect(str)))
 }
 
-//以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
+/*
+Hmac 以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
+
+@Editor robotyang at 2023
+*/
 func Hmac(salt, str string) string {
 	hmacIt := hmac.New(md5.New, []byte(salt))
 	hmacIt.Write([]byte(str))

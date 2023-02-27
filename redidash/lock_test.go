@@ -25,6 +25,11 @@ type _configYamlSt struct {
 
 var _configYamlObj = _configYamlSt{}
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before lock_test.go tests")
 
@@ -68,6 +73,11 @@ func init() {
 	})
 }
 
+/*
+TestLock is a ...
+
+@Editor robotyang at 2023
+*/
 func TestLock(t *testing.T) {
 	{
 		ctx := context.Background()

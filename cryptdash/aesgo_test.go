@@ -8,6 +8,11 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before aesgo_test.go tests")
 }
@@ -32,6 +37,11 @@ func TestAesBs64Encrypt(t *testing.T) {
 	}
 }
 
+/*
+TestAesCbcEncrypt is a ...
+
+@Editor robotyang at 2023
+*/
 func TestAesCbcEncrypt(t *testing.T) {
 	{
 		data := []byte("Hello World 123 哈哈")
@@ -52,6 +62,11 @@ func TestAesCbcEncrypt(t *testing.T) {
 	}
 }
 
+/*
+TestAesEcbEncrypt is a ...
+
+@Editor robotyang at 2023
+*/
 func TestAesEcbEncrypt(t *testing.T) {
 	{
 		data := []byte("Hello World 123 哈哈")

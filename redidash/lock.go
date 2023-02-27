@@ -11,7 +11,11 @@ type lock struct {
 	cli *redis.Client
 }
 
-// need redis v6
+/*
+NewLock  need redis v6
+
+@Editor robotyang at 2023
+*/
 func NewLock(ctx context.Context, cli *redis.Client) *lock {
 	return &lock{ctx, cli}
 }

@@ -13,10 +13,20 @@ var (
 	nodeMap sync.Map
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestSnowOne is a ...
+
+@Editor robotyang at 2023
+*/
 func TestSnowOne(t *testing.T) {
 	{
 		node, err := snowflake.NewNode(rand.Int63n(1024))
@@ -29,7 +39,12 @@ func TestSnowOne(t *testing.T) {
 }
 
 //串行基准测试
-//go test -bench=SnowSeri$
+
+/*
+BenchmarkSnowSeri go test -bench=SnowSeri$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkSnowSeri(b *testing.B) {
 	idMap := map[int64]bool{}
 	node, err := snowflake.NewNode(1)
@@ -53,7 +68,12 @@ func BenchmarkSnowSeri(b *testing.B) {
 }
 
 //并行基准测试
-//go test -bench=SnowPara$
+
+/*
+BenchmarkSnowPara go test -bench=SnowPara$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkSnowPara(b *testing.B) {
 	node, err := snowflake.NewNode(1) //同个节点，还是存在冲突
 	if err != nil {
@@ -78,7 +98,12 @@ func BenchmarkSnowPara(b *testing.B) {
 }
 
 //并行基准测试
-//go test -bench=SnowRandNode$
+
+/*
+BenchmarkSnowRandNode go test -bench=SnowRandNode$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkSnowRandNode(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作

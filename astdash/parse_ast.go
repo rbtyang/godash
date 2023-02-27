@@ -7,6 +7,11 @@ import (
 	"go/token"
 )
 
+/*
+NewAst is a ...
+
+@Editor robotyang at 2023
+*/
 func NewAst(options ...*Option) *Ast {
 	a := new(Ast)
 	for _, opt := range options { // 应用 options设置 的选项

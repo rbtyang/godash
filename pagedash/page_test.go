@@ -7,10 +7,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestPager is a ...
+
+@Editor robotyang at 2023
+*/
 func TestPager(t *testing.T) {
 	{
 		pager := pagedash.NewPagerAll(1, 10, true)

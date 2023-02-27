@@ -12,6 +12,11 @@ import (
 const filePrefix = "temp/cryptdash_file_test"
 const originFilePath = filePrefix + ".md"
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before file_test.go tests")
 
@@ -47,6 +52,11 @@ func init() {
 	}
 }
 
+/*
+TestFileEncrypt is a ...
+
+@Editor robotyang at 2023
+*/
 func TestFileEncrypt(t *testing.T) {
 	cryptFilePath := filePrefix + "_crypt.md"
 	plainFilePath := filePrefix + "_plain.md"

@@ -7,6 +7,11 @@ import (
 	"testing"
 )
 
+/*
+TestGetFilePathList is a ...
+
+@Editor robotyang at 2023
+*/
 func TestGetFilePathList(t *testing.T) {
 	{
 		pathList, err := filedash.GetFileList("../")
@@ -24,6 +29,11 @@ func TestGetFilePathList(t *testing.T) {
 	}
 }
 
+/*
+TestGetFileListFilter is a ...
+
+@Editor robotyang at 2023
+*/
 func TestGetFileListFilter(t *testing.T) {
 	filelist, err := filedash.GetFileListFilter("../", []string{".go"}, []string{".git", "vendor", "_test.go"})
 	if err != nil {

@@ -6,7 +6,11 @@ import (
 	"testing"
 )
 
-//如果测试文件中包含函数 TestMain，那么生成的测试将调用 TestMain(m)，而不是直接运行测试。
+/*
+TestMain 如果测试文件中包含函数 TestMain，那么生成的测试将调用 TestMain(m)，而不是直接运行测试。
+
+@Editor robotyang at 2023
+*/
 func TestMain(m *testing.M) {
 	setup()
 	code := m.Run()
@@ -14,12 +18,20 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
-//pre-test 安装
+/*
+setup pre-test 安装
+
+@Editor robotyang at 2023
+*/
 func setup() {
 	log.Println("Before all tests")
 }
 
-//post-test 卸载
+/*
+teardown post-test 卸载
+
+@Editor robotyang at 2023
+*/
 func teardown() {
 	log.Println("After all tests")
 }

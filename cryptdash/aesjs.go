@@ -10,7 +10,12 @@ import (
 
 //AesDecrypt CBC模式解密（支持前后端，是 AesDecryptJsHex 的别名）；
 //@param cipherstr 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
-//@param secret 密钥；
+
+/*
+AesDecrypt @param secret 密钥；
+
+@Editor robotyang at 2023
+*/
 func AesDecrypt(cipherstr, secret string) (string, error) {
 	return AesDecryptJsHex(cipherstr, secret)
 }
@@ -20,7 +25,12 @@ func AesDecrypt(cipherstr, secret string) (string, error) {
 //AesDecryptJsHex CBC模式解密（支持前后端，先16进制解码，再走底层方法 AesDecryptJs 解密）；
 //@param cipherstr 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
 //@param secret 密钥；
-//@reference https://mojotv.cn/go/crypto-js-with-golang
+
+/*
+AesDecryptJsHex @reference https://mojotv.cn/go/crypto-js-with-golang
+
+@Editor robotyang at 2023
+*/
 func AesDecryptJsHex(cipherstr, secret string) (string, error) {
 	ciphertext, err := hex.DecodeString(cipherstr)
 	if err != nil {
@@ -38,7 +48,12 @@ func AesDecryptJsHex(cipherstr, secret string) (string, error) {
 //AesDecryptJs CBC模式解密（支持前后端）；
 //ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
 //secret 密钥；
-//@reference https://mojotv.cn/go/crypto-js-with-golang
+
+/*
+AesDecryptJs @reference https://mojotv.cn/go/crypto-js-with-golang
+
+@Editor robotyang at 2023
+*/
 func AesDecryptJs(ciphertext, secret []byte) ([]byte, error) {
 	pkey := secretFill(secret, '0', 16) //和js的key补码方法一致
 	block, err := aes.NewCipher(pkey)   //选择加密算法
@@ -52,7 +67,11 @@ func AesDecryptJs(ciphertext, secret []byte) ([]byte, error) {
 	return plantText, nil
 }
 
-//secretFill 对密钥 进行补码（这个方案必须和js的方法是一样的）
+/*
+secretFill secretFill 对密钥 进行补码（这个方案必须和js的方法是一样的）
+
+@Editor robotyang at 2023
+*/
 func secretFill(secret []byte, pad byte, length int) []byte {
 	if len(secret) >= length {
 		return secret[:length]

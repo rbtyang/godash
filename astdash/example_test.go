@@ -6,6 +6,11 @@ import (
 	"log"
 )
 
+/*
+ExampleNewAst is a ...
+
+@Editor robotyang at 2023
+*/
 func ExampleNewAst() {
 	a := astdash.NewAst()
 	err := a.ParseFile("../arrdash/arr.go")

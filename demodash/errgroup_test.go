@@ -9,27 +9,37 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
-func TestErrGroup(t *testing.T) {
-	var eg errgroup.Group
+/*
+TestErrGroup is a ...
 
-	eg.Go(func() error {
+@Editor robotyang at 2023
+*/
+func TestErrGroup(t *testing.T) {
+	var erg errgroup.Group
+
+	erg.Go(func() error {
 		assert.Equal(t, "ZhangSan Ni Hao", demodash.SomeFunc("ZhangSan"))
 		return nil
 	})
-	eg.Go(func() error {
+	erg.Go(func() error {
 		assert.Equal(t, "LiSi Ni Hao", demodash.SomeFunc("LiSi"))
 		return nil
 	})
-	eg.Go(func() error {
+	erg.Go(func() error {
 		assert.Equal(t, "WangWu Ni Hao", demodash.SomeFunc("WangWu"))
 		return nil
 	})
 
-	err := eg.Wait()
+	err := erg.Wait()
 	if err != nil {
 		logdash.Error(err)
 	}

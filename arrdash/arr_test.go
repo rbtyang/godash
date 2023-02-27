@@ -6,6 +6,11 @@ import (
 	"testing"
 )
 
+/*
+TestSliceHas is a ...
+
+@Editor robotyang at 2023
+*/
 func TestSliceHas(t *testing.T) {
 	//slice int
 	{
@@ -76,6 +81,11 @@ func TestSliceHas(t *testing.T) {
 	}
 }
 
+/*
+TestContains is a ...
+
+@Editor robotyang at 2023
+*/
 func TestContains(t *testing.T) {
 	//array int L1
 	{
@@ -371,6 +381,11 @@ func TestContains(t *testing.T) {
 	}
 }
 
+/*
+TestArrayToString is a ...
+
+@Editor robotyang at 2023
+*/
 func TestArrayToString(t *testing.T) {
 	{
 		{

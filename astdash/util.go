@@ -6,7 +6,11 @@ import (
 	"strings"
 )
 
-//提取注释
+/*
+getCommentGroup 提取注释
+
+@Editor robotyang at 2023
+*/
 func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 	if cg == nil {
 		return
@@ -17,6 +21,11 @@ func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 	return
 }
 
+/*
+getIdent is a ...
+
+@Editor robotyang at 2023
+*/
 func getIdent(id *ast.Ident) (ret string) {
 	if id == nil {
 		return ""
@@ -24,7 +33,11 @@ func getIdent(id *ast.Ident) (ret string) {
 	return id.Name
 }
 
-//提取tag
+/*
+getTag 提取tag
+
+@Editor robotyang at 2023
+*/
 func getTag(cg *ast.BasicLit) (ret string) {
 	if cg == nil {
 		return
@@ -32,6 +45,11 @@ func getTag(cg *ast.BasicLit) (ret string) {
 	return cg.Value
 }
 
+/*
+getImportName is a ...
+
+@Editor robotyang at 2023
+*/
 func getImportName(name, path string) string {
 	if name != "" {
 		return name
@@ -47,6 +65,11 @@ func getImportName(name, path string) string {
 	return name[0 : len(name)-1]
 }
 
+/*
+getIdentName is a ...
+
+@Editor robotyang at 2023
+*/
 func getIdentName(i *ast.Ident) string {
 	if i == nil {
 		return ""
@@ -54,6 +77,11 @@ func getIdentName(i *ast.Ident) string {
 	return i.String()
 }
 
+/*
+getIdentsName is a ...
+
+@Editor robotyang at 2023
+*/
 func getIdentsName(i []*ast.Ident) string {
 	if len(i) == 0 {
 		return ""
@@ -61,12 +89,21 @@ func getIdentsName(i []*ast.Ident) string {
 	return i[0].String()
 }
 
-//检查是不是 内部使用的结构体
+/*
+CheckInnerStruct 检查是不是 内部使用的结构体
+
+@Editor robotyang at 2023
+*/
 func CheckInnerStruct(name string) bool {
 	_, t := innerType[name]
 	return !t
 }
 
+/*
+getSortSlice is a ...
+
+@Editor robotyang at 2023
+*/
 func getSortSlice(inMap map[int]interface{}) []interface{} {
 	if len(inMap) == 0 {
 		return nil

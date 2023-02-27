@@ -5,7 +5,11 @@ import (
 	"unicode"
 )
 
-// 首字母大写
+/*
+UpperFirst  首字母大写
+
+@Editor robotyang at 2023
+*/
 func UpperFirst(s string) string {
 	if s == "" {
 		return s
@@ -18,6 +22,8 @@ func UpperFirst(s string) string {
  @description XxYy to xx_yy , XxYY to xx_y_y
  @param s 需要转换的字符串
  @return string
+
+@Editor robotyang at 2023
 */
 func SnakeString(s string) string {
 	return snakeStr(s, '_')
@@ -28,12 +34,18 @@ func SnakeString(s string) string {
  @description XxYy to xx-yy , XxYY to xx-y-y
  @param s 需要转换的字符串
  @return string
+
+@Editor robotyang at 2023
 */
 func SnakeStringStrike(s string) string {
 	return snakeStr(s, '-')
 }
 
-// 通用转换
+/*
+snakeStr  通用转换
+
+@Editor robotyang at 2023
+*/
 func snakeStr(s string, sep byte) string {
 	data := make([]byte, 0, len(s)*2)
 	j := false
@@ -60,6 +72,8 @@ func snakeStr(s string, sep byte) string {
  @description xx_yy to XxYx  xx_y_y to XxYY
  @param s要转换的字符串
  @return string
+
+@Editor robotyang at 2023
 */
 func CamelStringStrike(s string) string {
 	return camelStr(s, '-')
@@ -70,12 +84,18 @@ func CamelStringStrike(s string) string {
  @description xx-yy to XxYx  xx-y-y to XxYY
  @param s要转换的字符串
  @return string
+
+@Editor robotyang at 2023
 */
 func CamelString(s string) string {
 	return camelStr(s, '_')
 }
 
-// 通用驼峰转换
+/*
+camelStr  通用驼峰转换
+
+@Editor robotyang at 2023
+*/
 func camelStr(s string, sep byte) string {
 	data := make([]byte, 0, len(s))
 	j := false
@@ -100,7 +120,11 @@ func camelStr(s string, sep byte) string {
 	return string(data[:])
 }
 
-// 判断是否为 纯数字 字符串
+/*
+IsDigit  判断是否为 纯数字 字符串
+
+@Editor robotyang at 2023
+*/
 func IsDigit(str string) bool {
 	if "" == str {
 		return false

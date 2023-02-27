@@ -7,10 +7,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Init this tests")
 }
 
+/*
+TestHello is a ...
+
+@Editor robotyang at 2023
+*/
 func TestHello(t *testing.T) {
 	{
 		want := "rbtyang你好，欢迎使用godash开发工具集"

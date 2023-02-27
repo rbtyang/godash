@@ -17,6 +17,11 @@ type Config struct {
 	Label    []string
 }
 
+/*
+TestMergo is a ...
+
+@Editor robotyang at 2023
+*/
 func TestMergo(t *testing.T) {
 	{
 		dstConfig := Config{

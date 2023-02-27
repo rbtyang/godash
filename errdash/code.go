@@ -77,7 +77,12 @@ var grpc2code = map[codes.Code]uint32{
 }
 
 // 注册 错误字典;
-// 建议尽量注册 >= 20000 的 code
+
+/*
+RegisterCode  建议尽量注册 >= 20000 的 code
+
+@Editor robotyang at 2023
+*/
 func RegisterCode(dict map[uint32]string) {
 	for code, errMsg := range dict {
 		code2text[code] = errMsg
@@ -85,7 +90,12 @@ func RegisterCode(dict map[uint32]string) {
 }
 
 // 转义 code 为对应中文含义;
-// @param.code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+
+/*
+GetCodeMsg  @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+
+@Editor robotyang at 2023
+*/
 func GetCodeMsg(code uint32) string {
 	if txt, ok := code2text[code]; ok {
 		return txt
@@ -96,7 +106,12 @@ func GetCodeMsg(code uint32) string {
 }
 
 // 解析 code 对应的 errdash code;
-// @param.code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+
+/*
+ParseCode  @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+
+@Editor robotyang at 2023
+*/
 func ParseCode(code interface{}) uint32 {
 	var cCode codes.Code = math.MaxUint32
 	switch code.(type) {

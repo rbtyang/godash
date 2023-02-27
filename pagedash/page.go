@@ -14,14 +14,29 @@ type (
 	}
 )
 
+/*
+NewPager is a ...
+
+@Editor robotyang at 2023
+*/
 func NewPager(index, size uint32) *Pager {
 	return newPager(index, size, false)
 }
 
+/*
+NewPagerAll is a ...
+
+@Editor robotyang at 2023
+*/
 func NewPagerAll(index, size uint32, needAll bool) *Pager {
 	return newPager(index, size, needAll)
 }
 
+/*
+newPager is a ...
+
+@Editor robotyang at 2023
+*/
 func newPager(index, size uint32, needAll bool) *Pager {
 	if index < 1 {
 		index = pageIndexDefault

@@ -11,10 +11,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestBuiltinSortSlice is a ...
+
+@Editor robotyang at 2023
+*/
 func TestBuiltinSortSlice(t *testing.T) {
 	{
 		var data = []int{1, 43, 54, 62, 21, 66, 32, 78, 36, 76, 39}
@@ -58,6 +68,11 @@ func TestBuiltinSortSlice(t *testing.T) {
 	}
 }
 
+/*
+TestBubble is a ...
+
+@Editor robotyang at 2023
+*/
 func TestBubble(t *testing.T) {
 	{
 		var data = []int{1, 43, 54, 62, 21, 66, 32, 78, 36, 76, 39}
@@ -73,6 +88,11 @@ func TestBubble(t *testing.T) {
 	}
 }
 
+/*
+TestInsertion is a ...
+
+@Editor robotyang at 2023
+*/
 func TestInsertion(t *testing.T) {
 	{
 		var data = []int{1, 43, 54, 62, 21, 66, 32, 78, 36, 76, 39}
@@ -94,6 +114,11 @@ func TestInsertion(t *testing.T) {
 	}
 }
 
+/*
+TestSelection is a ...
+
+@Editor robotyang at 2023
+*/
 func TestSelection(t *testing.T) {
 	{
 		var data = []int{1, 43, 54, 62, 21, 66, 32, 78, 36, 76, 39}
@@ -103,6 +128,11 @@ func TestSelection(t *testing.T) {
 	}
 }
 
+/*
+TestQuick is a ...
+
+@Editor robotyang at 2023
+*/
 func TestQuick(t *testing.T) {
 	{
 		var data = []int{1, 43, 54, 62, 21, 66, 32, 78, 36, 76, 39}
@@ -124,7 +154,11 @@ func TestQuick(t *testing.T) {
 	}
 }
 
-//go test -bench=QuickSimple$
+/*
+BenchmarkQuickSimple go test -bench=QuickSimple$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkQuickSimple(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
@@ -135,7 +169,11 @@ func BenchmarkQuickSimple(b *testing.B) {
 	}
 }
 
-//go test -bench=QuickParallel$
+/*
+BenchmarkQuickParallel go test -bench=QuickParallel$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkQuickParallel(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作

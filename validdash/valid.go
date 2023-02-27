@@ -15,7 +15,11 @@ type Validt struct {
 	trans ut.Translator
 }
 
-//支持 string msg, err obj
+/*
+New 支持 string msg, err obj
+
+@Editor robotyang at 2023
+*/
 func New() *Validt {
 	v := &Validt{
 		separate: "；",

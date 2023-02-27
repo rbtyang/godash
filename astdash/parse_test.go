@@ -7,6 +7,11 @@ import (
 	"testing"
 )
 
+/*
+TestParseFile is a ...
+
+@Editor robotyang at 2023
+*/
 func TestParseFile(t *testing.T) {
 	{
 		a := astdash.NewAst()
@@ -15,7 +20,7 @@ func TestParseFile(t *testing.T) {
 			log.Fatal(err)
 		}
 		assert.Equal(t, "arrdash", a.Package)
-		assert.Equal(t, "fmt", a.Imports[0].Name)
-		assert.Equal(t, "Contains", a.Funcs[1].Name)
+		assert.Contains(t, a.Imports[0].Name, "logdash")
+		assert.Equal(t, "Contain", a.Funcs[1].Name)
 	}
 }

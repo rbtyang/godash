@@ -17,7 +17,11 @@ const (
 	ModeNumAlphaSp          = ModeNum + Modeaz + ModeAZ + ModeSp
 )
 
-// @return str
+/*
+Str  @return str
+
+@Editor robotyang at 2023
+*/
 func Str(mode RandMode, n uint16) string {
 	time.Sleep(time.Nanosecond)
 	rand.Seed(time.Now().UnixNano())
@@ -31,18 +35,32 @@ func Str(mode RandMode, n uint16) string {
 }
 
 // Num 生成范围内的 随机数
-// @return [min, max)
+
+/*
+Num  @return [min, max)
+
+@Editor robotyang at 2023
+*/
 func Num(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
-// NumCode 生成固定长度的 随机数
+/*
+NumCode  NumCode 生成固定长度的 随机数
+
+@Editor robotyang at 2023
+*/
 func NumCode(len int) int {
 	min := math.Pow10(len - 1)
 	max := min * 10
 	return Num(int(min), int(max))
 }
 
+/*
+IntSli is a ...
+
+@Editor robotyang at 2023
+*/
 func IntSli(len, min, max int) []int {
 	sli := make([]int, len)
 	for i := 0; i < len; i++ {

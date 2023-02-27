@@ -2,7 +2,11 @@ package convdash
 
 import "github.com/goinggo/mapstructure"
 
-//解析map 到结构体（自定义tag 作为 key）
+/*
+WeakMapToStcWithTag 解析map 到结构体（自定义tag 作为 key）
+
+@Editor robotyang at 2023
+*/
 func WeakMapToStcWithTag(input, output interface{}, tagName string) error {
 	cfg := &mapstructure.DecoderConfig{
 		Metadata:         nil,

@@ -12,6 +12,11 @@ type (
 	FuncFilter   func(*Func) bool
 )
 
+/*
+WithFieldFilter is a ...
+
+@Editor robotyang at 2023
+*/
 func WithFieldFilter(filter ...FieldFilter) *Option {
 	return &Option{
 		apply: func(a *Ast) {
@@ -20,6 +25,11 @@ func WithFieldFilter(filter ...FieldFilter) *Option {
 	}
 }
 
+/*
+WithStructFilter is a ...
+
+@Editor robotyang at 2023
+*/
 func WithStructFilter(filter ...StructFilter) *Option {
 	return &Option{
 		apply: func(a *Ast) {
@@ -28,6 +38,11 @@ func WithStructFilter(filter ...StructFilter) *Option {
 	}
 }
 
+/*
+WithFuncFilter is a ...
+
+@Editor robotyang at 2023
+*/
 func WithFuncFilter(filter ...FuncFilter) *Option {
 	return &Option{
 		apply: func(a *Ast) {
@@ -41,7 +56,11 @@ type FilterFuncOpt struct {
 	Recv     *Field
 }
 
-//只返回 符合的 函数列表
+/*
+FilterFuncList 只返回 符合的 函数列表
+
+@Editor robotyang at 2023
+*/
 func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	return func(f *Func) bool {
 		for _, v := range funcList {
@@ -73,6 +92,11 @@ var protoField = []string{
 	"unknownFields",
 }
 
+/*
+FilterProtoInner is a ...
+
+@Editor robotyang at 2023
+*/
 func FilterProtoInner(field *ast.Field) bool {
 	name := field.Names[0].Name
 	if strings.HasPrefix(name, "XXX_") {
@@ -87,7 +111,11 @@ func FilterProtoInner(field *ast.Field) bool {
 	return true
 }
 
-//过滤 小写字段
+/*
+FilterInnerField 过滤小写字段
+
+@Editor robotyang at 2023
+*/
 func FilterInnerField(field *ast.Field) bool {
 	name := field.Names[0].Name
 	if len(name) == 0 {
@@ -99,6 +127,11 @@ func FilterInnerField(field *ast.Field) bool {
 	return true
 }
 
+/*
+FilterInnerSt is a ...
+
+@Editor robotyang at 2023
+*/
 func FilterInnerSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()
 	if len(name) == 0 {
@@ -110,6 +143,11 @@ func FilterInnerSt(st *ast.TypeSpec) bool {
 	return true
 }
 
+/*
+FilterProtoSt is a ...
+
+@Editor robotyang at 2023
+*/
 func FilterProtoSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()
 	if strings.HasPrefix(name, "Unimplemented") && strings.HasSuffix(name, "Server") {

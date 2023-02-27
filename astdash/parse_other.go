@@ -244,6 +244,11 @@ func (t Type) IsInnerStruct() bool {
 	return false
 }
 
+/*
+handleType is a ...
+
+@Editor robotyang at 2023
+*/
 func handleType(expr ast.Expr) (ret Type) {
 	switch expr.(type) {
 	case *ast.Ident: //string int 非指针的命名结构体

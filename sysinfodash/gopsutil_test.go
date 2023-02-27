@@ -8,10 +8,20 @@ import (
 	"time"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestSysinfoPercent is a ...
+
+@Editor robotyang at 2023
+*/
 func TestSysinfoPercent(t *testing.T) {
 	loop := 10
 	for loop > 0 {

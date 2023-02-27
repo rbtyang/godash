@@ -11,10 +11,20 @@ var (
 	uidMap sync.Map
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestUuidOne is a ...
+
+@Editor robotyang at 2023
+*/
 func TestUuidOne(t *testing.T) {
 	{
 		uid := uuid.New().String()
@@ -23,7 +33,12 @@ func TestUuidOne(t *testing.T) {
 }
 
 //串行基准测试
-//go test -bench=UuidSeri$
+
+/*
+BenchmarkUuidSeri go test -bench=UuidSeri$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkUuidSeri(b *testing.B) {
 	idMap := map[string]bool{}
 
@@ -43,7 +58,12 @@ func BenchmarkUuidSeri(b *testing.B) {
 }
 
 //并行基准测试
-//go test -bench=UuidRandNode$
+
+/*
+BenchmarkUuidRandNode go test -bench=UuidRandNode$
+
+@Editor robotyang at 2023
+*/
 func BenchmarkUuidRandNode(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作

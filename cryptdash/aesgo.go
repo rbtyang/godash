@@ -35,7 +35,12 @@ func AesBs64Decrypt(cipherstr string, secret []byte) ([]byte, error) {
 
 //AesCbcEncrypt CBC模式加密；
 //@param plaintext 明文；
-//@param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+/*
+AesCbcEncrypt @param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+@Editor robotyang at 2023
+*/
 func AesCbcEncrypt(plaintext, secret []byte) ([]byte, error) {
 	block, err := aes.NewCipher(secret)
 	if err != nil {
@@ -51,7 +56,12 @@ func AesCbcEncrypt(plaintext, secret []byte) ([]byte, error) {
 
 //AesCbcDecrypt CBC模式解密；
 //@param ciphertext 密文；
-//@param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+/*
+AesCbcDecrypt @param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+@Editor robotyang at 2023
+*/
 func AesCbcDecrypt(ciphertext, secret []byte) ([]byte, error) {
 	block, err := aes.NewCipher(secret)
 	if err != nil {
@@ -65,14 +75,22 @@ func AesCbcDecrypt(ciphertext, secret []byte) ([]byte, error) {
 	return oritext, nil
 }
 
-//aesZeroFill 填充补码
+/*
+aesPkcsFill aesZeroFill 填充补码
+
+@Editor robotyang at 2023
+*/
 func aesPkcsFill(plaintext []byte, blockSize int) []byte {
 	fillNum := blockSize - len(plaintext)%blockSize
 	fillText := bytes.Repeat([]byte{byte(fillNum)}, fillNum)
 	return append(plaintext, fillText...)
 }
 
-//aesPkcsUnFill 去除补码
+/*
+aesPkcsUnFill aesPkcsUnFill 去除补码
+
+@Editor robotyang at 2023
+*/
 func aesPkcsUnFill(origData []byte) []byte {
 	length := len(origData)
 	unFillNum := int(origData[length-1])
@@ -83,7 +101,12 @@ func aesPkcsUnFill(origData []byte) []byte {
 
 //AesCbcDecrypt ECB模式加密；
 //@param plaintext 明文；
-//@param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+/*
+AesEcbEncrypt @param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+@Editor robotyang at 2023
+*/
 func AesEcbEncrypt(plaintext []byte, secret []byte) ([]byte, error) {
 	block, err := aes.NewCipher(secret[:aes.BlockSize])
 	if err != nil {
@@ -103,7 +126,12 @@ func AesEcbEncrypt(plaintext []byte, secret []byte) ([]byte, error) {
 
 //AesCbcDecrypt ECB模式解密；
 //@param ciphertext 密文；
-//@param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+/*
+AesEcbDecrypt @param secret 密钥，可以是16、24或32字节，用以选择AES-128、AES-192或AES-256；
+
+@Editor robotyang at 2023
+*/
 func AesEcbDecrypt(ciphertext []byte, secret []byte) ([]byte, error) {
 	block, err := aes.NewCipher(secret[:aes.BlockSize])
 	if err != nil {
@@ -122,14 +150,22 @@ func AesEcbDecrypt(ciphertext []byte, secret []byte) ([]byte, error) {
 	return plaintext, nil
 }
 
-//aesZeroFill 填充补码
+/*
+aesZeroFill aesZeroFill 填充补码
+
+@Editor robotyang at 2023
+*/
 func aesZeroFill(plaintext []byte, blockSize int) []byte {
 	fillNum := blockSize - len(plaintext)%blockSize
 	fillText := bytes.Repeat([]byte{0}, fillNum)
 	return append(plaintext, fillText...)
 }
 
-//aesZeroUnFill 去除补码
+/*
+aesZeroUnFill aesZeroUnFill 去除补码
+
+@Editor robotyang at 2023
+*/
 func aesZeroUnFill(plaintext []byte) []byte {
 	plaintext = bytes.TrimFunc(plaintext, func(r rune) bool {
 		return r == rune(0)

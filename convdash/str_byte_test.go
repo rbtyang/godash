@@ -7,10 +7,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestStrToByte is a ...
+
+@Editor robotyang at 2023
+*/
 func TestStrToByte(t *testing.T) {
 	{
 		want := []byte("hello world 123 哈哈")
@@ -24,6 +34,11 @@ func TestStrToByte(t *testing.T) {
 	}
 }
 
+/*
+TestStrToByteByUnsafe is a ...
+
+@Editor robotyang at 2023
+*/
 func TestStrToByteByUnsafe(t *testing.T) {
 	{
 		want := []byte("hello world 123 哈哈")
@@ -37,6 +52,11 @@ func TestStrToByteByUnsafe(t *testing.T) {
 	}
 }
 
+/*
+TestStrToByteByReflect is a ...
+
+@Editor robotyang at 2023
+*/
 func TestStrToByteByReflect(t *testing.T) {
 	{
 		want := []byte("hello world 123 哈哈")

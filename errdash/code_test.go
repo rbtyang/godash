@@ -8,10 +8,20 @@ import (
 	"testing"
 )
 
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
 func init() {
 	log.Println("Before this tests")
 }
 
+/*
+TestParseCode is a ...
+
+@Editor robotyang at 2023
+*/
 func TestParseCode(t *testing.T) {
 	{
 		want := errdash.CodeInternal
@@ -52,6 +62,11 @@ func TestParseCode(t *testing.T) {
 	}
 }
 
+/*
+TestGetCodeMsg is a ...
+
+@Editor robotyang at 2023
+*/
 func TestGetCodeMsg(t *testing.T) {
 	{
 		want := ""

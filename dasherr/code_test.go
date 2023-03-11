@@ -1,0 +1,88 @@
+package dasherr_test
+
+import (
+	"github.com/rbtyang/godash/dasherr"
+	"github.com/stretchr/testify/assert"
+	"google.golang.org/grpc/codes"
+	"log"
+	"testing"
+)
+
+/*
+init is a ...
+
+@Editor robotyang at 2023
+*/
+func init() {
+	log.Println("Before this tests")
+}
+
+/*
+TestParseCode is a ...
+
+@Editor robotyang at 2023
+*/
+func TestParseCode(t *testing.T) {
+	{
+		want := dasherr.CodeInternal
+		recv := dasherr.ParseCode(nil)
+		assert.Equal(t, want, recv)
+	}
+
+	{
+		want := dasherr.CodeAlreadyExists
+		recv := dasherr.ParseCode(codes.AlreadyExists)
+		assert.Equal(t, want, recv)
+	}
+
+	{
+		want := dasherr.CodeInternal
+		recv := dasherr.ParseCode("哈哈哈")
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := dasherr.CodePermissionDenied
+		recv := dasherr.ParseCode(7)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := dasherr.CodePermissionDenied
+		recv := dasherr.ParseCode("7")
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := uint32(99999)
+		recv := dasherr.ParseCode(99999)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := uint32(99999)
+		recv := dasherr.ParseCode("99999")
+		assert.Equal(t, want, recv)
+	}
+}
+
+/*
+TestGetCodeMsg is a ...
+
+@Editor robotyang at 2023
+*/
+func TestGetCodeMsg(t *testing.T) {
+	{
+		want := "未知错误"
+		msg := dasherr.GetCodeMsg(99999)
+		assert.Equal(t, msg, want)
+	}
+	{
+		want := "无效参数"
+		recv := dasherr.GetCodeMsg(dasherr.CodeInvalidArgument)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := "ha哈哈哈"
+		dasherr.RegisterCode(map[uint32]string{88888: "ha哈哈哈"})
+		recv := dasherr.GetCodeMsg(88888)
+		assert.Equal(t, want, recv)
+	}
+
+}

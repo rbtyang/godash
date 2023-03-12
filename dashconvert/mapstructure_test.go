@@ -7,7 +7,7 @@ import (
 )
 
 /*
-WeakMapToStcWithTag is a ...
+WeakMapToStructWithTag is a ...
 
 @Editor robotyang at 2023
 */
@@ -33,7 +33,7 @@ func TestWeakMapToStcWithTag(t *testing.T) {
 			Emails: []string{},
 		}
 		recv := Person{}
-		err := dashconvert.WeakMapToStcWithTag(inMap, &recv, "myTag")
+		err := dashconvert.WeakMapToStructWithTag(inMap, &recv, "myTag")
 		if err != nil {
 			t.Error(err)
 		}
@@ -47,7 +47,7 @@ func TestWeakMapToStcWithTag(t *testing.T) {
 			Emails: []string{},
 		}
 		recv := Person{}
-		err := dashconvert.WeakMapToStcWithTag(inMap, &recv, "xxTag")
+		err := dashconvert.WeakMapToStructWithTag(inMap, &recv, "xxTag")
 		if err != nil {
 			t.Error(err)
 		}

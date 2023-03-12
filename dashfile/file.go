@@ -5,18 +5,15 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
-// IsExist 判断 文件或文件夹 是否存在；
-// 如果返回的 错误 为nil,说明文件或文件夹存在；
-// 如果返回的 错误类型 使用os.IsNotExist() 判断为true, 说明 文件或文件夹 不存在；
-
 /*
-IsExist  如果返回的 错误 为其它类型, 则不确定 是否在存在；
+IsExist 判断 文件或文件夹 是否存在；
 
 @Editor robotyang at 2023
 */
@@ -35,11 +32,14 @@ func IsExist(path string) bool {
 }
 
 /*
-IsDir  IsDir 判断 所给路径 是否为文件夹
+IsDir 判断 所给路径 是否存在 且为文件夹
 
 @Editor robotyang at 2023
 */
 func IsDir(path string) bool {
+	if !IsExist(path) {
+		return false
+	}
 	s, err := os.Stat(path)
 	if err != nil {
 		return false
@@ -48,70 +48,63 @@ func IsDir(path string) bool {
 }
 
 /*
-IsFile  IsFile 判断 所给路径 是否为文件
+IsFile 判断 所给路径 是否存在 且为文件
 
 @Editor robotyang at 2023
 */
 func IsFile(path string) bool {
+	if !IsExist(path) {
+		return false
+	}
 	return !IsDir(path)
 }
 
 /*
-IsExistFile 判断 文件 是否存在；
+OpenFile 打开文件（是 os.OpenFile 别名）
 
 @Editor robotyang at 2023
 */
-func IsExistFile(filePath string) bool {
-	return IsExist(filePath) && IsFile(filePath)
+func OpenFile(filePath string) (*os.File, error) {
+	return os.OpenFile(filePath, os.O_RDWR|os.O_APPEND, os.ModePerm)
 }
 
 /*
-IsExistDir 判断 文件夹 是否存在；
+CreateOrOpen 重建或打开文件（会自动创建目录，文件存在则打开，不存在则创建）
 
 @Editor robotyang at 2023
 */
-func IsExistDir(dirPath string) bool {
-	return IsExist(dirPath) && IsDir(dirPath)
-}
-
-/*
-Rebuild 重建文件（会自动创建目录，文件存在则清空，不存在则创建）
-
-@Editor robotyang at 2023
-*/
-func Rebuild(filePath string) (*os.File, error) {
-	dirPath, _ := filepath.Split(filePath)
-	if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
-		return nil, err
-	}
-
-	return os.Create(filePath)
-}
-
-/*
-RebuildOrOpen  RebuildOrOpen 重建或打开文件（会自动创建目录，文件存在则打开，不存在则创建）
-
-@Editor robotyang at 2023
-*/
-func RebuildOrOpen(filePath string) (*os.File, error) {
+func CreateOrOpen(filePath string) (*os.File, error) {
 	dirPath, _ := filepath.Split(filePath)
 	if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
 		return nil, err
 	}
 
 	if IsExist(filePath) {
-		return os.OpenFile(filePath, os.O_RDWR, os.ModePerm)
+		return os.OpenFile(filePath, os.O_RDWR|os.O_APPEND, os.ModePerm)
 	} else {
 		return os.Create(filePath)
 	}
 }
 
-//ReadByFilePath 读取文件内容
-
 /*
-ReadByFilePath @reference https://haicoder.net/golang/golang-read.html
+CreateOrReset 重建文件（会自动创建目录，文件存在则清空，不存在则创建）
 
 @Editor robotyang at 2023
+*/
+func CreateOrReset(filePath string) (*os.File, error) {
+	dirPath, _ := filepath.Split(filePath)
+	if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
+		return nil, err
+	}
+	return os.Create(filePath)
+}
+
+/*
+ReadByFilePath 读取文件内容
+
+@Editor robotyang at 2023
+
+@Reference https://haicoder.net/golang/golang-read.html
 */
 func ReadByFilePath(filePath string) ([]byte, error) {
 	file, err := os.Open(filePath)
@@ -122,33 +115,34 @@ func ReadByFilePath(filePath string) ([]byte, error) {
 	return ReadByFile(file)
 }
 
-//ReadByFile 读取文件内容
-
 /*
-ReadByFile @reference https://haicoder.net/golang/golang-read.html
+ReadByFile 读取文件内容
 
 @Editor robotyang at 2023
 */
 func ReadByFile(file *os.File) ([]byte, error) {
-	var chunk []byte
-	buf := make([]byte, 1024)
-	for {
-		n, err := file.Read(buf)
-		if err != nil && err != io.EOF {
-			return nil, err
-		}
-		//说明读取结束
-		if n == 0 {
-			break
-		}
-		//读取到最终的缓冲区中
-		chunk = append(chunk, buf[:n]...)
-	}
-	return chunk, nil
+	return ioutil.ReadAll(file)
 }
 
 /*
-CopyFile  CopyFile 从一个文件 拷贝到 另一个文件
+RemoveAll 删除文件或目录
+
+在删除文件时，RemoveAll()和Remove()方法没有太大的区别；
+
+在删除目录时，Remove()只能删除空目录，而RemoveAll()不受任何限制。
+
+@Editor robotyang at 2023
+*/
+func RemoveAll(path string) error {
+	return os.RemoveAll(path)
+}
+
+/*
+CopyFile 从src文件 读取内容 拷贝到 dst文件
+
+@Param srcFilePath 来源文件路径
+
+@Param dstFilePath 目标文件路径：文件存在则覆盖，不存在则创建
 
 @Editor robotyang at 2023
 */
@@ -174,7 +168,29 @@ func CopyFile(srcFilePath, dstFilePath string) (writeen int64, err error) {
 }
 
 /*
-CompareFileBySum  CompareFileBySum 通过计算文件签名，判断两个文件是否一致
+CopyFile 从src文件 读取内容 追加到 dst文件
+
+@Param srcFilePath 来源文件路径
+
+@Param dstFilePath 目标文件路径：文件存在则覆盖，不存在则创建
+
+@Editor robotyang at 2023
+*/
+func AppendFile(srcFilePath, dstFilePath string) (writeen int, err error) {
+	srcCont, err := ReadByFilePath(srcFilePath)
+	if err != nil {
+		return 0, err
+	}
+	dstFile, err := OpenFile(dstFilePath)
+	if err != nil {
+		return 0, err
+	}
+	defer dstFile.Close()
+	return dstFile.WriteString(string(srcCont))
+}
+
+/*
+CompareFileBySum 通过计算文件签名，判断两个文件是否一致
 
 @Editor robotyang at 2023
 */
@@ -185,9 +201,11 @@ func CompareFileBySum(filePath1, filePath2 string) bool {
 // calculateFileSum 计算文件校验签名
 
 /*
-calculateFileSum  @reference https://blog.csdn.net/neweastsun/article/details/123666235
+calculateFileSum
 
 @Editor robotyang at 2023
+
+@Reference https://blog.csdn.net/neweastsun/article/details/123666235
 */
 func calculateFileSum(filePath string) string {
 	f, err := os.Open(filePath)
@@ -215,8 +233,13 @@ GetLastDir 获取 最后一个 目录名
 */
 func GetLastDir(path string) string {
 	sep := string(os.PathSeparator)
-	path, _ = filepath.Abs(path)
-	dir, _ := filepath.Split(path)
+	path2, _ := filepath.Abs(path)
+	if strings.HasSuffix(path, "\\") ||
+		strings.HasSuffix(path, "/") ||
+		strings.HasSuffix(path, ".") {
+		path2 += string(os.PathSeparator)
+	}
+	dir, _ := filepath.Split(path2)
 	dir = strings.TrimRight(dir, "\\/")      //去掉最后的 /
 	dir = strings.ReplaceAll(dir, "\\", sep) //转换所有的 /
 	dirArr := strings.Split(dir, sep)        //根据 / 进行分割
@@ -225,13 +248,13 @@ func GetLastDir(path string) string {
 }
 
 /*
-GetLastDirWithCheck  GetLastDirWithCheck 先检查 目录是否存在，存在则 获取 最后一个 目录名
+GetLastDirWithCheck 先检查路径资源是否存在，存在则获取 最后一个目录名
 
 @Editor robotyang at 2023
 */
 func GetLastDirWithCheck(path string) (string, error) {
-	if !IsExist(path) || !IsDir(path) {
-		return "", errors.New(path + "非有效目录路径")
+	if !IsExist(path) {
+		return "", errors.New("非有效资源路径")
 	}
 	return GetLastDir(path), nil
 }
@@ -246,7 +269,7 @@ func GetFileList(path string) ([]string, error) {
 }
 
 /*
-GetFileListFilter is a ...
+GetFileListFilter 递归获取目录下的所有子文件（排除清单except > 保留清单accept）
 
 @Editor robotyang at 2023
 */
@@ -272,11 +295,10 @@ func GetFileListExcept(path string, except []string) ([]string, error) {
 	return getFileList(path, nil, except)
 }
 
-//getFileList 方法名
-//@param path 根目录
-
 /*
-getFileList @param except 排除的 目录、文件 的关键词
+getFileList
+
+@Param except 排除的 目录、文件 的关键词
 
 @Editor robotyang at 2023
 */
@@ -289,16 +311,28 @@ func getFileList(path string, accept, except []string) ([]string, error) {
 		if f.IsDir() { //目录的
 			return nil
 		}
-		for _, acpt := range accept { //包含的
-			if !strings.Contains(path, acpt) {
+
+		if len(accept) > 0 {
+			var acptIt bool
+			for _, acpt := range accept { //包含的
+				if strings.Contains(path, acpt) {
+					acptIt = true
+					break
+				}
+			}
+			if !acptIt {
 				return nil
 			}
 		}
-		for _, ecpt := range except { //排除的
-			if strings.Contains(path, ecpt) {
-				return nil
+
+		if len(except) > 0 {
+			for _, ecpt := range except { //排除的
+				if strings.Contains(path, ecpt) {
+					return nil
+				}
 			}
 		}
+
 		pathList = append(pathList, path)
 		return nil
 	})

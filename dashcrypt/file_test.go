@@ -21,8 +21,8 @@ func init() {
 	log.Println("Before file_test.go tests")
 
 	// 初始化测试数据
-	if !dashfile.IsExistFile(originFilePath) {
-		file, err := dashfile.Rebuild(originFilePath)
+	if !dashfile.IsFile(originFilePath) {
+		file, err := dashfile.CreateOrReset(originFilePath)
 		if err != nil {
 			log.Panicln(err)
 			return

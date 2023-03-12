@@ -88,22 +88,6 @@ func RegisterCode(dict map[uint32]string) {
 }
 
 /*
-GetCodeMsg 转义 code 为对应中文含义
-
-@Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
-
-@Editor robotyang at 2023
-*/
-func GetCodeMsg(code uint32) string {
-	if txt, ok := code2text[code]; ok {
-		return txt
-	} else {
-		dashlog.Errorf("GetCodeMsg code not defined text, code:%#v", code)
-		return code2text[CodeUnknown]
-	}
-}
-
-/*
 ParseCode 解析 code 对应的 errdash code
 
 @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
@@ -131,5 +115,21 @@ func ParseCode(code interface{}) uint32 {
 		return co //存在映射
 	} else {
 		return cast.ToUint32(code) //不存在映射，则认为是 errdash code，原样返回
+	}
+}
+
+/*
+GetCodeMsg 转义 code 为对应中文含义
+
+@Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
+
+@Editor robotyang at 2023
+*/
+func GetCodeMsg(code uint32) string {
+	if txt, ok := code2text[code]; ok {
+		return txt
+	} else {
+		dashlog.Errorf("GetCodeMsg code not defined text, code:%#v", code)
+		return code2text[CodeUnknown]
 	}
 }

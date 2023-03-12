@@ -3,65 +3,76 @@ package dashenv
 import "os"
 
 const (
-	Dev  = "dev"
-	Test = "test"
-	Beta = "beta"
-	Prod = "prod"
+	Dev     = "dev"     //开发环境
+	Test    = "test"    //测试环境
+	Release = "release" //预发布环境
+	Prod    = "prod"    //生产环境
 )
 
-//是否开发环境
-var goEnv string
+var curKey string //当前环境 curKey
+var curVal string //当前环境 curVal
 
 /*
-init is a ...
+init 初始化
 
 @Editor robotyang at 2023
 */
 func init() {
-	goEnv = os.Getenv("GO_ENV")
+	curKey = "GO_ENV"
+	curVal = os.Getenv(curKey)
 }
 
 /*
-IsEnv is a ...
+Init 使用自定义 环境变量key 进行初始化
 
 @Editor robotyang at 2023
 */
-func IsEnv(env string) bool {
-	return goEnv == env
+func Init(key string) {
+	curKey = key
+	curVal = os.Getenv(curKey)
 }
 
 /*
-IsDev is a ...
+isEnv 当前是否 env环境
+
+@Editor robotyang at 2023
+*/
+func isEnv(env string) bool {
+	return curVal == env
+}
+
+/*
+IsDev 当前是否 开发环境
 
 @Editor robotyang at 2023
 */
 func IsDev() bool {
-	return IsEnv(Dev)
+	return isEnv(Dev)
 }
 
 /*
-IsTest is a ...
+IsTest 当前是否 测试环境
 
 @Editor robotyang at 2023
 */
 func IsTest() bool {
-	return IsEnv(Test)
+	return isEnv(Test)
 }
 
 /*
-IsBeta is a ...
+IsRelease 当前是否 预发布环境
 
 @Editor robotyang at 2023
 */
-func IsBeta() bool {
-	return IsEnv(Beta)
+func IsRelease() bool {
+	return isEnv(Release)
 }
 
 /*
-IsProd is a ...
+IsProd 当前是否 生产环境
 
 @Editor robotyang at 2023
 */
 func IsProd() bool {
-	return IsEnv(Prod)
+	return isEnv(Prod)
 }

@@ -36,8 +36,8 @@ func init() {
 	var err error
 	var yamlFile *os.File
 
-	if !dashfile.IsExistFile(_configYaml) {
-		yamlFile, err = dashfile.Rebuild(_configYaml)
+	if !dashfile.IsFile(_configYaml) {
+		yamlFile, err = dashfile.CreateOrReset(_configYaml)
 		if err != nil {
 			log.Panicln(err)
 			return

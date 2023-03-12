@@ -22,19 +22,39 @@ TestParseCode is a ...
 
 @Editor robotyang at 2023
 */
+func TestRegisterCode(t *testing.T) {
+	dasherr.RegisterCode(map[uint32]string{
+		19001: "自定义Code1",
+		19002: "自定义Code2",
+	})
+	{
+		want := "自定义Code1"
+		recv := dasherr.GetCodeMsg(19001)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := "自定义Code2"
+		recv := dasherr.GetCodeMsg(19002)
+		assert.Equal(t, want, recv)
+	}
+}
+
+/*
+TestParseCode is a ...
+
+@Editor robotyang at 2023
+*/
 func TestParseCode(t *testing.T) {
 	{
 		want := dasherr.CodeInternal
 		recv := dasherr.ParseCode(nil)
 		assert.Equal(t, want, recv)
 	}
-
 	{
 		want := dasherr.CodeAlreadyExists
 		recv := dasherr.ParseCode(codes.AlreadyExists)
 		assert.Equal(t, want, recv)
 	}
-
 	{
 		want := dasherr.CodeInternal
 		recv := dasherr.ParseCode("哈哈哈")

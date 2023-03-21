@@ -1,4 +1,4 @@
-package dashconvert
+package dashconv
 
 import (
 	"encoding/json"
@@ -7,13 +7,13 @@ import (
 )
 
 /*
+@Editor robotyang at 2023
+
 ObjToMap 转换 数据为Map结构
 
 @Param data 支持 struct、map、slice 以及它们的指针类型
 
 @Return maps 可为 map[string]interface{}、[]interface{}
-
-@Editor robotyang at 2023
 */
 func ObjToMap(data any) (maps any, err error) {
 	jsonb, err := json.Marshal(data)

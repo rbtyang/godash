@@ -7,9 +7,9 @@ import (
 )
 
 /*
-TestSliceHas is a ...
-
 @Editor robotyang at 2023
+
+TestSliceHas is a ...
 */
 func TestSliceHas(t *testing.T) {
 	//slice int
@@ -82,9 +82,9 @@ func TestSliceHas(t *testing.T) {
 }
 
 /*
-TestContains is a ...
-
 @Editor robotyang at 2023
+
+TestContains is a ...
 */
 func TestContains(t *testing.T) {
 	//array int L1
@@ -382,9 +382,9 @@ func TestContains(t *testing.T) {
 }
 
 /*
-TestArrayToString is a ...
-
 @Editor robotyang at 2023
+
+TestArrayToString is a ...
 */
 func TestArrayToString(t *testing.T) {
 	{

@@ -9,18 +9,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestParseCode is a ...
-
 @Editor robotyang at 2023
+
+TestParseCode is a ...
 */
 func TestRegisterCode(t *testing.T) {
 	dasherr.RegisterCode(map[uint32]string{
@@ -40,9 +40,9 @@ func TestRegisterCode(t *testing.T) {
 }
 
 /*
-TestParseCode is a ...
-
 @Editor robotyang at 2023
+
+TestParseCode is a ...
 */
 func TestParseCode(t *testing.T) {
 	{
@@ -83,9 +83,9 @@ func TestParseCode(t *testing.T) {
 }
 
 /*
-TestGetCodeMsg is a ...
-
 @Editor robotyang at 2023
+
+TestGetCodeMsg is a ...
 */
 func TestGetCodeMsg(t *testing.T) {
 	{

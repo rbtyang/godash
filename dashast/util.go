@@ -7,9 +7,9 @@ import (
 )
 
 /*
-getCommentGroup 提取注释
-
 @Editor robotyang at 2023
+
+getCommentGroup 提取注释
 */
 func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 	if cg == nil {
@@ -22,9 +22,9 @@ func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 }
 
 /*
-getIdent is a ...
-
 @Editor robotyang at 2023
+
+getIdent is a ...
 */
 func getIdent(id *ast.Ident) (ret string) {
 	if id == nil {
@@ -34,9 +34,9 @@ func getIdent(id *ast.Ident) (ret string) {
 }
 
 /*
-getTag 提取tag
-
 @Editor robotyang at 2023
+
+getTag 提取tag
 */
 func getTag(cg *ast.BasicLit) (ret string) {
 	if cg == nil {
@@ -46,9 +46,9 @@ func getTag(cg *ast.BasicLit) (ret string) {
 }
 
 /*
-getImportName is a ...
-
 @Editor robotyang at 2023
+
+getImportName is a ...
 */
 func getImportName(name, path string) string {
 	if name != "" {
@@ -66,9 +66,9 @@ func getImportName(name, path string) string {
 }
 
 /*
-getIdentName is a ...
-
 @Editor robotyang at 2023
+
+getIdentName is a ...
 */
 func getIdentName(i *ast.Ident) string {
 	if i == nil {
@@ -78,9 +78,9 @@ func getIdentName(i *ast.Ident) string {
 }
 
 /*
-getIdentsName is a ...
-
 @Editor robotyang at 2023
+
+getIdentsName is a ...
 */
 func getIdentsName(i []*ast.Ident) string {
 	if len(i) == 0 {
@@ -90,9 +90,9 @@ func getIdentsName(i []*ast.Ident) string {
 }
 
 /*
-CheckInnerStruct 检查是不是 内部使用的结构体
-
 @Editor robotyang at 2023
+
+CheckInnerStruct 检查是不是 内部使用的结构体
 */
 func CheckInnerStruct(name string) bool {
 	_, t := innerType[name]
@@ -100,9 +100,9 @@ func CheckInnerStruct(name string) bool {
 }
 
 /*
-getSortSlice is a ...
-
 @Editor robotyang at 2023
+
+getSortSlice is a ...
 */
 func getSortSlice(inMap map[int]interface{}) []interface{} {
 	if len(inMap) == 0 {

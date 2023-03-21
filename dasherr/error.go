@@ -14,7 +14,7 @@ type RpcError interface {
 }
 
 // error struct
-type Errdash struct {
+type Dasherr struct {
 	Pres  string   //错误信息前缀
 	Codes uint32   //错误码
 	Msgs  string   //错误信息（用户看）
@@ -23,12 +23,12 @@ type Errdash struct {
 }
 
 /*
-New 实例化错误类
-
 @Editor robotyang at 2023
+
+New 实例化错误类
 */
-func New(err ...error) *Errdash {
-	dsErr := &Errdash{
+func New(err ...error) *Dasherr {
+	dsErr := &Dasherr{
 		Codes: CodeUnknown,
 	}
 	for _, er := range err {
@@ -38,92 +38,92 @@ func New(err ...error) *Errdash {
 }
 
 /*
-Err is a ...
-
 @Editor robotyang at 2023
+
+Err is a ...
 */
-func Err(err ...error) *Errdash {
+func Err(err ...error) *Dasherr {
 	return New(err...)
 }
 
 /*
-Code is a ...
-
 @Editor robotyang at 2023
+
+Code is a ...
 */
-func Code(code uint32) *Errdash {
+func Code(code uint32) *Dasherr {
 	return New().Code(code)
 }
 
 /*
-Pre is a ...
-
 @Editor robotyang at 2023
+
+Pre is a ...
 */
-func Pre(msg string) *Errdash {
+func Pre(msg string) *Dasherr {
 	return New().Pre(msg)
 }
 
 /*
-Pref is a ...
-
 @Editor robotyang at 2023
+
+Pref is a ...
 */
-func Pref(format string, a ...interface{}) *Errdash {
+func Pref(format string, a ...interface{}) *Dasherr {
 	return New().Pref(format, a...)
 }
 
 /*
-Msg is a ...
-
 @Editor robotyang at 2023
+
+Msg is a ...
 */
-func Msg(msg string) *Errdash {
+func Msg(msg string) *Dasherr {
 	return New().Msg(msg)
 }
 
 /*
-Msgf is a ...
-
 @Editor robotyang at 2023
+
+Msgf is a ...
 */
-func Msgf(format string, a ...interface{}) *Errdash {
+func Msgf(format string, a ...interface{}) *Dasherr {
 	return New().Msgf(format, a...)
 }
 
 /*
-Log is a ...
-
 @Editor robotyang at 2023
+
+Log is a ...
 */
-func Log(log string) *Errdash {
+func Log(log string) *Dasherr {
 	return New().Log(log)
 }
 
 /*
-Logf is a ...
-
 @Editor robotyang at 2023
+
+Logf is a ...
 */
-func Logf(format string, a ...interface{}) *Errdash {
+func Logf(format string, a ...interface{}) *Dasherr {
 	return New().Logf(format, a...)
 }
 
 /*
-Err is a ...
-
 @Editor robotyang at 2023
+
+Err is a ...
 */
-func (m *Errdash) Err(err error) *Errdash {
+func (m *Dasherr) Err(err error) *Dasherr {
 	switch err.(type) {
 	case nil:
 		m.Codes = CodeUnknown
 		m.Msgs = m.withPre("内部错误")
 		m.Logs = append(m.Logs, m.withPre("错误类err为nil"))
-	case *Errdash:
-		m.Codes = err.(*Errdash).Codes
-		m.Msgs = err.(*Errdash).Msgs
-		m.Logs = append(m.Logs, err.(*Errdash).Logs...)
+	case *Dasherr:
+		m.Codes = err.(*Dasherr).Codes
+		m.Msgs = err.(*Dasherr).Msgs
+		m.Logs = append(m.Logs, err.(*Dasherr).Logs...)
 	case validator.ValidationErrors:
 		m.Codes = CodeInvalidArgument
 		m.Msgs = err.(validator.ValidationErrors).Error()
@@ -136,7 +136,7 @@ func (m *Errdash) Err(err error) *Errdash {
 			msg = GetCodeMsg(code) //转义 code 为对应中文含义;
 		}
 		if len(s.Details()) > 0 { //记录 详情日志
-			dashlog.Infof("Errdash.Err() RpcError s.Details(): %#v", s.Details())
+			dashlog.Infof("Dasherr.Err() RpcError s.Details(): %#v", s.Details())
 		}
 		m.Codes = code
 		m.Msgs = m.withPre(msg)
@@ -151,30 +151,30 @@ func (m *Errdash) Err(err error) *Errdash {
 }
 
 /*
-Pre is a ...
-
 @Editor robotyang at 2023
+
+Pre is a ...
 */
-func (m *Errdash) Pre(prefix string) *Errdash {
+func (m *Dasherr) Pre(prefix string) *Dasherr {
 	m.Pres = prefix
 	return m
 }
 
 /*
-Pref is a ...
-
 @Editor robotyang at 2023
+
+Pref is a ...
 */
-func (m *Errdash) Pref(format string, a ...interface{}) *Errdash {
+func (m *Dasherr) Pref(format string, a ...interface{}) *Dasherr {
 	return m.Pre(fmt.Sprintf(format, a...))
 }
 
 /*
-withPre 错误加前缀
-
 @Editor robotyang at 2023
+
+withPre 错误加前缀
 */
-func (m *Errdash) withPre(errStr string) string {
+func (m *Dasherr) withPre(errStr string) string {
 	if m.Pres != "" {
 		return fmt.Sprintf("%v: %v", m.Pres, errStr)
 	} else {
@@ -183,11 +183,11 @@ func (m *Errdash) withPre(errStr string) string {
 }
 
 /*
-Code 设置错误码
-
 @Editor robotyang at 2023
+
+Code 设置错误码
 */
-func (m *Errdash) Code(code uint32) *Errdash {
+func (m *Dasherr) Code(code uint32) *Dasherr {
 	msg := GetCodeMsg(code)
 	m.Codes = code
 	m.Msgs = m.withPre(msg)
@@ -196,11 +196,11 @@ func (m *Errdash) Code(code uint32) *Errdash {
 }
 
 /*
-Msg 设置 错误消息（用户看）
-
 @Editor robotyang at 2023
+
+Msg 设置 错误消息（用户看）
 */
-func (m *Errdash) Msg(msg string) *Errdash {
+func (m *Dasherr) Msg(msg string) *Dasherr {
 	if msg == "" {
 		msg = GetCodeMsg(m.Codes)
 	}
@@ -210,38 +210,38 @@ func (m *Errdash) Msg(msg string) *Errdash {
 }
 
 /*
-Msgf 设置 错误消息（用户看）
-
 @Editor robotyang at 2023
+
+Msgf 设置 错误消息（用户看）
 */
-func (m *Errdash) Msgf(format string, a ...interface{}) *Errdash {
+func (m *Dasherr) Msgf(format string, a ...interface{}) *Dasherr {
 	return m.Msg(fmt.Sprintf(format, a...))
 }
 
 /*
-Log 设置 日志消息（开发看）
-
 @Editor robotyang at 2023
+
+Log 设置 日志消息（开发看）
 */
-func (m *Errdash) Log(log string) *Errdash {
+func (m *Dasherr) Log(log string) *Dasherr {
 	m.Logs = append(m.Logs, m.withPre(log))
 	return m
 }
 
 /*
-Logf 设置 日志消息（开发看）
-
 @Editor robotyang at 2023
+
+Logf 设置 日志消息（开发看）
 */
-func (m *Errdash) Logf(format string, a ...interface{}) *Errdash {
+func (m *Dasherr) Logf(format string, a ...interface{}) *Dasherr {
 	return m.Log(fmt.Sprintf(format, a...))
 }
 
 /*
-Error 必须实现的接口
-
 @Editor robotyang at 2023
+
+Error 必须实现的接口
 */
-func (m *Errdash) Error() string {
+func (m *Dasherr) Error() string {
 	return m.Msgs
 }

@@ -1,4 +1,4 @@
-package dashconvert
+package dashconv
 
 import (
 	"fmt"
@@ -18,9 +18,9 @@ type Config struct {
 }
 
 /*
-TestMergo is a ...
-
 @Editor robotyang at 2023
+
+TestMergo is a ...
 */
 func TestMergo(t *testing.T) {
 	{

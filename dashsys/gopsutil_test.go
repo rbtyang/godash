@@ -9,18 +9,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestSysinfoPercent is a ...
-
 @Editor robotyang at 2023
+
+TestSysinfoPercent is a ...
 */
 func TestSysinfoPercent(t *testing.T) {
 	loop := 10

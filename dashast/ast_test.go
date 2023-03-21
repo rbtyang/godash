@@ -8,9 +8,9 @@ import (
 )
 
 /*
-TestParseFile is a ...
-
 @Editor robotyang at 2023
+
+TestParseFile is a ...
 */
 func TestParseFile(t *testing.T) {
 	{
@@ -21,6 +21,6 @@ func TestParseFile(t *testing.T) {
 		}
 		assert.Equal(t, "dasharr", a.Package)
 		assert.Contains(t, a.Imports[0].Name, "dashlog")
-		assert.Equal(t, "Contain", a.Funcs[1].Name)
+		assert.Equal(t, "Contain", a.Funcs[0].Name)
 	}
 }

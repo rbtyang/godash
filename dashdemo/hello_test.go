@@ -9,18 +9,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestHelloWorld is a ...
-
 @Editor robotyang at 2023
+
+TestHelloWorld is a ...
 */
 func TestHelloWorld(t *testing.T) {
 	{
@@ -36,6 +36,8 @@ func TestHelloWorld(t *testing.T) {
 }
 
 /*
+@Editor robotyang at 2023
+
 BenchmarkHelloWorld
 
 go test -bench=.  //. 是全部
@@ -49,8 +51,6 @@ go test -bench=HelloWorld$  //正则匹配
   -benchmem 显示内存分配情况
 
 其他参数 可以通过 go help testflag 查看
-
-@Editor robotyang at 2023
 */
 func BenchmarkHelloWorld(b *testing.B) {
 	b.ReportAllocs()

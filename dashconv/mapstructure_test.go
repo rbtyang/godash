@@ -1,15 +1,15 @@
-package dashconvert_test
+package dashconv_test
 
 import (
-	"github.com/rbtyang/godash/dashconvert"
+	"github.com/rbtyang/godash/dashconv"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 /*
-WeakMapToStructWithTag is a ...
-
 @Editor robotyang at 2023
+
+WeakMapToStructWithTag is a ...
 */
 func TestWeakMapToStcWithTag(t *testing.T) {
 	inMap := map[string]interface{}{
@@ -33,7 +33,7 @@ func TestWeakMapToStcWithTag(t *testing.T) {
 			Emails: []string{},
 		}
 		recv := Person{}
-		err := dashconvert.WeakMapToStructWithTag(inMap, &recv, "myTag")
+		err := dashconv.WeakMapToStructWithTag(inMap, &recv, "myTag")
 		if err != nil {
 			t.Error(err)
 		}
@@ -47,7 +47,7 @@ func TestWeakMapToStcWithTag(t *testing.T) {
 			Emails: []string{},
 		}
 		recv := Person{}
-		err := dashconvert.WeakMapToStructWithTag(inMap, &recv, "xxTag")
+		err := dashconv.WeakMapToStructWithTag(inMap, &recv, "xxTag")
 		if err != nil {
 			t.Error(err)
 		}

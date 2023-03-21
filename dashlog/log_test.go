@@ -7,18 +7,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestLog is a ...
-
 @Editor robotyang at 2023
+
+TestLog is a ...
 */
 func TestLog(t *testing.T) {
 	clsPre, _ := dashlog.Pre("哈哈哈")

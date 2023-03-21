@@ -3,19 +3,19 @@ package dashcrypt_test
 import (
 	"github.com/rbtyang/godash/dashcrypt"
 	"github.com/rbtyang/godash/dashfile"
-	"github.com/rbtyang/godash/dashrandom"
+	"github.com/rbtyang/godash/dashrand"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
 )
 
-const filePrefix = "temp/cryptdash_file_test"
+const filePrefix = "temp/dashcrypt_file_test"
 const originFilePath = filePrefix + ".md"
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before file_test.go tests")
@@ -30,8 +30,8 @@ func init() {
 		defer file.Close()
 
 		file.WriteString(`
-# godash > cryptdash
-> cryptdash 是 godash 工具集里的 关于加解密的模块
+# godash > dashcrypt
+> dashcrypt 是 godash 工具集里的 关于加解密的模块
 
 ---
 
@@ -53,9 +53,9 @@ func init() {
 }
 
 /*
-TestFileEncrypt is a ...
-
 @Editor robotyang at 2023
+
+TestFileEncrypt is a ...
 */
 func TestFileEncrypt(t *testing.T) {
 	cryptFilePath := filePrefix + "_crypt.md"
@@ -63,7 +63,7 @@ func TestFileEncrypt(t *testing.T) {
 
 	// 执行测试用例
 	{
-		secret := []byte(dashrandom.Str(dashrandom.ModeNumAlphaSp, 32))
+		secret := []byte(dashrand.Str(dashrand.ModeNumAlphaSp, 32))
 
 		err := dashcrypt.FileEncryptByZyx(originFilePath, cryptFilePath, secret)
 		if err != nil {

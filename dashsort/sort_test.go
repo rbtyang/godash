@@ -2,7 +2,7 @@ package dashsort_test
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashrandom"
+	"github.com/rbtyang/godash/dashrand"
 	"github.com/rbtyang/godash/dashsort"
 	"github.com/rbtyang/godash/dashtime"
 	"github.com/stretchr/testify/assert"
@@ -12,18 +12,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestBuiltinSortSlice is a ...
-
 @Editor robotyang at 2023
+
+TestBuiltinSortSlice is a ...
 */
 func TestBuiltinSortSlice(t *testing.T) {
 	{
@@ -69,9 +69,9 @@ func TestBuiltinSortSlice(t *testing.T) {
 }
 
 /*
-TestBubble is a ...
-
 @Editor robotyang at 2023
+
+TestBubble is a ...
 */
 func TestBubble(t *testing.T) {
 	{
@@ -89,9 +89,9 @@ func TestBubble(t *testing.T) {
 }
 
 /*
-TestInsertion is a ...
-
 @Editor robotyang at 2023
+
+TestInsertion is a ...
 */
 func TestInsertion(t *testing.T) {
 	{
@@ -115,9 +115,9 @@ func TestInsertion(t *testing.T) {
 }
 
 /*
-TestSelection is a ...
-
 @Editor robotyang at 2023
+
+TestSelection is a ...
 */
 func TestSelection(t *testing.T) {
 	{
@@ -129,9 +129,9 @@ func TestSelection(t *testing.T) {
 }
 
 /*
-TestQuick is a ...
-
 @Editor robotyang at 2023
+
+TestQuick is a ...
 */
 func TestQuick(t *testing.T) {
 	{
@@ -155,31 +155,31 @@ func TestQuick(t *testing.T) {
 }
 
 /*
-BenchmarkQuickSimple go test -bench=QuickSimple$
-
 @Editor robotyang at 2023
+
+BenchmarkQuickSimple go test -bench=QuickSimple$
 */
 func BenchmarkQuickSimple(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
 
 	for n := 0; n < b.N; n++ {
-		randSli := dashrandom.IntSli(100, 0, 90)
+		randSli := dashrand.IntSli(100, 0, 90)
 		dashsort.Quick(randSli)
 	}
 }
 
 /*
-BenchmarkQuickParallel go test -bench=QuickParallel$
-
 @Editor robotyang at 2023
+
+BenchmarkQuickParallel go test -bench=QuickParallel$
 */
 func BenchmarkQuickParallel(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
 
 	for n := 0; n < b.N; n++ {
-		randSli := dashrandom.IntSli(100, 0, 90)
+		randSli := dashrand.IntSli(100, 0, 90)
 		dashsort.QuickParallel(randSli)
 	}
 }

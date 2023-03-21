@@ -123,9 +123,9 @@ type (
 )
 
 /*
-GetFieldWithName is a ...
-
 @Editor robotyang at 2023
+
+GetFieldWithName is a ...
 */
 func (s Struct) GetFieldWithName(name string) *Field {
 	for _, f := range s.Fields {
@@ -137,18 +137,18 @@ func (s Struct) GetFieldWithName(name string) *Field {
 }
 
 /*
-String is a ...
-
 @Editor robotyang at 2023
+
+String is a ...
 */
 func (t Type) String() string {
 	return fmt.Sprintf("%v type:%s tpyes:%v inner:%v", t.Name, m[t.Kind], t.Types, t.Inner)
 }
 
 /*
-InnerAddSuffix 内部字段添加后缀
-
 @Editor robotyang at 2023
+
+InnerAddSuffix 内部字段添加后缀
 */
 func (t Type) InnerAddSuffix(suffix string) Type {
 	if t.Inner == true {
@@ -162,9 +162,9 @@ func (t Type) InnerAddSuffix(suffix string) Type {
 }
 
 /*
-Copy is a ...
-
 @Editor robotyang at 2023
+
+Copy is a ...
 */
 func (i Interface) Copy() (new Interface) {
 	new.Name = i.Name
@@ -191,9 +191,9 @@ func (i Interface) Copy() (new Interface) {
 }
 
 /*
-Copy is a ...
-
 @Editor robotyang at 2023
+
+Copy is a ...
 */
 func (t Type) Copy() (new Type) {
 	for _, v := range t.Name {
@@ -208,9 +208,9 @@ func (t Type) Copy() (new Type) {
 }
 
 /*
-Copy is a ...
-
 @Editor robotyang at 2023
+
+Copy is a ...
 */
 func (t Field) Copy() (new Field) {
 	for _, v := range t.Docs {
@@ -226,9 +226,9 @@ func (t Field) Copy() (new Field) {
 }
 
 /*
-Fmt is a ...
-
 @Editor robotyang at 2023
+
+Fmt is a ...
 */
 func (t Type) Fmt() string {
 	switch t.Kind {
@@ -249,9 +249,9 @@ func (t Type) Fmt() string {
 }
 
 /*
-Cmp 比较是否类型相同
-
 @Editor robotyang at 2023
+
+Cmp 比较是否类型相同
 */
 func (t Type) Cmp(t2 Type) bool {
 	if t.Kind != t2.Kind || len(t.Name) != len(t2.Name) || len(t.Types) != len(t2.Types) {
@@ -271,9 +271,9 @@ func (t Type) Cmp(t2 Type) bool {
 }
 
 /*
-IsInnerStruct is a ...
-
 @Editor robotyang at 2023
+
+IsInnerStruct is a ...
 */
 func (t Type) IsInnerStruct() bool {
 	if t.Inner == true {
@@ -288,9 +288,9 @@ func (t Type) IsInnerStruct() bool {
 }
 
 /*
-handleType is a ...
-
 @Editor robotyang at 2023
+
+handleType is a ...
 */
 func handleType(expr ast.Expr) (ret Type) {
 	switch expr.(type) {

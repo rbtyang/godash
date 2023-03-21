@@ -8,9 +8,15 @@ import (
 )
 
 /*
-NewAst is a ...
-
 @Editor robotyang at 2023
+
+NewAst 用于实例化解析工具对象
+
+@Param options 额外作用选项
+
+NewAst Used for instance resolution tool objects
+
+@Param options Extra effect option
 */
 func NewAst(options ...*Option) *Ast {
 	a := new(Ast)
@@ -21,9 +27,11 @@ func NewAst(options ...*Option) *Ast {
 }
 
 /*
-ParseFile is a ...
-
 @Editor robotyang at 2023
+
+ParseFile 解析指定路径的Go文件
+
+ParseFile Parses the Go file in the specified path
 */
 func (a *Ast) ParseFile(inputPath string) (err error) {
 	fset := token.NewFileSet()
@@ -55,9 +63,9 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 }
 
 /*
-ParseScopes is a ...
-
 @Editor robotyang at 2023
+
+ParseScopes is a ...
 */
 func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 	structs := map[int]interface{}{}    //用来排序
@@ -113,9 +121,9 @@ func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 }
 
 /*
-ParseDecls is a ...
-
 @Editor robotyang at 2023
+
+ParseDecls is a ...
 */
 func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
 	for _, decl := range Decls {
@@ -147,9 +155,9 @@ func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
 }
 
 /*
-ParseImport is a ...
-
 @Editor robotyang at 2023
+
+ParseImport is a ...
 */
 func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
 	ret.Path = i.Path.Value
@@ -161,9 +169,9 @@ func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
 }
 
 /*
-ParseStruct is a ...
-
 @Editor robotyang at 2023
+
+ParseStruct is a ...
 */
 func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
 	st := typ.Type.(*ast.StructType)
@@ -191,9 +199,9 @@ func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
 }
 
 /*
-ParseField is a ...
-
 @Editor robotyang at 2023
+
+ParseField is a ...
 */
 func (a *Ast) ParseField(field *ast.Field) (ret Field) {
 	name := getIdentsName(field.Names)
@@ -206,9 +214,9 @@ func (a *Ast) ParseField(field *ast.Field) (ret Field) {
 }
 
 /*
-ParseInterface is a ...
-
 @Editor robotyang at 2023
+
+ParseInterface is a ...
 */
 func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 	ret.Comments = getCommentGroup(typ.Comment)
@@ -236,9 +244,9 @@ func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 }
 
 /*
-ParseFunc is a ...
-
 @Editor robotyang at 2023
+
+ParseFunc is a ...
 */
 func (a *Ast) ParseFunc(f *ast.FuncType) (ret Func) {
 	funcT := Func{}

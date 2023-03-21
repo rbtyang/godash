@@ -8,18 +8,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestPager is a ...
-
 @Editor robotyang at 2023
+
+TestPager is a ...
 */
 func TestPager(t *testing.T) {
 	{

@@ -8,9 +8,9 @@ import (
 )
 
 /*
-CPUPercent is a ...
-
 @Editor robotyang at 2023
+
+CPUPercent is a ...
 */
 func CPUPercent() float64 {
 	cc, err := cpu.Percent(time.Second, false)
@@ -21,9 +21,9 @@ func CPUPercent() float64 {
 }
 
 /*
-MemoryPercent is a ...
-
 @Editor robotyang at 2023
+
+MemoryPercent is a ...
 */
 func MemoryPercent() float64 {
 	v, err := mem.VirtualMemory()
@@ -34,9 +34,9 @@ func MemoryPercent() float64 {
 }
 
 /*
-SwapPercent is a ...
-
 @Editor robotyang at 2023
+
+SwapPercent is a ...
 */
 func SwapPercent() float64 {
 	s, err := mem.SwapMemory()
@@ -47,9 +47,9 @@ func SwapPercent() float64 {
 }
 
 /*
-DiskPercent is a ...
-
 @Editor robotyang at 2023
+
+DiskPercent is a ...
 */
 func DiskPercent() float64 {
 	parts, _ := disk.Partitions(true)

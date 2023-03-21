@@ -11,9 +11,9 @@ var cuspre string
 // 设置 自定义msg前缀
 
 /*
-Pre  @return.error always nil
-
 @Editor robotyang at 2023
+
+Pre  @return.error always nil
 */
 func Pre(pre string) (func(), error) {
 	cuspre = pre
@@ -24,117 +24,117 @@ func Pre(pre string) (func(), error) {
 }
 
 /*
-Debug is a ...
-
 @Editor robotyang at 2023
+
+Debug is a ...
 */
 func Debug(args ...interface{}) {
-	log.Printf(withPre("logdash.Debug")+"%#v", args)
+	log.Printf(withPre("dashlog.Debug")+"%#v", args)
 }
 
 /*
-Debugf is a ...
-
 @Editor robotyang at 2023
+
+Debugf is a ...
 */
 func Debugf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Debug")+format, args...)
+	log.Printf(withPre("dashlog.Debug")+format, args...)
 }
 
 /*
-Info is a ...
-
 @Editor robotyang at 2023
+
+Info is a ...
 */
 func Info(args ...interface{}) {
-	log.Printf(withPre("logdash.Info")+"%#v", args)
+	log.Printf(withPre("dashlog.Info")+"%#v", args)
 }
 
 /*
-Infof is a ...
-
 @Editor robotyang at 2023
+
+Infof is a ...
 */
 func Infof(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Info")+format, args...)
+	log.Printf(withPre("dashlog.Info")+format, args...)
 }
 
 /*
-Warn is a ...
-
 @Editor robotyang at 2023
+
+Warn is a ...
 */
 func Warn(args ...interface{}) {
-	log.Printf(withPre("logdash.Warn")+"%#v", args)
+	log.Printf(withPre("dashlog.Warn")+"%#v", args)
 }
 
 /*
-Warnf is a ...
-
 @Editor robotyang at 2023
+
+Warnf is a ...
 */
 func Warnf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Warn")+format, args...)
+	log.Printf(withPre("dashlog.Warn")+format, args...)
 }
 
 /*
-Error is a ...
-
 @Editor robotyang at 2023
+
+Error is a ...
 */
 func Error(args ...interface{}) {
-	log.Printf(withPre("logdash.Error")+"%#v", args)
+	log.Printf(withPre("dashlog.Error")+"%#v", args)
 }
 
 /*
-Errorf is a ...
-
 @Editor robotyang at 2023
+
+Errorf is a ...
 */
 func Errorf(format string, args ...interface{}) {
-	log.Printf(withPre("logdash.Error")+format, args...)
+	log.Printf(withPre("dashlog.Error")+format, args...)
 }
 
 /*
-Panic is a ...
-
 @Editor robotyang at 2023
+
+Panic is a ...
 */
 func Panic(args ...interface{}) {
-	log.Panicf(withPre("logdash.Panic")+"%#v", args)
+	log.Panicf(withPre("dashlog.Panic")+"%#v", args)
 }
 
 /*
-Panicf is a ...
-
 @Editor robotyang at 2023
+
+Panicf is a ...
 */
 func Panicf(format string, args ...interface{}) {
-	log.Panicf(withPre("logdash.Panic")+format, args...)
+	log.Panicf(withPre("dashlog.Panic")+format, args...)
 }
 
 /*
-Fatal is a ...
-
 @Editor robotyang at 2023
+
+Fatal is a ...
 */
 func Fatal(args ...interface{}) {
-	log.Fatalf(withPre("logdash.Fatal")+"%#v", args)
+	log.Fatalf(withPre("dashlog.Fatal")+"%#v", args)
 }
 
 /*
-Fatalf is a ...
-
 @Editor robotyang at 2023
+
+Fatalf is a ...
 */
 func Fatalf(format string, args ...interface{}) {
-	log.Fatalf(withPre("logdash.Fatal")+format, args...)
+	log.Fatalf(withPre("dashlog.Fatal")+format, args...)
 }
 
 /*
-withPre is a ...
-
 @Editor robotyang at 2023
+
+withPre is a ...
 */
 func withPre(dashpre string) string {
 	var prefix string

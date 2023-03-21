@@ -13,9 +13,9 @@ type (
 )
 
 /*
-WithFieldFilter is a ...
-
 @Editor robotyang at 2023
+
+WithFieldFilter is a ...
 */
 func WithFieldFilter(filter ...FieldFilter) *Option {
 	return &Option{
@@ -26,9 +26,9 @@ func WithFieldFilter(filter ...FieldFilter) *Option {
 }
 
 /*
-WithStructFilter is a ...
-
 @Editor robotyang at 2023
+
+WithStructFilter is a ...
 */
 func WithStructFilter(filter ...StructFilter) *Option {
 	return &Option{
@@ -39,9 +39,9 @@ func WithStructFilter(filter ...StructFilter) *Option {
 }
 
 /*
-WithFuncFilter is a ...
-
 @Editor robotyang at 2023
+
+WithFuncFilter is a ...
 */
 func WithFuncFilter(filter ...FuncFilter) *Option {
 	return &Option{
@@ -57,9 +57,9 @@ type FilterFuncOpt struct {
 }
 
 /*
-FilterFuncList 只返回 符合的 函数列表
-
 @Editor robotyang at 2023
+
+FilterFuncList 只返回 符合的 函数列表
 */
 func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	return func(f *Func) bool {
@@ -93,9 +93,9 @@ var protoField = []string{
 }
 
 /*
-FilterProtoInner is a ...
-
 @Editor robotyang at 2023
+
+FilterProtoInner is a ...
 */
 func FilterProtoInner(field *ast.Field) bool {
 	name := field.Names[0].Name
@@ -112,9 +112,9 @@ func FilterProtoInner(field *ast.Field) bool {
 }
 
 /*
-FilterInnerField 过滤小写字段
-
 @Editor robotyang at 2023
+
+FilterInnerField 过滤小写字段
 */
 func FilterInnerField(field *ast.Field) bool {
 	name := field.Names[0].Name
@@ -128,9 +128,9 @@ func FilterInnerField(field *ast.Field) bool {
 }
 
 /*
-FilterInnerSt is a ...
-
 @Editor robotyang at 2023
+
+FilterInnerSt is a ...
 */
 func FilterInnerSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()
@@ -144,9 +144,9 @@ func FilterInnerSt(st *ast.TypeSpec) bool {
 }
 
 /*
-FilterProtoSt is a ...
-
 @Editor robotyang at 2023
+
+FilterProtoSt is a ...
 */
 func FilterProtoSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()

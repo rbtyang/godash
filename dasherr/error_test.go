@@ -10,9 +10,9 @@ import (
 )
 
 /*
-TestParseCode is a ...
-
 @Editor robotyang at 2023
+
+TestParseCode is a ...
 */
 func TestCommon(t *testing.T) {
 	{
@@ -76,9 +76,9 @@ func TestCommon(t *testing.T) {
 }
 
 /*
-TestParseCode is a ...
-
 @Editor robotyang at 2023
+
+TestParseCode is a ...
 */
 func TestWithPre(t *testing.T) {
 	{

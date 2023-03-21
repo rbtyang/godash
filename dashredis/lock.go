@@ -12,9 +12,9 @@ type lock struct {
 }
 
 /*
-NewLock  need redis v6
-
 @Editor robotyang at 2023
+
+NewLock  need redis v6
 */
 func NewLock(ctx context.Context, cli *redis.Client) *lock {
 	return &lock{ctx, cli}

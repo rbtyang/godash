@@ -7,17 +7,21 @@ import (
 )
 
 /*
-ExampleNewAst is a ...
-
 @Editor robotyang at 2023
+
+ExampleNewAst is a ...
 */
 func ExampleNewAst() {
 	a := dashast.NewAst()
-	err := a.ParseFile("../arrdash/arr.go")
+	err := a.ParseFile("../dasharr/arr.go")
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(a.Package)         //"arrdash"
-	fmt.Println(a.Imports[0].Name) //"fmt"
-	fmt.Println(a.Funcs[1].Name)   //"Contains"
+	fmt.Println(a.Package)
+	fmt.Println(a.Imports[0].Name)
+	fmt.Println(a.Funcs[0].Name)
+	//Output:
+	//dasharr
+	//dashlog
+	//Contain
 }

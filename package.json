@@ -1,19 +1,30 @@
 {
-  "name": "godash",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "repository": "git@codeup.aliyun.com:rbtyang/personal/godash.git",
-  "author": "fumy01 <fumy01@mingyuanyun.com>",
-  "license": "MIT",
-  "dependencies": {
-    "crypto-js": "^4.1.1"
-  },
-  "devDependencies": {
-    "assert": "^2.0.0",
-    "mocha": "^10.1.0"
-  },
-  "scripts": {
-    "test": "mocha ./**/*.test.js"
-  }
+    "name": "godash",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "repository": "git@codeup.aliyun.com:rbtyang/personal/godash.git",
+    "author": "fumy01 <fumy01@mingyuanyun.com>",
+    "license": "MIT",
+    "dependencies": {
+        "crypto-js": "^4.1.1"
+    },
+    "devDependencies": {
+        "assert": "^2.0.0",
+        "mocha": "^10.1.0"
+    },
+    "scripts": {
+        "test": "mocha ./*
+        @Editor
+        robotyang
+        at
+        2023
+        */*
+        @Editor
+        robotyang
+        at
+        2023
+        .test.js
+        "
+    }
 }

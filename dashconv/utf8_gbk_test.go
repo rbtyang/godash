@@ -1,16 +1,16 @@
-package dashconvert_test
+package dashconv_test
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashconvert"
+	"github.com/rbtyang/godash/dashconv"
 	"log"
 	"testing"
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
@@ -19,14 +19,14 @@ func init() {
 func TestUtf8ToGbk(t *testing.T) {
 	s := "GBK 与 UTF-8 编码转换测试"
 
-	gbk, err := dashconvert.Utf8ToGbk([]byte(s))
+	gbk, err := dashconv.Utf8ToGbk([]byte(s))
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		fmt.Println("Utf8ToGbk: " + string(gbk))
 	}
 
-	utf8, err := dashconvert.GbkToUtf8(gbk)
+	utf8, err := dashconv.GbkToUtf8(gbk)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -35,15 +35,15 @@ func TestUtf8ToGbk(t *testing.T) {
 }
 
 /*
-TestTransEncoding is a ...
-
 @Editor robotyang at 2023
+
+TestTransEncoding is a ...
 */
 func TestTransEncoding(t *testing.T) {
 	s := "GBK 与 UTF-8 编码转换测试"
-	gbk, _ := dashconvert.Utf8ToGbk([]byte(s))
+	gbk, _ := dashconv.Utf8ToGbk([]byte(s))
 	fmt.Println("Utf8ToGbk: " + string(gbk))
 
-	utf8 := dashconvert.TransEncoding(string(gbk), "gbk", "utf-8")
+	utf8 := dashconv.TransEncoding(string(gbk), "gbk", "utf-8")
 	fmt.Println("TransToUtf8: " + string(utf8))
 }

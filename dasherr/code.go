@@ -27,7 +27,7 @@ const (
 	CodeDataLoss                                 // 数据丢失或损坏
 	CodeUnauthenticated                          // 未认证或凭证无效
 	CodeExternalGrpcError                        // 外部通信错误
-	CodeMax                = 19999               // Errdash Max Code
+	CodeMax                = 19999               // Dasherr Max Code
 )
 
 // errdash code => msgtext
@@ -50,7 +50,7 @@ var code2text = map[uint32]string{
 	CodeDataLoss:           "数据丢失或损坏",
 	CodeUnauthenticated:    "未认证或凭证无效",
 	CodeExternalGrpcError:  "外部通信错误",
-	CodeMax:                "Errdash Max Code",
+	CodeMax:                "Dasherr Max Code",
 }
 
 // grpc code => errdash code
@@ -75,11 +75,11 @@ var grpc2code = map[codes.Code]uint32{
 }
 
 /*
+@Editor robotyang at 2023
+
 RegisterCode 注册错误字典
 
 @Param dict 要注册的错误字段（建议尽量注册 >= 20000 的 code）
-
-@Editor robotyang at 2023
 */
 func RegisterCode(dict map[uint32]string) {
 	for code, errMsg := range dict {
@@ -88,11 +88,11 @@ func RegisterCode(dict map[uint32]string) {
 }
 
 /*
+@Editor robotyang at 2023
+
 ParseCode 解析 code 对应的 errdash code
 
 @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
-
-@Editor robotyang at 2023
 */
 func ParseCode(code interface{}) uint32 {
 	var cCode codes.Code = math.MaxUint32
@@ -119,11 +119,11 @@ func ParseCode(code interface{}) uint32 {
 }
 
 /*
+@Editor robotyang at 2023
+
 GetCodeMsg 转义 code 为对应中文含义
 
 @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
-
-@Editor robotyang at 2023
 */
 func GetCodeMsg(code uint32) string {
 	if txt, ok := code2text[code]; ok {

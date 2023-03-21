@@ -1,4 +1,4 @@
-package dashconvert
+package dashconv
 
 import (
 	"bytes"
@@ -9,9 +9,9 @@ import (
 )
 
 /*
-GbkToUtf8 is a ...
-
 @Editor robotyang at 2023
+
+GbkToUtf8 is a ...
 */
 func GbkToUtf8(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
@@ -23,9 +23,9 @@ func GbkToUtf8(s []byte) ([]byte, error) {
 }
 
 /*
-Utf8ToGbk is a ...
-
 @Editor robotyang at 2023
+
+Utf8ToGbk is a ...
 */
 func Utf8ToGbk(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewEncoder())
@@ -37,9 +37,9 @@ func Utf8ToGbk(s []byte) ([]byte, error) {
 }
 
 /*
-TransEncoding 转换编码类型
-
 @Editor robotyang at 2023
+
+TransEncoding 转换编码类型
 */
 func TransEncoding(src string, srcCode string, dstCode string) string {
 	srcCoder := mahonia.NewDecoder(srcCode)

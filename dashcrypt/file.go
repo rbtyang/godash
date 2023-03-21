@@ -6,6 +6,8 @@ import (
 )
 
 /*
+@Editor robotyang at 2023
+
 FileEncryptByZyx 文件加密；
 
 @Param srcFilePath 需加密的 文件路径；
@@ -15,8 +17,6 @@ FileEncryptByZyx 文件加密；
 @Param secret 密钥；
 
 @Reference https://www.jianshu.com/p/0caab60fea9f
-
-@Editor robotyang at 2023
 */
 func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error) {
 	f, err := os.Open(srcFilePath)
@@ -73,6 +73,8 @@ func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error
 }
 
 /*
+@Editor robotyang at 2023
+
 FileDecryptByZyx 文件解密；
 
 @Param srcFilePath 需解密的 文件路径；
@@ -82,8 +84,6 @@ FileDecryptByZyx 文件解密；
 @Param secret 密钥；
 
 @Reference https://www.jianshu.com/p/0caab60fea9f
-
-@Editor robotyang at 2023
 */
 func FileDecryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error) {
 	f, err := os.Open(srcFilePath)

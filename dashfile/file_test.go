@@ -9,9 +9,9 @@ import (
 )
 
 /*
-TestIsExist is a ...
-
 @Editor robotyang at 2023
+
+TestIsExist is a ...
 */
 func TestIsExist(t *testing.T) {
 	pwd, _ := os.Getwd()
@@ -39,9 +39,9 @@ func TestIsExist(t *testing.T) {
 }
 
 /*
-TestIsDir is a ...
-
 @Editor robotyang at 2023
+
+TestIsDir is a ...
 */
 func TestIsDir(t *testing.T) {
 	{
@@ -67,9 +67,9 @@ func TestIsDir(t *testing.T) {
 }
 
 /*
-TestIsFile is a ...
-
 @Editor robotyang at 2023
+
+TestIsFile is a ...
 */
 func TestIsFile(t *testing.T) {
 	{
@@ -258,9 +258,9 @@ func TestAppendFile(t *testing.T) {
 }
 
 /*
-TestGetLastDir is a ...
-
 @Editor robotyang at 2023
+
+TestGetLastDir is a ...
 */
 func TestGetLastDir(t *testing.T) {
 	{
@@ -311,9 +311,9 @@ func TestGetLastDir(t *testing.T) {
 }
 
 /*
-TestGetLastDir is a ...
-
 @Editor robotyang at 2023
+
+TestGetLastDir is a ...
 */
 func TestGetLastDirWithCheck(t *testing.T) {
 	{
@@ -329,9 +329,9 @@ func TestGetLastDirWithCheck(t *testing.T) {
 }
 
 /*
-TestGetFilePathList is a ...
-
 @Editor robotyang at 2023
+
+TestGetFilePathList is a ...
 */
 func TestGetFileList(t *testing.T) {
 	{
@@ -374,9 +374,9 @@ func TestGetFileList(t *testing.T) {
 }
 
 /*
-TestGetFileListFilter is a ...
-
 @Editor robotyang at 2023
+
+TestGetFileListFilter is a ...
 */
 func TestGetFileListFilter(t *testing.T) {
 	filelist, err := dashfile.GetFileListFilter("../", []string{".go"}, []string{".git", "vendor", "_test.go"})

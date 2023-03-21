@@ -8,13 +8,13 @@ import (
 )
 
 /*
+@Editor robotyang at 2023
+
 SignFlatMap 根据参数计算签名
 
 @Param data map[string]string / struct / url.Values
 
 @Reference https://developers.weixin.qq.com/doc/offiaccount/Shake_Nearby/Shake_RedPack/Red_Packet_JSAPI.html
-
-@Editor robotyang at 2023
 */
 func SignFlatMap(data map[string]string, secret string) string {
 	// 除sign字段外，所有参数 按照字段名 的ASCII码 从小到大排序后（字典序）
@@ -50,9 +50,9 @@ func SignFlatMap(data map[string]string, secret string) string {
 }
 
 /*
-CheckSignFlatMap 检查参数签名
-
 @Editor robotyang at 2023
+
+CheckSignFlatMap 检查参数签名
 */
 func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {
 	return inSign == SignFlatMap(data, secret)

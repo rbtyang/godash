@@ -7,9 +7,9 @@ import (
 )
 
 /*
-TestIntSet is a ...
-
 @Editor robotyang at 2023
+
+TestIntSet is a ...
 */
 func TestIntSet(t *testing.T) {
 	var leng int

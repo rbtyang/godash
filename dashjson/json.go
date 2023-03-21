@@ -5,45 +5,64 @@ import (
 	"errors"
 	"github.com/json-iterator/go"
 	"github.com/json-iterator/go/extra"
-	"github.com/rbtyang/godash/dashconvert"
+	"github.com/rbtyang/godash/dashconv"
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	extra.RegisterFuzzyDecoders()
 }
 
 /*
-Marshal is a ...
-
 @Editor robotyang at 2023
+
+Marshal is a ...
 */
 func Marshal(v interface{}) (string, error) {
 	if v == nil {
 		return "", errors.New("invalid memory address or nil pointer dereference")
 	}
 	msByte, err := MarshalToByte(v)
-	return dashconvert.ByteToStrByUnsafe(msByte), err
+	return dashconv.ByteToStrByUnsafe(msByte), err
 }
 
 /*
-MarshalNoError is a ...
-
 @Editor robotyang at 2023
+
+MarshalNoErr is a ...
 */
-func MarshalNoError(v interface{}) string {
+func MarshalNoErr(v interface{}) string {
 	str, _ := Marshal(v)
 	return str
 }
 
 /*
-MarshalToByte is a ...
-
 @Editor robotyang at 2023
+
+Unmarshal is a ...
+*/
+func Unmarshal(data string, v interface{}) error {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
+	return json.Unmarshal(dashconv.StrToByteByReflect(data), v)
+}
+
+/*
+@Editor robotyang at 2023
+
+UnmarshalFuzzyDecoders is a ...
+*/
+func UnmarshalFuzzyDecoders(data string, v interface{}) error {
+	return jsoniter.UnmarshalFromString(data, v)
+}
+
+/*
+@Editor robotyang at 2023
+
+MarshalToByte is a ...
 */
 func MarshalToByte(v interface{}) ([]byte, error) {
 	if v == nil {
@@ -54,28 +73,9 @@ func MarshalToByte(v interface{}) ([]byte, error) {
 }
 
 /*
-Unmarshal is a ...
-
 @Editor robotyang at 2023
-*/
-func Unmarshal(data string, v interface{}) error {
-	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	return json.Unmarshal(dashconvert.StrToByteByReflect(data), v)
-}
 
-/*
-UnmarshalFuzzyDecoders is a ...
-
-@Editor robotyang at 2023
-*/
-func UnmarshalFuzzyDecoders(data string, v interface{}) error {
-	return jsoniter.UnmarshalFromString(data, v)
-}
-
-/*
 UnmarshalByte is a ...
-
-@Editor robotyang at 2023
 */
 func UnmarshalByte(data []byte, v interface{}) error {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary

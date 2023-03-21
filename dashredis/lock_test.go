@@ -13,22 +13,24 @@ import (
 	"time"
 )
 
-var _redis *redis.Client
+var redisCli *redis.Client
 
-const _configYaml = "temp/config.yaml"
-
-type _configYamlSt struct {
+type configSt struct {
+	Redis *redisSt `yaml:"redis"` //这里Redis首字母要大写，否则读不到配置
+}
+type redisSt struct {
 	Host     string `yaml:"host"`
 	Port     string `yaml:"port"`
 	Password string `yaml:"password"`
+	DB       int    `yaml:"db"`
 }
 
-var _configYamlObj = _configYamlSt{}
+var config = configSt{&redisSt{}}
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before lock_test.go tests")
@@ -36,52 +38,40 @@ func init() {
 	var err error
 	var yamlFile *os.File
 
-	if !dashfile.IsFile(_configYaml) {
-		yamlFile, err = dashfile.CreateOrReset(_configYaml)
-		if err != nil {
-			log.Panicln(err)
-			return
-		}
-		defer yamlFile.Close()
-		if _, err := yamlFile.WriteString("host: localhost\nport: 6379\npassword: "); err != nil {
-			log.Panicln(err)
-			return
-		}
-	} else {
-		yamlFile, err = os.OpenFile(_configYaml, os.O_RDONLY, os.ModePerm)
-		if err != nil {
-			log.Panicln(err)
-			return
-		}
-		defer yamlFile.Close()
+	yamlFile, err = os.OpenFile("../test.yaml", os.O_RDONLY, os.ModePerm)
+	if err != nil {
+		log.Panicln(err)
+		return
 	}
+	defer yamlFile.Close()
 
 	yamlFileByt, err := dashfile.ReadByFile(yamlFile)
 	if err != nil {
 		log.Panicln(err)
 		return
 	}
-	err = yaml.Unmarshal(yamlFileByt, &_configYamlObj)
+	err = yaml.Unmarshal(yamlFileByt, &config)
 	if err != nil {
 		log.Panicln(err)
 		return
 	}
 
-	_redis = redis.NewClient(&redis.Options{
-		Addr:     _configYamlObj.Host + ":" + _configYamlObj.Port,
-		Password: _configYamlObj.Password,
+	redisCli = redis.NewClient(&redis.Options{
+		Addr:     config.Redis.Host + ":" + config.Redis.Port,
+		Password: config.Redis.Password,
+		DB:       config.Redis.DB,
 	})
 }
 
 /*
-TestLock is a ...
-
 @Editor robotyang at 2023
+
+TestLock is a ...
 */
 func TestLock(t *testing.T) {
 	{
 		ctx := context.Background()
-		lock := dashredis.NewLock(ctx, _redis)
+		lock := dashredis.NewLock(ctx, redisCli)
 		key := "qwe123123"
 
 		{ //first lock

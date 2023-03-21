@@ -9,18 +9,18 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before aesjs_test.go tests")
 }
 
 /*
-TestAesDecryptJs is a ...
-
 @Editor robotyang at 2023
+
+TestAesDecryptJs is a ...
 */
 func TestAesDecryptJs(t *testing.T) {
 	wanttext := "123123阿斯蒂芬!@#asdasd"

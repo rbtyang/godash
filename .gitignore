@@ -20,3 +20,5 @@ node_modules/
 temp/
 *.tar*
 *.zip*
+
+test.yaml

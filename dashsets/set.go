@@ -10,13 +10,13 @@ type Set[T comparable] struct {
 }
 
 /*
+@Editor robotyang at 2023
+
 NewSet 构造Set
 
 集合set（存储的元素是唯一的）
 
 为减少空间占用，其值可用空结构（struct{}，go会优化为不占用空间）。
-
-@Editor robotyang at 2023
 */
 func NewSet[T comparable]() *Set[T] {
 	return &Set[T]{
@@ -25,13 +25,13 @@ func NewSet[T comparable]() *Set[T] {
 }
 
 /*
+@Editor robotyang at 2023
+
 NewSet 构造有元素的Set
 
 集合set（存储的元素是唯一的）
 
 为减少空间占用，其值可用空结构（struct{}，go会优化为不占用空间）。
-
-@Editor robotyang at 2023
 */
 func NewSetWith[T comparable](items ...T) *Set[T] {
 	s := &Set[T]{

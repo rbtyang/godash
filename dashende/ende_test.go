@@ -1,34 +1,34 @@
-package dashencode_test
+package dashende_test
 
 import (
-	"github.com/rbtyang/godash/dashencode"
+	"github.com/rbtyang/godash/dashende"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestBase64Encrypt is a ...
-
 @Editor robotyang at 2023
+
+TestBase64Encrypt is a ...
 */
 func TestBase64Encrypt(t *testing.T) {
 	{
 		data := "ZhangSan Ni Hao 123 哈哈"
 
-		cipherstr := dashencode.Base64Encode(data)
+		cipherstr := dashende.Base64Encode(data)
 		t.Logf("cipherstr: %s", cipherstr)
 
-		plainstr, err := dashencode.Base64Decode(cipherstr)
+		plainstr, err := dashende.Base64Decode(cipherstr)
 		if err != nil {
 			t.Error(err)
 		}
@@ -39,21 +39,21 @@ func TestBase64Encrypt(t *testing.T) {
 }
 
 /*
-TestBase64UrlEncrypt is a ...
-
 @Editor robotyang at 2023
+
+TestBase64UrlEncrypt is a ...
 */
 func TestBase64UrlEncrypt(t *testing.T) {
 	{
 		data := "hello world12345!?$*&()'-@~"
 
-		cipherstr0 := dashencode.Base64Encode(data)
+		cipherstr0 := dashende.Base64Encode(data)
 		t.Logf("cipherstr0: %s", cipherstr0)
 
-		cipherstr1 := dashencode.Base64UrlEncode(data)
+		cipherstr1 := dashende.Base64UrlEncode(data)
 		t.Logf("cipherstr1: %s", cipherstr1)
 
-		plainstr, err := dashencode.Base64UrlDecode(cipherstr1)
+		plainstr, err := dashende.Base64UrlDecode(cipherstr1)
 		if err != nil {
 			t.Error(err)
 		}

@@ -1,0 +1,6 @@
+#单元测试配置文件
+#Unit test configuration file
+redis:
+  hostname: localhost
+  port: 6379
+  password: 123456

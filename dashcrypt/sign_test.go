@@ -7,9 +7,9 @@ import (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before sign_test.go tests")
@@ -37,9 +37,9 @@ type Stock struct {
 }
 
 /*
-TestSignFlatMap is a ...
-
 @Editor robotyang at 2023
+
+TestSignFlatMap is a ...
 */
 func TestSignFlatMap(t *testing.T) {
 	secret := "9adceaa7c1c1979214becf7747e05daa"
@@ -93,14 +93,14 @@ func TestSignFlatMap(t *testing.T) {
 //	//data := map[string]*Order{"aaa": order, "bbb": order, "ccc": nil}
 //	data := []*Order{order, order, nil}
 //
-//	sign, err := cryptdash.SignObj(data, secret)
+//	sign, err := dashcrypt.SignObj(data, secret)
 //	if err != nil {
 //		t.Error(err)
 //		return
 //	}
 //	t.Log("SignObj: ", sign)
 //
-//	ckRes := cryptdash.CheckSignObj(data, secret, sign)
+//	ckRes := dashcrypt.CheckSignObj(data, secret, sign)
 //	t.Log("CheckSignObj: ", ckRes)
 //}
 //

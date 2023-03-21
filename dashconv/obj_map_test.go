@@ -1,7 +1,7 @@
-package dashconvert_test
+package dashconv_test
 
 import (
-	"github.com/rbtyang/godash/dashconvert"
+	"github.com/rbtyang/godash/dashconv"
 	"log"
 	"testing"
 )
@@ -28,18 +28,18 @@ type Stock struct {
 }
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestObjToMap is a ...
-
 @Editor robotyang at 2023
+
+TestObjToMap is a ...
 */
 func TestObjToMap(t *testing.T) {
 	order := &Order{
@@ -71,7 +71,7 @@ func TestObjToMap(t *testing.T) {
 	}
 
 	{ // struct
-		orderMap, err := dashconvert.ObjToMap(order)
+		orderMap, err := dashconv.ObjToMap(order)
 		if err != nil {
 			t.Error(err)
 			return
@@ -80,7 +80,7 @@ func TestObjToMap(t *testing.T) {
 	}
 	{ // map
 		orderList := map[string]*Order{"aaa": order, "bbb": order, "ccc": nil}
-		orderMap, err := dashconvert.ObjToMap(orderList)
+		orderMap, err := dashconv.ObjToMap(orderList)
 		if err != nil {
 			t.Error(err)
 			return
@@ -89,7 +89,7 @@ func TestObjToMap(t *testing.T) {
 	}
 	{ // slice
 		orderList := []*Order{order, order, nil}
-		orderMap, err := dashconvert.ObjToMap(orderList)
+		orderMap, err := dashconv.ObjToMap(orderList)
 		if err != nil {
 			t.Error(err)
 			return

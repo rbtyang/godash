@@ -6,20 +6,26 @@ import (
 )
 
 /*
-ExampleInclude_slice_general is a ...
-
 @Editor robotyang at 2023
+
+通用切片入参示例
+
+Example of common slice entry parameter
 */
 func ExampleInclude_slice_general() {
 	var data1 = []int{8, 5, 5}
-	recv := dasharr.Include(data1, 8) //here here here
-	fmt.Println(recv)                 //bool
+	recv := dasharr.Include(data1, 8) //here
+	fmt.Println(recv)
+	//Output:
+	//true
 }
 
 /*
-ExampleInclude_slice_struct is a ...
-
 @Editor robotyang at 2023
+
+结构体切片入参示例
+
+Example of structure slice entry parameter
 */
 func ExampleInclude_slice_struct() {
 	type Coder struct {
@@ -36,7 +42,9 @@ func ExampleInclude_slice_struct() {
 	}
 	var data = []*Coder{coderZS, coderLS}
 	{
-		recv := dasharr.Include(data, coderLS) //here here here
-		fmt.Println(recv)                      //bool
+		recv := dasharr.Include(data, coderLS) //here
+		fmt.Println(recv)
+		//Output:
+		//true
 	}
 }

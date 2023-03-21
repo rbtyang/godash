@@ -2,30 +2,30 @@ package dashcrypt_test
 
 import (
 	"github.com/rbtyang/godash/dashcrypt"
-	"github.com/rbtyang/godash/dashrandom"
+	"github.com/rbtyang/godash/dashrand"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before aesgo_test.go tests")
 }
 
 /*
-TestAesBs64Encrypt is a ...
-
 @Editor robotyang at 2023
+
+TestAesBs64Encrypt is a ...
 */
 func TestAesBs64Encrypt(t *testing.T) {
 	{
 		data := []byte("Hello World 123 哈哈")
-		secret := []byte(dashrandom.Str(dashrandom.ModeNumAlphaSp, 32))
+		secret := []byte(dashrand.Str(dashrand.ModeNumAlphaSp, 32))
 
 		ciphertext, err := dashcrypt.AesBs64Encrypt(data, secret)
 		if err != nil {
@@ -43,14 +43,14 @@ func TestAesBs64Encrypt(t *testing.T) {
 }
 
 /*
-TestAesCbcEncrypt is a ...
-
 @Editor robotyang at 2023
+
+TestAesCbcEncrypt is a ...
 */
 func TestAesCbcEncrypt(t *testing.T) {
 	{
 		data := []byte("Hello World 123 哈哈")
-		secret := dashrandom.Str(dashrandom.ModeNumAlphaSp, 32)
+		secret := dashrand.Str(dashrand.ModeNumAlphaSp, 32)
 
 		ciphertext, err := dashcrypt.AesCbcEncrypt(data, []byte(secret))
 		if err != nil {
@@ -68,9 +68,9 @@ func TestAesCbcEncrypt(t *testing.T) {
 }
 
 /*
-TestAesEcbEncrypt is a ...
-
 @Editor robotyang at 2023
+
+TestAesEcbEncrypt is a ...
 */
 func TestAesEcbEncrypt(t *testing.T) {
 	{

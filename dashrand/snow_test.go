@@ -1,4 +1,4 @@
-package dashrandom_test
+package dashrand_test
 
 import (
 	"github.com/bwmarrin/snowflake"
@@ -14,18 +14,18 @@ var (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestSnowOne is a ...
-
 @Editor robotyang at 2023
+
+TestSnowOne is a ...
 */
 func TestSnowOne(t *testing.T) {
 	{
@@ -41,9 +41,9 @@ func TestSnowOne(t *testing.T) {
 //串行基准测试
 
 /*
-BenchmarkSnowSeri go test -bench=SnowSeri$
-
 @Editor robotyang at 2023
+
+BenchmarkSnowSeri go test -bench=SnowSeri$
 */
 func BenchmarkSnowSeri(b *testing.B) {
 	idMap := map[int64]bool{}
@@ -70,9 +70,9 @@ func BenchmarkSnowSeri(b *testing.B) {
 //并行基准测试
 
 /*
-BenchmarkSnowPara go test -bench=SnowPara$
-
 @Editor robotyang at 2023
+
+BenchmarkSnowPara go test -bench=SnowPara$
 */
 func BenchmarkSnowPara(b *testing.B) {
 	node, err := snowflake.NewNode(1) //同个节点，还是存在冲突
@@ -100,9 +100,9 @@ func BenchmarkSnowPara(b *testing.B) {
 //并行基准测试
 
 /*
-BenchmarkSnowRandNode go test -bench=SnowRandNode$
-
 @Editor robotyang at 2023
+
+BenchmarkSnowRandNode go test -bench=SnowRandNode$
 */
 func BenchmarkSnowRandNode(b *testing.B) {
 	b.ReportAllocs()

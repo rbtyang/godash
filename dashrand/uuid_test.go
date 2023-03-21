@@ -1,4 +1,4 @@
-package dashrandom_test
+package dashrand_test
 
 import (
 	"github.com/google/uuid"
@@ -12,18 +12,18 @@ var (
 )
 
 /*
-init is a ...
-
 @Editor robotyang at 2023
+
+init is a ...
 */
 func init() {
 	log.Println("Before this tests")
 }
 
 /*
-TestUuidOne is a ...
-
 @Editor robotyang at 2023
+
+TestUuidOne is a ...
 */
 func TestUuidOne(t *testing.T) {
 	{
@@ -35,9 +35,9 @@ func TestUuidOne(t *testing.T) {
 //串行基准测试
 
 /*
-BenchmarkUuidSeri go test -bench=UuidSeri$
-
 @Editor robotyang at 2023
+
+BenchmarkUuidSeri go test -bench=UuidSeri$
 */
 func BenchmarkUuidSeri(b *testing.B) {
 	idMap := map[string]bool{}
@@ -60,9 +60,9 @@ func BenchmarkUuidSeri(b *testing.B) {
 //并行基准测试
 
 /*
-BenchmarkUuidRandNode go test -bench=UuidRandNode$
-
 @Editor robotyang at 2023
+
+BenchmarkUuidRandNode go test -bench=UuidRandNode$
 */
 func BenchmarkUuidRandNode(b *testing.B) {
 	b.ReportAllocs()

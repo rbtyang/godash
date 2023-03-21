@@ -19,9 +19,9 @@ const (
 )
 
 /*
-Format  格式化时间(time.Time)为指定时间格式文本
-
 @Editor robotyang at 2023
+
+Format  格式化时间(time.Time)为指定时间格式文本
 */
 func Format(timeSuk *time.Time, defaultFormat ...string) string {
 	if timeSuk == nil {
@@ -35,9 +35,9 @@ func Format(timeSuk *time.Time, defaultFormat ...string) string {
 }
 
 /*
-ParseString  格式化 文本时间 (默认:2006-01-02 15:04:05) 为time.Time
-
 @Editor robotyang at 2023
+
+ParseString  格式化 文本时间 (默认:2006-01-02 15:04:05) 为time.Time
 */
 func ParseString(timeStr string, defaultFormat ...string) (time.Time, error) {
 	format := TimeFmt_Y_m_D_H_M_S
@@ -53,9 +53,9 @@ func ParseString(timeStr string, defaultFormat ...string) (time.Time, error) {
 }
 
 /*
-CurrentTimeString  获取 当前时间 并转换成 自定格式
-
 @Editor robotyang at 2023
+
+CurrentTimeString  获取 当前时间 并转换成 自定格式
 */
 func CurrentTimeString(defaultFormat ...string) string {
 	format := TimeFmt_Y_m_D_H_M_S
@@ -67,9 +67,9 @@ func CurrentTimeString(defaultFormat ...string) string {
 }
 
 /*
-RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
-
 @Editor robotyang at 2023
+
+RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
 */
 func RestNextDawn(now time.Time) time.Duration {
 	nextDay := now.AddDate(0, 0, 1)
@@ -78,9 +78,9 @@ func RestNextDawn(now time.Time) time.Duration {
 }
 
 /*
-CurrentTimePointer  获取 now时间的 *time.Time 格式
-
 @Editor robotyang at 2023
+
+CurrentTimePointer  获取 now时间的 *time.Time 格式
 */
 func CurrentTimePointer() *time.Time {
 	now := time.Now()
@@ -89,9 +89,9 @@ func CurrentTimePointer() *time.Time {
 }
 
 /*
-SetLocDefault  设置time为 Asia/Shanghai默认时区
-
 @Editor robotyang at 2023
+
+SetLocDefault  设置time为 Asia/Shanghai默认时区
 */
 func SetLocDefault(timeSuk *time.Time) time.Time {
 	var loc, _ = time.LoadLocation(TimeLocDefault)

@@ -1,4 +1,4 @@
-package dashrandom
+package dashrand
 
 import (
 	"math"
@@ -18,9 +18,9 @@ const (
 )
 
 /*
-Str  @return str
-
 @Editor robotyang at 2023
+
+Str  @return str
 */
 func Str(mode RandMode, n uint16) string {
 	time.Sleep(time.Nanosecond)
@@ -37,18 +37,18 @@ func Str(mode RandMode, n uint16) string {
 // Num 生成范围内的 随机数
 
 /*
-Num  @return [min, max)
-
 @Editor robotyang at 2023
+
+Num  @return [min, max)
 */
 func Num(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
 /*
-NumCode  NumCode 生成固定长度的 随机数
-
 @Editor robotyang at 2023
+
+NumCode  NumCode 生成固定长度的 随机数
 */
 func NumCode(len int) int {
 	min := math.Pow10(len - 1)
@@ -57,9 +57,9 @@ func NumCode(len int) int {
 }
 
 /*
-IntSli is a ...
-
 @Editor robotyang at 2023
+
+IntSli is a ...
 */
 func IntSli(len, min, max int) []int {
 	sli := make([]int, len)

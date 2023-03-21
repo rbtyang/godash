@@ -1,4 +1,3 @@
-//只是针对git.myscrm.cn/golang/common/json中的方法加入了错误日志记录
 package dashjson
 
 import (

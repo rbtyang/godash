@@ -1,4 +1,5 @@
-# godash - 丰富易用的、带详细说明和用例的 Golang 工具库（或者函数集、方法集、帮助类）
+# godash - 丰富易用的、带详细说明和用例的 Golang 工具库、函数集、方法集
+> A rich, easy-to-use Golang library of tools, functions, and methods with detailed instructions and use cases
 
 [![Latest](https://img.shields.io/badge/latest-v0.0.1-blue.svg)](https://github.com/Andrew-M-C/go.jsonvalue/tree/v0.0.1)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)

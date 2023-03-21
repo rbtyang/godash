@@ -1,4 +1,4 @@
-# godash - A rich, easy-to-use Golang tool library (or set of functions, methods, help classes) with detailed instructions and use cases
+# godash - A rich, easy-to-use Golang library of tools, functions, and methods with detailed instructions and use cases
 
 [![Latest](https://img.shields.io/badge/latest-v0.0.1-blue.svg)](https://github.com/Andrew-M-C/go.jsonvalue/tree/v0.0.1)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)

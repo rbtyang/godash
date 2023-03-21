@@ -1,83 +1,25 @@
-[toc]
+# godash - 易用的、带详细说明和用例的 Golang 工具库、函数集、方法集、帮助类
 
-> Golang常用工具、函数、方法、帮助类的封装
+[![Latest](https://img.shields.io/badge/latest-v0.0.1-blue.svg)](https://github.com/Andrew-M-C/go.jsonvalue/tree/v0.0.1)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
 
-## 已实现工具
+[简体中文](README.md) | [ENGLISH](README_EN.md)
 
-##### arrdash
-- 数组工具
+## 使用文档
 
-##### convdash
-- 类型转换
+> https://pkg.go.dev/github.com/rbtyang/godash
 
-##### cryptdash
-- 加密解密
+## 贡献者
 
-##### demodash
-- 我的模板
+<a href="github.com/rbtyang/godash/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=rbtyang/godash" />
+</a>
 
-##### encodash
-- 编码解码
+## 联系我
 
-##### envdash
-- 环境变量
+- 微信(加我拉微信群): `RobotYang7` (需备注“来自github”)
+- <img src="./doc/微信二维码.jpg">
 
-##### errdash
-- 错误类
+## 赞赏
 
-##### filedash
-- 文件工具
-
-##### hashdash
-- 哈希工具
-
-##### jsondash
-- 序列化
-
-##### logdash
-- 日志工具
-
-##### pagedash
-- 分页类
-
-##### randdash
-- 随机生成
-
-##### strdash
-- 字符处理
-
-##### timedash
-- 时间函数
-
-##### validdash
-- 验证器
-
---- 
-
-## TODO工具
-
-##### xxx
-
---- 
-
-## 推荐的包
-
-#### 后端
-```shell script
-"github.com/stretchr/testify/assert" //单测类型断言，参考 各个_test.go
-"github.com/spf13/cast" //各种类型转换
-"github.com/fatih/structs" //结构体转Map
-"github.com/goinggo/mapstructure" //Map转结构体，参考 godash\convdash\mapstructure.go
-"github.com/imdario/mergo" //结构体合并，参考 godash\convdash\mergo_test.go
-"github.com/spf13/viper" //配置文件读取和管理
-"golang.org/x/sync/errgroup" //并发编程，参考 godash\demodash\errgroup_test.go
-"github.com/bwmarrin/snowflake" //雪花ID生成，参考 godash\randdash\snow_test.go
-"github.com/google/uuid" //UUID生成，参考 godash\randdash\uuid_test.go
-```
-
-#### 前端
-```shell script
-crypto-js //加解密、哈希
-assert //断言
-mocha //单测
-```
+- <img src="./doc/微信赞赏码.jpg">

@@ -22,10 +22,10 @@
 
 - 微信号 `RobotYang7` (加我进微信群，需备注“来自github”)。
 
-<img height="400" src="./doc/微信二维码.jpg">
+<img width="350" src="./doc/微信二维码.jpg">
 
 ## 赞赏
 
 - 如果该项目对你有帮助，希望获得您肯定的赞赏， 我们将有动力提供更多支持！
 
-<img height="400" src="./doc/微信赞赏码.jpg">
+<img width="350" src="./doc/微信赞赏码.jpg">

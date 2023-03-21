@@ -23,11 +23,11 @@
 
 - WeChat No: `RobotYang7` (Add me to the wechat group, Note must be "from the github")。
 
-<img height="400" src="./doc/微信二维码.jpg">
+<img width="350" src="./doc/微信二维码.jpg">
 
 ## Sponsor
 
 - If the project is helpful to you, we hope to gain your positive appreciation, we will be motivated to provide more
   support!
 
-<img height="400" src="./doc/微信赞赏码.jpg">
+<img width="350" src="./doc/微信赞赏码.jpg">

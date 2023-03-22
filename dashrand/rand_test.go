@@ -2,6 +2,7 @@ package dashrand_test
 
 import (
 	"github.com/rbtyang/godash/dashrand"
+	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
 )
@@ -54,8 +55,64 @@ TestRandNum is a ...
 */
 func TestRandNum(t *testing.T) {
 	{
-		recv := dashrand.Num(10, 30)
-		t.Log(recv)
+		min, max := -10, 30
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
+	}
+	{
+		min, max := 10, 30
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
+	}
+	{
+		min, max := int64(-10), int64(30)
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
+	}
+	{
+		min, max := int64(10), int64(30)
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
+	}
+	{
+		min, max := -12.345, 34.567
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
+	}
+	{
+		min, max := 12.345, 34.567
+		for i := 0; i < 10000; i++ {
+			num := dashrand.Num(min, max)
+			recv := num >= min && num < max
+			if !assert.Equal(t, recv, true) {
+				break
+			}
+		}
 	}
 }
 
@@ -66,7 +123,7 @@ TestRandCode is a ...
 */
 func TestRandCode(t *testing.T) {
 	{
-		recv := dashrand.NumCode(6)
+		recv := dashrand.NumLen(6)
 		t.Log(recv)
 	}
 }

@@ -402,3 +402,17 @@ func TestArrayToString(t *testing.T) {
 		}
 	}
 }
+
+/*
+@Editor robotyang at 2023
+
+TestContains is a ...
+*/
+func TestChunk(t *testing.T) {
+	{
+		array := []string{"a", "b", "c", "d"}
+		want := [][]string{{"a", "b", "c"}, {"d"}}
+		recv := dasharr.Chunk(array, 3)
+		assert.Equal(t, want, recv)
+	}
+}

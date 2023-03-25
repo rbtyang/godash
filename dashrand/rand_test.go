@@ -2,6 +2,7 @@ package dashrand_test
 
 import (
 	"github.com/rbtyang/godash/dashrand"
+	"github.com/rbtyang/godash/dashstr"
 	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
@@ -19,41 +20,65 @@ func init() {
 /*
 @Editor robotyang at 2023
 
-TestRandStr is a ...
+TestStr is a ...
 */
-func TestRandStr(t *testing.T) {
-	{
-		recv := dashrand.Str(dashrand.ModeNum, 32)
-		t.Log(recv)
+func TestStr(t *testing.T) {
+	lenArr := []uint{1, 3, 9, 13, 16, 32}
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeNum, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, true, dashstr.IsDigit(recv))
+		assert.Equal(t, false, dashstr.IsLetter(recv))
 	}
-	{
-		recv := dashrand.Str(dashrand.Modeaz, 32)
-		t.Log(recv)
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.Modeaz, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, true, dashstr.IsSmallLetter(recv))
+		assert.Equal(t, false, dashstr.IsCapitalLetter(recv))
 	}
-	{
-		recv := dashrand.Str(dashrand.ModeNum+dashrand.Modeaz, 32)
-		t.Log(recv)
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeAZ, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, false, dashstr.IsSmallLetter(recv))
+		assert.Equal(t, true, dashstr.IsCapitalLetter(recv))
 	}
-	{
-		recv := dashrand.Str(dashrand.ModeNum+dashrand.ModeAZ, 32)
-		t.Log(recv)
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeNum+dashrand.Modeaz, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, true, dashstr.IsDigitLetter(recv))
 	}
-	{
-		recv := dashrand.Str(dashrand.ModeNumAlpha, 32)
-		t.Log(recv)
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeNum+dashrand.ModeAZ, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, true, dashstr.IsDigitLetter(recv))
 	}
-	{
-		recv := dashrand.Str(dashrand.ModeNumAlphaSp, 32)
-		t.Log(recv)
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeNumAlpha, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		assert.Equal(t, true, dashstr.IsDigitLetter(recv))
+	}
+
+	for _, leng := range lenArr {
+		recv := dashrand.Str(dashrand.ModeNumAlphaSp, leng)
+		assert.Equal(t, leng, uint(len(recv)))
+		if len(recv) >= 10 {
+			assert.Equal(t, false, dashstr.IsDigitLetter(recv))
+		}
 	}
 }
 
 /*
 @Editor robotyang at 2023
 
-TestRandNum is a ...
+TestNum is a ...
 */
-func TestRandNum(t *testing.T) {
+func TestNum(t *testing.T) {
 	{
 		min, max := -10, 30
 		for i := 0; i < 10000; i++ {
@@ -119,23 +144,26 @@ func TestRandNum(t *testing.T) {
 /*
 @Editor robotyang at 2023
 
-TestRandCode is a ...
+TestIntSli is a ...
 */
-func TestRandCode(t *testing.T) {
-	{
-		recv := dashrand.NumLen(6)
-		t.Log(recv)
-	}
-}
-
-/*
-@Editor robotyang at 2023
-
-TestRandIntSli is a ...
-*/
-func TestRandIntSli(t *testing.T) {
-	{
-		recv := dashrand.IntSli(100, 10, 30)
-		t.Log(recv)
+func TestIntSli(t *testing.T) {
+	lenArr := []uint{1, 3, 9, 13, 16, 32}
+	for _, leng := range lenArr {
+		{
+			recv := dashrand.NumSlice(leng, -10, 30)
+			assert.Equal(t, leng, uint(len(recv)))
+		}
+		{
+			recv := dashrand.NumSlice(leng, 10, 30)
+			assert.Equal(t, leng, uint(len(recv)))
+		}
+		{
+			recv := dashrand.NumSlice(leng, -12.345, 34.567)
+			assert.Equal(t, leng, uint(len(recv)))
+		}
+		{
+			recv := dashrand.NumSlice(leng, 12.345, 34.567)
+			assert.Equal(t, leng, uint(len(recv)))
+		}
 	}
 }

@@ -164,7 +164,7 @@ func BenchmarkQuickSimple(b *testing.B) {
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
 
 	for n := 0; n < b.N; n++ {
-		randSli := dashrand.IntSli(100, 0, 90)
+		randSli := dashrand.NumSlice(100, 0, 90)
 		dashsort.Quick(randSli)
 	}
 }
@@ -179,7 +179,7 @@ func BenchmarkQuickParallel(b *testing.B) {
 	b.ResetTimer() //b.ResetTimer()之前的处理 不会放到 执行时间里，也不会输出到报告中，所以可以在之前 做一些不计划 作为测试报告的操作
 
 	for n := 0; n < b.N; n++ {
-		randSli := dashrand.IntSli(100, 0, 90)
+		randSli := dashrand.NumSlice(100, 0, 90)
 		dashsort.QuickParallel(randSli)
 	}
 }

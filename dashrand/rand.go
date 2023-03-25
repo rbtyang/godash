@@ -1,36 +1,44 @@
 package dashrand
 
 import (
-	"math"
 	"math/rand"
 	"reflect"
 	"time"
 )
 
+//组合模式
 type RandMode string
 
 const (
-	ModeNum        RandMode = "0123456789"                 //数字
-	Modeaz         RandMode = "abcdefghijklmnopqrstuvwxyz" //小写字符
-	ModeAZ         RandMode = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" //大写字符
-	ModeSp         RandMode = "!@#$%^&*()_+~"              //特殊字符
-	ModeNumAlpha            = ModeNum + Modeaz + ModeAZ
-	ModeNumAlphaSp          = ModeNum + Modeaz + ModeAZ + ModeSp
+	ModeNum        RandMode = "0123456789"                       //整数
+	Modeaz         RandMode = "abcdefghijklmnopqrstuvwxyz"       //小写字母
+	ModeAZ         RandMode = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"       //大写字母
+	ModeSp         RandMode = "~!@#$%^&*()_+"                    //特殊字符
+	ModeNumAlpha            = ModeNum + Modeaz + ModeAZ          //整数+小写字母+大写字母
+	ModeNumAlphaSp          = ModeNum + Modeaz + ModeAZ + ModeSp //整数+小写字母+大写字母+特殊字符
 )
 
 /*
 @Editor robotyang at 2023
 
-Str  @return str
+Str 生成随机字符串
+
+@Param mode 字符组合模式
+
+@Param length 要生成的字符长度
+
+@Return str 随机字符
 */
-func Str(mode RandMode, n uint16) string {
+func Str(mode RandMode, length uint) string {
 	time.Sleep(time.Nanosecond)
 	rand.Seed(time.Now().UnixNano())
-	randRune := make([]rune, n)
-	var chList = []rune(mode)
-	length := len(chList)
+
+	var charLib = []rune(mode)
+	charLibLen := len(charLib)
+
+	randRune := make([]rune, length)
 	for i := range randRune {
-		randRune[i] = chList[rand.Intn(length)]
+		randRune[i] = charLib[rand.Intn(charLibLen)]
 	}
 	return string(randRune)
 }
@@ -40,7 +48,11 @@ func Str(mode RandMode, n uint16) string {
 
 Num 生成范围内的 随机数
 
-@return [min, max)
+@Param min 下限（包含）
+
+@Param max 上限（不包含）
+
+@Return [min, max)
 */
 func Num[T int | int64 | float64](min, max T) T {
 	switch reflect.TypeOf(min).Kind() {
@@ -61,22 +73,15 @@ func Num[T int | int64 | float64](min, max T) T {
 /*
 @Editor robotyang at 2023
 
-NumLen 生成固定长度的 随机数
-*/
-func NumLen(len int) int {
-	min := math.Pow10(len - 1)
-	max := min * 10
-	return Num(int(min), int(max))
-}
+NumSlice 生成范围内的 随机数切片
 
-/*
-@Editor robotyang at 2023
+@Param min 下限（包含）
 
-IntSli is a ...
+@Param max 上限（不包含）
 */
-func IntSli(len, min, max int) []int {
-	sli := make([]int, len)
-	for i := 0; i < len; i++ {
+func NumSlice[T int | int64 | float64](length uint, min, max T) []T {
+	sli := make([]T, length)
+	for i := uint(0); i < length; i++ {
 		sli[i] = Num(min, max)
 	}
 	return sli

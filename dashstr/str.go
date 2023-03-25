@@ -1,6 +1,7 @@
 package dashstr
 
 import (
+	"regexp"
 	"strings"
 	"unicode"
 )
@@ -23,7 +24,7 @@ func UpperFirst(s string) string {
  驼峰转蛇形 snake string
  @description XxYy to xx_yy , XxYY to xx_y_y
  @param s 需要转换的字符串
- @return string
+ @Return string
 */
 func SnakeString(s string) string {
 	return snakeStr(s, '_')
@@ -35,7 +36,7 @@ func SnakeString(s string) string {
  驼峰转蛇形 snake string
  @description XxYy to xx-yy , XxYY to xx-y-y
  @param s 需要转换的字符串
- @return string
+ @Return string
 */
 func SnakeStringStrike(s string) string {
 	return snakeStr(s, '-')
@@ -73,7 +74,7 @@ func snakeStr(s string, sep byte) string {
  蛇形转驼峰
  @description xx_yy to XxYx  xx_y_y to XxYY
  @param s要转换的字符串
- @return string
+ @Return string
 */
 func CamelStringStrike(s string) string {
 	return camelStr(s, '-')
@@ -85,7 +86,7 @@ func CamelStringStrike(s string) string {
  蛇形转驼峰
  @description xx-yy to XxYx  xx-y-y to XxYY
  @param s要转换的字符串
- @return string
+ @Return string
 */
 func CamelString(s string) string {
 	return camelStr(s, '_')
@@ -123,7 +124,9 @@ func camelStr(s string, sep byte) string {
 /*
 @Editor robotyang at 2023
 
-IsDigit  判断是否为 纯数字 字符串
+IsDigit 判断是否为 纯整数
+
+@Param str 待判断的字符
 */
 func IsDigit(str string) bool {
 	if "" == str {
@@ -135,4 +138,64 @@ func IsDigit(str string) bool {
 		}
 	}
 	return true
+}
+
+/*
+@Editor robotyang at 2023
+
+IsLetter 判断是否为 纯字母
+
+@Param str 待判断的字符
+*/
+func IsLetter(str string) bool {
+	b, err := regexp.MatchString("^([A-z]+)$", str)
+	if err != nil {
+		panic("dashstr.IsLetter: " + err.Error())
+	}
+	return b
+}
+
+/*
+@Editor robotyang at 2023
+
+IsDigitLetter 判断是否为 整数+字母
+
+@Param str 待判断的字符
+*/
+func IsDigitLetter(str string) bool {
+	b, err := regexp.MatchString("^([0-9A-z]+)$", str)
+	if err != nil {
+		panic("dashstr.IsDigitLetter: " + err.Error())
+	}
+	return b
+}
+
+/*
+@Editor robotyang at 2023
+
+IsCapitalLetter 判断是否为 纯大写字母
+
+@Param str 待判断的字符
+*/
+func IsCapitalLetter(str string) bool {
+	b, err := regexp.MatchString("^([A-Z]+)$", str)
+	if err != nil {
+		panic("dashstr.IsCapitalLetter: " + err.Error())
+	}
+	return b
+}
+
+/*
+@Editor robotyang at 2023
+
+IsSmallLetter 判断是否为 纯小写字母
+
+@Param str 待判断的字符
+*/
+func IsSmallLetter(str string) bool {
+	b, err := regexp.MatchString("^([a-z]+)$", str)
+	if err != nil {
+		panic("dashstr.IsSmallLetter: " + err.Error())
+	}
+	return b
 }

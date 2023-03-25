@@ -3,6 +3,7 @@ package dasharr
 import (
 	"github.com/rbtyang/godash/dashlog"
 	"github.com/spf13/cast"
+	"math"
 	"reflect"
 	"strings"
 )
@@ -121,4 +122,29 @@ func JoinAny(elems []any, sep string) string {
 	}
 
 	return b.String()
+}
+
+/*
+@Editor robotyang at 2023
+
+@Reference strings.Join
+
+Chunk 将数组（array）拆分成多个 size 长度的区块，并将这些区块组成一个新数组。 如果array 无法被分割成全部等长的区块，那么最后剩余的元素将组成一个区块。
+
+@Param elems 切片值的类型 仅支持数值、字符串 或者两者的混合
+
+@Param separator 分隔符
+*/
+func Chunk[T any](array []T, size uint) [][]T {
+	arrLen := uint(len(array))
+	chunkLen := uint(math.Ceil(float64(arrLen / size)))
+	chunkRes := make([][]T, 0, chunkLen+1)
+	for i := uint(0); i < arrLen; i = i + size {
+		if i > arrLen-size {
+			chunkRes = append(chunkRes, array[i:])
+		} else {
+			chunkRes = append(chunkRes, array[i:i+size])
+		}
+	}
+	return chunkRes
 }

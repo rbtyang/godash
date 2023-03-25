@@ -13,7 +13,11 @@ var cuspre string
 /*
 @Editor robotyang at 2023
 
-Pre  @return.error always nil
+Pre 设置日志前缀
+
+@Param pre 日志前缀字符串
+
+@Return.error always nil
 */
 func Pre(pre string) (func(), error) {
 	cuspre = pre

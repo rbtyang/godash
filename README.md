@@ -1,4 +1,5 @@
 # godash - 丰富易用的、带详细说明和用例的 Golang 工具库、函数集、方法集
+
 > A rich, easy-to-use Golang library of tools, functions, and methods with detailed instructions and use cases
 
 [![Latest](https://img.shields.io/badge/latest-v0.0.1-blue.svg)](https://github.com/Andrew-M-C/go.jsonvalue/tree/v0.0.1)
@@ -18,9 +19,21 @@
   <img src="https://contributors-img.web.app/image?repo=rbtyang/godash" />
 </a>
 
+### 开发规范
+
+- 必须使用 `commitizen` 插件提交规范的 commit msg
+  - [官方插件仓库](https://github.com/commitizen/cz-cli)
+  - [大佬介绍文档](https://www.jianshu.com/p/d264f88d13a4)
+  - [Jetbrains插件](https://plugins.jetbrains.com/plugin/9861-git-commit-template)
+- 必须编写 详细的规范的 包注释、方法注释，格式参考已有的注释，并能通过 `pkgsite` 正常渲染
+  - [官方工具仓库](https://github.com/golang/pkgsite)
+  - [大佬介绍文档](https://cloud.tencent.com/developer/article/1959696?from=10910)
+- 必须设计 每个方法/类 的单测用例（至少4个case），建议编写 基准测试用例（benchmark），类包 必须设计 `example` 示例用例
+- 函数设计 请充分利用 go并发优势，比如可以提供 常规版本和并发版本 给使用者自由选择
+
 ## 联系我们
 
-- 微信号 `RobotYang7` (加我进微信群，需备注“来自github”)。
+- 微信号 `RobotYang7` (加我进微信群，需备注“来自`Github`”)。
 
 <img width="350" src="./doc/微信二维码.jpg">
 
@@ -56,3 +69,7 @@ crypto-js //加解密、哈希
 assert //断言
 mocha //单测
 ```
+
+## 友情链接
+
+- [iThings](https://github.com/i4de/ithings)

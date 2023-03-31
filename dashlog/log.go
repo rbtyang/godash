@@ -2,6 +2,7 @@ package dashlog
 
 import (
 	"fmt"
+	"github.com/rbtyang/godash/dashrun"
 	"log"
 )
 
@@ -33,7 +34,8 @@ func Pre(pre string) (func(), error) {
 Debug is a ...
 */
 func Debug(args ...interface{}) {
-	log.Printf(withPre("dashlog.Debug")+"%#v", args)
+	prefix := withPre("dashlog.Debug", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+"%#v", args)
 }
 
 /*
@@ -42,7 +44,8 @@ func Debug(args ...interface{}) {
 Debugf is a ...
 */
 func Debugf(format string, args ...interface{}) {
-	log.Printf(withPre("dashlog.Debug")+format, args...)
+	prefix := withPre("dashlog.Debug", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+format, args...)
 }
 
 /*
@@ -51,7 +54,8 @@ func Debugf(format string, args ...interface{}) {
 Info is a ...
 */
 func Info(args ...interface{}) {
-	log.Printf(withPre("dashlog.Info")+"%#v", args)
+	prefix := withPre("dashlog.Info", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+"%#v", args)
 }
 
 /*
@@ -60,7 +64,8 @@ func Info(args ...interface{}) {
 Infof is a ...
 */
 func Infof(format string, args ...interface{}) {
-	log.Printf(withPre("dashlog.Info")+format, args...)
+	prefix := withPre("dashlog.Info", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+format, args...)
 }
 
 /*
@@ -69,7 +74,8 @@ func Infof(format string, args ...interface{}) {
 Warn is a ...
 */
 func Warn(args ...interface{}) {
-	log.Printf(withPre("dashlog.Warn")+"%#v", args)
+	prefix := withPre("dashlog.Warn", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+"%#v", args)
 }
 
 /*
@@ -78,7 +84,8 @@ func Warn(args ...interface{}) {
 Warnf is a ...
 */
 func Warnf(format string, args ...interface{}) {
-	log.Printf(withPre("dashlog.Warn")+format, args...)
+	prefix := withPre("dashlog.Warn", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+format, args...)
 }
 
 /*
@@ -87,7 +94,8 @@ func Warnf(format string, args ...interface{}) {
 Error is a ...
 */
 func Error(args ...interface{}) {
-	log.Printf(withPre("dashlog.Error")+"%#v", args)
+	prefix := withPre("dashlog.Error", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+"%#v", args)
 }
 
 /*
@@ -96,7 +104,8 @@ func Error(args ...interface{}) {
 Errorf is a ...
 */
 func Errorf(format string, args ...interface{}) {
-	log.Printf(withPre("dashlog.Error")+format, args...)
+	prefix := withPre("dashlog.Error", dashrun.LastCallerFuncName(true))
+	log.Printf(prefix+format, args...)
 }
 
 /*
@@ -105,7 +114,8 @@ func Errorf(format string, args ...interface{}) {
 Panic is a ...
 */
 func Panic(args ...interface{}) {
-	log.Panicf(withPre("dashlog.Panic")+"%#v", args)
+	prefix := withPre("dashlog.Panic", dashrun.LastCallerFuncName(true))
+	log.Panicf(prefix+"%#v", args)
 }
 
 /*
@@ -114,7 +124,8 @@ func Panic(args ...interface{}) {
 Panicf is a ...
 */
 func Panicf(format string, args ...interface{}) {
-	log.Panicf(withPre("dashlog.Panic")+format, args...)
+	prefix := withPre("dashlog.Panic", dashrun.LastCallerFuncName(true))
+	log.Panicf(prefix+format, args...)
 }
 
 /*
@@ -123,7 +134,8 @@ func Panicf(format string, args ...interface{}) {
 Fatal is a ...
 */
 func Fatal(args ...interface{}) {
-	log.Fatalf(withPre("dashlog.Fatal")+"%#v", args)
+	prefix := withPre("dashlog.Fatal", dashrun.LastCallerFuncName(true))
+	log.Fatalf(prefix+"%#v", args)
 }
 
 /*
@@ -132,7 +144,8 @@ func Fatal(args ...interface{}) {
 Fatalf is a ...
 */
 func Fatalf(format string, args ...interface{}) {
-	log.Fatalf(withPre("dashlog.Fatal")+format, args...)
+	prefix := withPre("dashlog.Fatal", dashrun.LastCallerFuncName(true))
+	log.Fatalf(prefix+format, args...)
 }
 
 /*
@@ -140,12 +153,12 @@ func Fatalf(format string, args ...interface{}) {
 
 withPre is a ...
 */
-func withPre(dashpre string) string {
+func withPre(levelPre, lastFunc string) string {
 	var prefix string
 	if cuspre == "" {
-		prefix = fmt.Sprintf("[%v] ", dashpre)
+		prefix = fmt.Sprintf("[%v] [%v] ", levelPre, lastFunc)
 	} else {
-		prefix = fmt.Sprintf("[%v] [%v] ", dashpre, cuspre)
+		prefix = fmt.Sprintf("[%v] [%v] [%v] ", levelPre, cuspre, lastFunc)
 	}
 	return prefix
 }

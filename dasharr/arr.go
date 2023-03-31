@@ -3,9 +3,9 @@ package dasharr
 import (
 	"github.com/rbtyang/godash/dashlog"
 	"github.com/spf13/cast"
-	"math"
 	"reflect"
 	"strings"
+	"sync"
 )
 
 /*
@@ -127,24 +127,140 @@ func JoinAny(elems []any, sep string) string {
 /*
 @Editor robotyang at 2023
 
-@Reference strings.Join
-
 Chunk 将数组（array）拆分成多个 size 长度的区块，并将这些区块组成一个新数组。 如果array 无法被分割成全部等长的区块，那么最后剩余的元素将组成一个区块。
 
-@Param elems 切片值的类型 仅支持数值、字符串 或者两者的混合
+@Param array 待拆分的数组
 
-@Param separator 分隔符
+@Param size 区块大小（size>0）
 */
-func Chunk[T any](array []T, size uint) [][]T {
-	arrLen := uint(len(array))
-	chunkLen := uint(math.Ceil(float64(arrLen / size)))
-	chunkRes := make([][]T, 0, chunkLen+1)
-	for i := uint(0); i < arrLen; i = i + size {
-		if i > arrLen-size {
-			chunkRes = append(chunkRes, array[i:])
-		} else {
-			chunkRes = append(chunkRes, array[i:i+size])
+func Chunk[T any](slice []T, size uint) [][]T {
+	if size <= 0 {
+		panic("dasharrr.Chunk: size cannot be zero")
+	}
+	sizeInt := int(size)
+	numChunks := (len(slice) + sizeInt - 1) / sizeInt
+	result := make([][]T, numChunks)
+	for i := 0; i < numChunks; i++ {
+		start := i * sizeInt
+		end := start + sizeInt
+		if end > len(slice) {
+			end = len(slice)
+		}
+		result[i] = slice[start:end]
+	}
+	return result
+}
+
+/*
+@Editor robotyang at 2023
+
+FilterBy 根据用户自定义函数，过滤数组元素（性能最佳）
+
+@Param array 待过滤的数组
+
+@Param userFn 用户自定义过滤函数
+
+@Return 过滤后的数组
+*/
+func FilterBy[T any](array []T, userFn func(T) bool) []T {
+	newArr := make([]T, 0, len(array))
+	for _, item := range array {
+		if userFn(item) {
+			newArr = append(newArr, item)
 		}
 	}
-	return chunkRes
+	return newArr
+}
+
+/*
+@Editor robotyang at 2023
+
+Deprecated: FilterByWg 根据用户自定义函数，过滤数组元素（性能不佳，仅供学习）
+
+@Param array 待过滤的数组
+
+@Param userFn 用户自定义过滤函数
+
+@Return 过滤后的数组
+*/
+func FilterByWg[T any](array []T, userFn func(T) bool) []T {
+	var mu sync.Mutex
+	newArr := make([]T, 0, len(array))
+	var wg sync.WaitGroup
+	wg.Add(len(array))
+
+	// 启动 goroutine 并发处理
+	for _, item := range array {
+		go func(item T) {
+			defer wg.Done()
+			if userFn(item) {
+				mu.Lock()
+				newArr = append(newArr, item)
+				mu.Unlock()
+			}
+		}(item)
+	}
+
+	wg.Wait() // 等待所有 goroutine 执行完毕
+
+	return newArr
+}
+
+func FilterNull[T any](array []T) []T {
+	return FilterByWg(array, func(item T) bool {
+		return cast.ToInt(item) == 0
+	})
+}
+
+/*
+@Editor robotyang at 2023
+
+Deprecated: FilterByChan 根据用户自定义函数，过滤数组元素（性能不佳，仅供学习）
+
+@Param array 待过滤的数组
+
+@Param userFn 用户自定义过滤函数
+
+@Return 过滤后的数组
+*/
+func FilterByChan[T any](array []T, userFn func(T) bool, maxGoroutines int) []T {
+	var wg sync.WaitGroup
+	chs := make([]chan T, maxGoroutines) // 定义多个channel，个数为最大并发goroutine数
+	sm := sync.Map{}
+
+	// 从多个channel中接收元素进行处理
+	for i := range chs {
+		chs[i] = make(chan T)
+		wg.Add(1)
+		go func(j int, ch chan T) {
+			defer wg.Done()
+			var localArr []T // 为每个goroutine创建一个局部slice
+			for item := range ch {
+				if userFn(item) { // 调用用户自定义函数进行处理
+					localArr = append(localArr, item) // 成功则将元素写入局部slice
+				}
+			}
+			sm.Store(j, localArr)
+		}(i, chs[i])
+	}
+
+	for i, item := range array {
+		chs[i%maxGoroutines] <- item // 将元素均衡分布到多个channel中
+	}
+
+	// 关闭所有channel
+	for _, ch := range chs {
+		close(ch)
+	}
+
+	var res []T
+	wg.Wait()
+
+	// 将所有局部slice的结果合并
+	sm.Range(func(i any, item any) bool {
+		res = append(res, item.([]T)...)
+		return true
+	})
+
+	return res // 返回筛选结果
 }

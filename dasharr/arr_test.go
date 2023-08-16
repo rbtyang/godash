@@ -408,55 +408,43 @@ Test_Chunk is a ...
 */
 func Test_Chunk(t *testing.T) {
 	{
-		array := []string{"a", "b", "c", "d"}
-		{
-			want := [][]string{{"a", "b", "c"}, {"d"}}
-			recv := dasharr.Chunk(array, 0)
-			assert.Equal(t, want, recv)
-		}
-		{
-			want := [][]string{{"a", "b", "c"}, {"d"}}
-			recv := dasharr.Chunk(array, 3)
-			assert.Equal(t, want, recv)
-		}
-	}
-}
-
-/*
-Test_Chunk_RandIntArr is a ...
-*/
-func Test_Chunk_RandIntArr(t *testing.T) {
-	//input := dashrand.NumSlice(100000, -100, 100)
-	{
-		array := []string{"a", "b", "c", "d"}
+		slice := []string{"a", "b", "c", "d"}
 		{
 			want := [][]string{{"a"}, {"b"}, {"c"}, {"d"}}
-			recv := dasharr.Chunk(array, 1)
+			recv := dasharr.Chunk(slice, 1)
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := [][]string{{"a", "b", "c"}, {"d"}}
-			recv := dasharr.Chunk(array, 3)
+			recv := dasharr.Chunk(slice, 3)
 			assert.Equal(t, want, recv)
 		}
 	}
 	{
-		array := []string{"a", "b", "c", "d", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n"}
+		slice := []any{"a", "b", 1, 2, "d"}
+		{
+			want := [][]any{{"a", "b", 1}, {2, "d"}}
+			recv := dasharr.Chunk(slice, 3)
+			assert.Equal(t, want, recv)
+		}
+	}
+	{
+		slice := []string{"a", "b", "c", "d", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n"}
 		{
 			want := [][]string{{"a", "b", "c"}, {"d", "d", "f"}, {"g", "h", "i"}, {"j", "k", "l"}, {"m", "n"}}
-			recv := dasharr.Chunk(array, 3)
+			recv := dasharr.Chunk(slice, 3)
 			assert.Equal(t, want, recv)
 		}
 		{
 			want := [][]string{{"a", "b", "c", "d", "d", "f"}, {"g", "h", "i", "j", "k", "l"}, {"m", "n"}}
-			recv := dasharr.Chunk(array, 6)
+			recv := dasharr.Chunk(slice, 6)
 			assert.Equal(t, want, recv)
 		}
 	}
 }
 
 /*
-Test_Chunk_RandIntArr is a ...
+Benchmark_Chunk_RandIntArr is a ...
 */
 func Benchmark_Chunk_RandIntArr(b *testing.B) {
 	input := dashrand.NumSlice(100000, -100, 100)

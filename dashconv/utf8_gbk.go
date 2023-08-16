@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 GbkToUtf8 is a ...
 */
 func GbkToUtf8(s []byte) ([]byte, error) {
@@ -23,8 +21,6 @@ func GbkToUtf8(s []byte) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Utf8ToGbk is a ...
 */
 func Utf8ToGbk(s []byte) ([]byte, error) {
@@ -37,8 +33,6 @@ func Utf8ToGbk(s []byte) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TransEncoding 转换编码类型
 */
 func TransEncoding(src string, srcCode string, dstCode string) string {

@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 TestIp2binary is a ...
 */
 func TestIp2binary(t *testing.T) {
@@ -20,8 +18,6 @@ func TestIp2binary(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestMatchIP is a ...
 */
 func TestMatchIP(t *testing.T) {

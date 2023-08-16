@@ -6,8 +6,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 通用切片入参示例
 
 Example of common slice entry parameter
@@ -21,8 +19,6 @@ func ExampleInclude_slice_general() {
 }
 
 /*
-@Editor robotyang at 2023
-
 结构体切片入参示例
 
 Example of structure slice entry parameter

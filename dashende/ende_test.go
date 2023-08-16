@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -17,8 +15,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestBase64Encrypt is a ...
 */
 func TestBase64Encrypt(t *testing.T) {
@@ -39,8 +35,6 @@ func TestBase64Encrypt(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestBase64UrlEncrypt is a ...
 */
 func TestBase64UrlEncrypt(t *testing.T) {

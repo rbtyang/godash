@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -18,8 +16,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestAesBs64Encrypt is a ...
 */
 func TestAesBs64Encrypt(t *testing.T) {
@@ -43,8 +39,6 @@ func TestAesBs64Encrypt(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestAesCbcEncrypt is a ...
 */
 func TestAesCbcEncrypt(t *testing.T) {
@@ -68,8 +62,6 @@ func TestAesCbcEncrypt(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestAesEcbEncrypt is a ...
 */
 func TestAesEcbEncrypt(t *testing.T) {

@@ -23,8 +23,6 @@ type Dasherr struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 New 实例化错误类
 */
 func New(err ...error) *Dasherr {
@@ -38,8 +36,6 @@ func New(err ...error) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Err is a ...
 */
 func Err(err ...error) *Dasherr {
@@ -47,8 +43,6 @@ func Err(err ...error) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Code is a ...
 */
 func Code(code uint32) *Dasherr {
@@ -56,8 +50,6 @@ func Code(code uint32) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Pre is a ...
 */
 func Pre(msg string) *Dasherr {
@@ -65,8 +57,6 @@ func Pre(msg string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Pref is a ...
 */
 func Pref(format string, a ...interface{}) *Dasherr {
@@ -74,8 +64,6 @@ func Pref(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Msg is a ...
 */
 func Msg(msg string) *Dasherr {
@@ -83,8 +71,6 @@ func Msg(msg string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Msgf is a ...
 */
 func Msgf(format string, a ...interface{}) *Dasherr {
@@ -92,8 +78,6 @@ func Msgf(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Log is a ...
 */
 func Log(log string) *Dasherr {
@@ -101,8 +85,6 @@ func Log(log string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Logf is a ...
 */
 func Logf(format string, a ...interface{}) *Dasherr {
@@ -110,8 +92,6 @@ func Logf(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Err is a ...
 */
 func (m *Dasherr) Err(err error) *Dasherr {
@@ -151,8 +131,6 @@ func (m *Dasherr) Err(err error) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Pre is a ...
 */
 func (m *Dasherr) Pre(prefix string) *Dasherr {
@@ -161,8 +139,6 @@ func (m *Dasherr) Pre(prefix string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Pref is a ...
 */
 func (m *Dasherr) Pref(format string, a ...interface{}) *Dasherr {
@@ -170,8 +146,6 @@ func (m *Dasherr) Pref(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 withPre 错误加前缀
 */
 func (m *Dasherr) withPre(errStr string) string {
@@ -183,8 +157,6 @@ func (m *Dasherr) withPre(errStr string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Code 设置错误码
 */
 func (m *Dasherr) Code(code uint32) *Dasherr {
@@ -196,8 +168,6 @@ func (m *Dasherr) Code(code uint32) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Msg 设置 错误消息（用户看）
 */
 func (m *Dasherr) Msg(msg string) *Dasherr {
@@ -210,8 +180,6 @@ func (m *Dasherr) Msg(msg string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Msgf 设置 错误消息（用户看）
 */
 func (m *Dasherr) Msgf(format string, a ...interface{}) *Dasherr {
@@ -219,8 +187,6 @@ func (m *Dasherr) Msgf(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Log 设置 日志消息（开发看）
 */
 func (m *Dasherr) Log(log string) *Dasherr {
@@ -229,8 +195,6 @@ func (m *Dasherr) Log(log string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Logf 设置 日志消息（开发看）
 */
 func (m *Dasherr) Logf(format string, a ...interface{}) *Dasherr {
@@ -238,8 +202,6 @@ func (m *Dasherr) Logf(format string, a ...interface{}) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
-
 Error 必须实现的接口
 */
 func (m *Dasherr) Error() string {

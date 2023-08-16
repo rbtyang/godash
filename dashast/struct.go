@@ -123,8 +123,6 @@ type (
 )
 
 /*
-@Editor robotyang at 2023
-
 GetFieldWithName is a ...
 */
 func (s Struct) GetFieldWithName(name string) *Field {
@@ -137,8 +135,6 @@ func (s Struct) GetFieldWithName(name string) *Field {
 }
 
 /*
-@Editor robotyang at 2023
-
 String is a ...
 */
 func (t Type) String() string {
@@ -146,8 +142,6 @@ func (t Type) String() string {
 }
 
 /*
-@Editor robotyang at 2023
-
 InnerAddSuffix 内部字段添加后缀
 */
 func (t Type) InnerAddSuffix(suffix string) Type {
@@ -162,8 +156,6 @@ func (t Type) InnerAddSuffix(suffix string) Type {
 }
 
 /*
-@Editor robotyang at 2023
-
 Copy is a ...
 */
 func (i Interface) Copy() (new Interface) {
@@ -191,8 +183,6 @@ func (i Interface) Copy() (new Interface) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Copy is a ...
 */
 func (t Type) Copy() (new Type) {
@@ -208,8 +198,6 @@ func (t Type) Copy() (new Type) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Copy is a ...
 */
 func (t Field) Copy() (new Field) {
@@ -226,8 +214,6 @@ func (t Field) Copy() (new Field) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Fmt is a ...
 */
 func (t Type) Fmt() string {
@@ -249,8 +235,6 @@ func (t Type) Fmt() string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Cmp 比较是否类型相同
 */
 func (t Type) Cmp(t2 Type) bool {
@@ -271,8 +255,6 @@ func (t Type) Cmp(t2 Type) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 IsInnerStruct is a ...
 */
 func (t Type) IsInnerStruct() bool {
@@ -288,8 +270,6 @@ func (t Type) IsInnerStruct() bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 handleType is a ...
 */
 func handleType(expr ast.Expr) (ret Type) {

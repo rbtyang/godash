@@ -32,8 +32,6 @@ func Sha512(str string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Hmac 以一个密钥和一个消息为输入，生成一个消息摘要作为输出。
 */
 func Hmac(salt, str string) string {

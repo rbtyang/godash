@@ -12,8 +12,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -21,8 +19,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestBuiltinSortSlice is a ...
 */
 func TestBuiltinSortSlice(t *testing.T) {
@@ -69,8 +65,6 @@ func TestBuiltinSortSlice(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestBubble is a ...
 */
 func TestBubble(t *testing.T) {
@@ -89,8 +83,6 @@ func TestBubble(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestInsertion is a ...
 */
 func TestInsertion(t *testing.T) {
@@ -115,8 +107,6 @@ func TestInsertion(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestSelection is a ...
 */
 func TestSelection(t *testing.T) {
@@ -129,8 +119,6 @@ func TestSelection(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestQuick is a ...
 */
 func TestQuick(t *testing.T) {
@@ -155,8 +143,6 @@ func TestQuick(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkQuickSimple go test -bench=QuickSimple$
 */
 func BenchmarkQuickSimple(b *testing.B) {
@@ -170,8 +156,6 @@ func BenchmarkQuickSimple(b *testing.B) {
 }
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkQuickParallel go test -bench=QuickParallel$
 */
 func BenchmarkQuickParallel(b *testing.B) {

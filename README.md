@@ -28,21 +28,12 @@
 - 必须编写 详细的规范的 包注释、方法注释，格式参考已有的注释，并能通过 `pkgsite` 正常渲染
   - [官方工具仓库](https://github.com/golang/pkgsite)
   - [大佬介绍文档](https://cloud.tencent.com/developer/article/1959696?from=10910)
-- 必须设计 每个方法/类 的单测用例（至少4个case），建议编写 基准测试用例（benchmark），类包 必须设计 `example` 示例用例
-- 函数设计 请充分利用 go并发优势，比如可以提供 常规版本和并发版本 给使用者自由选择
-
-## 联系我们
-
-- 微信号 `RobotYang7` (加我进微信群，需备注“来自`Github`”)。
-
-<img width="350" src="./doc/微信二维码.jpg">
-
-## 好评赞赏
-
-- 如果该项目对你有帮助，希望获得您肯定的赞赏， 我们将有动力提供更多支持！
-
-<img width="350" src="./doc/微信赞赏码.jpg">
-
+  - `pkgsite标题` 的结尾不能是 标点符号、特殊符号，否则 pkgsite 识别不到子标题
+  - 动态监控启动 `本地pkgsite` 命令：运行根目录的 `fileboy.sh` 脚本
+  - 单独手动启动 `本地pkgsite` 命令：运行根目录的 `pkgsite.sh` 脚本
+- 必须设计 每个方法/类 的单测用例（至少`4个case`），建议编写 基准测试用例（`benchmark`），类包 必须设计 `example` 示例用例
+- 函数设计 请充分利用 `go并发`优势，比如可以提供 常规版本和并发版本 给使用者自由选择
+- 尽量使用 `泛型`实现，减少冗余逻辑
 
 --- 
 
@@ -73,3 +64,15 @@ mocha //单测
 ## 友情链接
 
 - [iThings](https://github.com/i4de/ithings)
+
+## 联系我们
+
+- 微信号 `RobotYang7` (加我进微信群，需备注“来自`Github`”)。
+
+<img width="350" src="./doc/微信二维码.jpg">
+
+## 好评赞赏
+
+- 如果该项目对你有帮助，希望获得您肯定的赞赏， 我们将有动力提供更多支持！
+
+<img width="350" src="./doc/微信赞赏码.jpg">

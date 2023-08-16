@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-//组合模式
+// 组合模式
 type RandMode string
 
 const (
@@ -19,8 +19,6 @@ const (
 )
 
 /*
-@Editor robotyang at 2023
-
 Str 生成随机字符串
 
 @Param mode 字符组合模式
@@ -44,8 +42,6 @@ func Str(mode RandMode, length uint) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Num 生成范围内的 随机数
 
 @Param min 下限（包含）
@@ -71,8 +67,6 @@ func Num[T int | int64 | float64](min, max T) T {
 }
 
 /*
-@Editor robotyang at 2023
-
 NumSlice 生成范围内的 随机数切片
 
 @Param min 下限（包含）

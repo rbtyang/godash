@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 CPUPercent is a ...
 */
 func CPUPercent() float64 {
@@ -21,8 +19,6 @@ func CPUPercent() float64 {
 }
 
 /*
-@Editor robotyang at 2023
-
 MemoryPercent is a ...
 */
 func MemoryPercent() float64 {
@@ -34,8 +30,6 @@ func MemoryPercent() float64 {
 }
 
 /*
-@Editor robotyang at 2023
-
 SwapPercent is a ...
 */
 func SwapPercent() float64 {
@@ -47,8 +41,6 @@ func SwapPercent() float64 {
 }
 
 /*
-@Editor robotyang at 2023
-
 DiskPercent is a ...
 */
 func DiskPercent() float64 {

@@ -6,8 +6,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 FileEncryptByZyx 文件加密；
 
 @Param srcFilePath 需加密的 文件路径；
@@ -73,8 +71,6 @@ func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error
 }
 
 /*
-@Editor robotyang at 2023
-
 FileDecryptByZyx 文件解密；
 
 @Param srcFilePath 需解密的 文件路径；

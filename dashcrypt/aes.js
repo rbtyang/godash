@@ -1,6 +1,4 @@
 /*
-@Editor robotyang at 2023
-
 AES包引入使用说明：
     1、先在前端项目根目录下，执行 yarn add crypto-js 安装 https://github.com/brix/crypto-js
     2、再将当前的 js文件 copy到 前端项目中的任意位置，如 @/utils/aes.js

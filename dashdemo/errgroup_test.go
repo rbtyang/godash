@@ -10,8 +10,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -19,8 +17,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestErrGroup is a ...
 */
 func TestErrGroup(t *testing.T) {

@@ -10,8 +10,6 @@ type Set[T comparable] struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 NewSet 构造Set
 
 集合set（存储的元素是唯一的）
@@ -25,8 +23,6 @@ func NewSet[T comparable]() *Set[T] {
 }
 
 /*
-@Editor robotyang at 2023
-
 NewSet 构造有元素的Set
 
 集合set（存储的元素是唯一的）

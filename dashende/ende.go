@@ -5,8 +5,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 Base64Encode is a ...
 */
 func Base64Encode(plainstr string) string {
@@ -15,8 +13,6 @@ func Base64Encode(plainstr string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Base64Decode is a ...
 */
 func Base64Decode(cipherstr string) (string, error) {
@@ -28,8 +24,6 @@ func Base64Decode(cipherstr string) (string, error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Base64UrlEncode is a ...
 
 URL和文件名安全方式 是 标准方式的变体，其输出 用于URL和文件名。
@@ -44,8 +38,6 @@ func Base64UrlEncode(plainstr string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Base64UrlDecode is a ...
 
 URL和文件名安全方式 是 标准方式的变体，其输出 用于URL和文件名。

@@ -3,8 +3,6 @@ package dashconv
 import "github.com/goinggo/mapstructure"
 
 /*
-@Editor robotyang at 2023
-
 WeakMapToStructWithTag 解析map 到结构体（自定义tag 作为 key）
 */
 func WeakMapToStructWithTag(inMap, outStruct interface{}, tagName string) error {

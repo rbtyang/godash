@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 TestEnv is a ...
 */
 func TestEnv(t *testing.T) {

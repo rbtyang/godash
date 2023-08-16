@@ -28,8 +28,6 @@ type redisSt struct {
 var config = configSt{&redisSt{}}
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -64,8 +62,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestLock is a ...
 */
 func TestLock(t *testing.T) {

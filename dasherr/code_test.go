@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -18,8 +16,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestParseCode is a ...
 */
 func TestRegisterCode(t *testing.T) {
@@ -40,8 +36,6 @@ func TestRegisterCode(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestParseCode is a ...
 */
 func TestParseCode(t *testing.T) {
@@ -83,8 +77,6 @@ func TestParseCode(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestGetCodeMsg is a ...
 */
 func TestGetCodeMsg(t *testing.T) {

@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -35,8 +33,6 @@ func TestUtf8ToGbk(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestTransEncoding is a ...
 */
 func TestTransEncoding(t *testing.T) {

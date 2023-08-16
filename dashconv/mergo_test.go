@@ -18,8 +18,6 @@ type Config struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestMergo is a ...
 */
 func TestMergo(t *testing.T) {

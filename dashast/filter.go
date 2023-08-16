@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-//返回true 可以继续执行，返回false 过滤掉这个数据
+// 返回true 可以继续执行，返回false 过滤掉这个数据
 type (
 	FieldFilter  func(*ast.Field) bool
 	StructFilter func(*ast.TypeSpec) bool
@@ -13,8 +13,6 @@ type (
 )
 
 /*
-@Editor robotyang at 2023
-
 WithFieldFilter is a ...
 */
 func WithFieldFilter(filter ...FieldFilter) *Option {
@@ -26,8 +24,6 @@ func WithFieldFilter(filter ...FieldFilter) *Option {
 }
 
 /*
-@Editor robotyang at 2023
-
 WithStructFilter is a ...
 */
 func WithStructFilter(filter ...StructFilter) *Option {
@@ -39,8 +35,6 @@ func WithStructFilter(filter ...StructFilter) *Option {
 }
 
 /*
-@Editor robotyang at 2023
-
 WithFuncFilter is a ...
 */
 func WithFuncFilter(filter ...FuncFilter) *Option {
@@ -57,8 +51,6 @@ type FilterFuncOpt struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 FilterFuncList 只返回 符合的 函数列表
 */
 func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
@@ -85,7 +77,7 @@ func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	}
 }
 
-//新版proto 内部字段 需要过滤
+// 新版proto 内部字段 需要过滤
 var protoField = []string{
 	"state",
 	"sizeCache",
@@ -93,8 +85,6 @@ var protoField = []string{
 }
 
 /*
-@Editor robotyang at 2023
-
 FilterProtoInner is a ...
 */
 func FilterProtoInner(field *ast.Field) bool {
@@ -112,8 +102,6 @@ func FilterProtoInner(field *ast.Field) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 FilterInnerField 过滤小写字段
 */
 func FilterInnerField(field *ast.Field) bool {
@@ -128,8 +116,6 @@ func FilterInnerField(field *ast.Field) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 FilterInnerSt is a ...
 */
 func FilterInnerSt(st *ast.TypeSpec) bool {
@@ -144,8 +130,6 @@ func FilterInnerSt(st *ast.TypeSpec) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 FilterProtoSt is a ...
 */
 func FilterProtoSt(st *ast.TypeSpec) bool {

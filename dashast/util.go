@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 getCommentGroup 提取注释
 */
 func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
@@ -22,8 +20,6 @@ func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 }
 
 /*
-@Editor robotyang at 2023
-
 getIdent is a ...
 */
 func getIdent(id *ast.Ident) (ret string) {
@@ -34,8 +30,6 @@ func getIdent(id *ast.Ident) (ret string) {
 }
 
 /*
-@Editor robotyang at 2023
-
 getTag 提取tag
 */
 func getTag(cg *ast.BasicLit) (ret string) {
@@ -46,8 +40,6 @@ func getTag(cg *ast.BasicLit) (ret string) {
 }
 
 /*
-@Editor robotyang at 2023
-
 getImportName is a ...
 */
 func getImportName(name, path string) string {
@@ -66,8 +58,6 @@ func getImportName(name, path string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 getIdentName is a ...
 */
 func getIdentName(i *ast.Ident) string {
@@ -78,8 +68,6 @@ func getIdentName(i *ast.Ident) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 getIdentsName is a ...
 */
 func getIdentsName(i []*ast.Ident) string {
@@ -90,8 +78,6 @@ func getIdentsName(i []*ast.Ident) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 CheckInnerStruct 检查是不是 内部使用的结构体
 */
 func CheckInnerStruct(name string) bool {
@@ -100,8 +86,6 @@ func CheckInnerStruct(name string) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
 getSortSlice is a ...
 */
 func getSortSlice(inMap map[int]interface{}) []interface{} {

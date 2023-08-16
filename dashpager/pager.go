@@ -15,8 +15,6 @@ type (
 )
 
 /*
-@Editor robotyang at 2023
-
 NewPager is a ...
 */
 func NewPager(index, size uint32) *Pager {
@@ -24,8 +22,6 @@ func NewPager(index, size uint32) *Pager {
 }
 
 /*
-@Editor robotyang at 2023
-
 NewPagerAll is a ...
 */
 func NewPagerAll(index, size uint32, needAll bool) *Pager {
@@ -33,8 +29,6 @@ func NewPagerAll(index, size uint32, needAll bool) *Pager {
 }
 
 /*
-@Editor robotyang at 2023
-
 newPager is a ...
 */
 func newPager(index, size uint32, needAll bool) *Pager {

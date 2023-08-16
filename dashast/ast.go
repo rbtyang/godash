@@ -8,13 +8,11 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 NewAst 用于实例化解析工具对象
 
 @Param options 额外作用选项
 
-NewAst Used for instance resolution tool objects
+# NewAst Used for instance resolution tool objects
 
 @Param options Extra effect option
 */
@@ -27,8 +25,6 @@ func NewAst(options ...*Option) *Ast {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseFile 解析指定路径的Go文件
 
 ParseFile Parses the Go file in the specified path
@@ -63,8 +59,6 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseScopes is a ...
 */
 func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
@@ -121,8 +115,6 @@ func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseDecls is a ...
 */
 func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
@@ -155,8 +147,6 @@ func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseImport is a ...
 */
 func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
@@ -169,8 +159,6 @@ func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseStruct is a ...
 */
 func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
@@ -199,8 +187,6 @@ func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseField is a ...
 */
 func (a *Ast) ParseField(field *ast.Field) (ret Field) {
@@ -214,8 +200,6 @@ func (a *Ast) ParseField(field *ast.Field) (ret Field) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseInterface is a ...
 */
 func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
@@ -244,8 +228,6 @@ func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 }
 
 /*
-@Editor robotyang at 2023
-
 ParseFunc is a ...
 */
 func (a *Ast) ParseFunc(f *ast.FuncType) (ret Func) {

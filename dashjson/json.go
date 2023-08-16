@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -17,8 +15,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 Marshal is a ...
 */
 func Marshal(v interface{}) (string, error) {
@@ -30,8 +26,6 @@ func Marshal(v interface{}) (string, error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 MarshalNoErr is a ...
 */
 func MarshalNoErr(v interface{}) string {
@@ -40,8 +34,6 @@ func MarshalNoErr(v interface{}) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 Unmarshal is a ...
 */
 func Unmarshal(data string, v interface{}) error {
@@ -50,8 +42,6 @@ func Unmarshal(data string, v interface{}) error {
 }
 
 /*
-@Editor robotyang at 2023
-
 UnmarshalFuzzyDecoders is a ...
 */
 func UnmarshalFuzzyDecoders(data string, v interface{}) error {
@@ -59,8 +49,6 @@ func UnmarshalFuzzyDecoders(data string, v interface{}) error {
 }
 
 /*
-@Editor robotyang at 2023
-
 MarshalToByte is a ...
 */
 func MarshalToByte(v interface{}) ([]byte, error) {
@@ -72,8 +60,6 @@ func MarshalToByte(v interface{}) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
-
 UnmarshalByte is a ...
 */
 func UnmarshalByte(data []byte, v interface{}) error {

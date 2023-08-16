@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 SignFlatMap 根据参数计算签名
 
 @Param data map[string]string / struct / url.Values
@@ -50,8 +48,6 @@ func SignFlatMap(data map[string]string, secret string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
 CheckSignFlatMap 检查参数签名
 */
 func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {

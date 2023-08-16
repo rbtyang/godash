@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -37,8 +35,6 @@ type Stock struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestSignFlatMap is a ...
 */
 func TestSignFlatMap(t *testing.T) {

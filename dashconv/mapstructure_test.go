@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 WeakMapToStructWithTag is a ...
 */
 func TestWeakMapToStcWithTag(t *testing.T) {

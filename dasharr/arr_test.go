@@ -13,8 +13,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 Test_SliceHas is a ...
 */
 func Test_SliceHas(t *testing.T) {
@@ -88,8 +86,6 @@ func Test_SliceHas(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Contains is a ...
 */
 func Test_Contains(t *testing.T) {
@@ -388,8 +384,6 @@ func Test_Contains(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_ArrayToString is a ...
 */
 func Test_ArrayToString(t *testing.T) {
@@ -410,8 +404,6 @@ func Test_ArrayToString(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Chunk is a ...
 */
 func Test_Chunk(t *testing.T) {
@@ -431,8 +423,6 @@ func Test_Chunk(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Chunk_RandIntArr is a ...
 */
 func Test_Chunk_RandIntArr(t *testing.T) {
@@ -466,8 +456,6 @@ func Test_Chunk_RandIntArr(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Chunk_RandIntArr is a ...
 */
 func Benchmark_Chunk_RandIntArr(b *testing.B) {
@@ -478,8 +466,6 @@ func Benchmark_Chunk_RandIntArr(b *testing.B) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Filter_EmptySlice 测试当传入的切片为空时，是否返回空切片。
 */
 func Test_Filter_EmptySlice(t *testing.T) {
@@ -512,8 +498,6 @@ func Test_Filter_EmptySlice(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Test_Filter_RandIntArr 测试过滤随机整数切片
 */
 func Test_Filter_RandIntArr(t *testing.T) {
@@ -563,8 +547,6 @@ func Test_Filter_RandIntArr(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Benchmark_Filter_RandIntArr_FilterBy 串行的基准测试
 
 @Reference https://blog.csdn.net/bestzy6/article/details/125515985
@@ -585,8 +567,6 @@ func Benchmark_Filter_RandIntArr_FilterBy(b *testing.B) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Benchmark_Filter_RandIntArr_FilterByWg 串行的基准测试
 */
 func Benchmark_Filter_RandIntArr_FilterByWg(b *testing.B) {
@@ -603,8 +583,6 @@ func Benchmark_Filter_RandIntArr_FilterByWg(b *testing.B) {
 }
 
 /*
-@Editor robotyang at 2023
-
 Benchmark_Filter_RandIntArr_FilterByChan 串行的基准测试
 */
 func Benchmark_Filter_RandIntArr_FilterByChan(b *testing.B) {

@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 ObjToMap 转换 数据为Map结构
 
 @Param data 支持 struct、map、slice 以及它们的指针类型

@@ -21,13 +21,13 @@ func Test_SliceHas(t *testing.T) {
 		var input = []int{8, 5, 5}
 		{
 			want := true
-			recv := dasharr.Include(input, 8)
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, 8)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Include(input, 9)
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, 9)
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice float32
@@ -35,13 +35,13 @@ func Test_SliceHas(t *testing.T) {
 		var input = []float32{8.1, 5.23, 5.456}
 		{
 			want := true
-			recv := dasharr.Include(input, float32(5.456))
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, float32(5.456))
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Include(input, float32(9))
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, float32(9))
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice string
@@ -49,13 +49,13 @@ func Test_SliceHas(t *testing.T) {
 		var input = []string{"aaa", "bbb", "ccc"}
 		{
 			want := true
-			recv := dasharr.Include(input, "aaa")
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, "aaa")
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Include(input, "ddd")
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, "ddd")
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice *struct
@@ -79,8 +79,8 @@ func Test_SliceHas(t *testing.T) {
 		var input = []*Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := dasharr.Include(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Include(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 	}
 }
@@ -94,13 +94,13 @@ func Test_Contains(t *testing.T) {
 		var input = [...]int{8, 5, 5}
 		{
 			want := true
-			recv := dasharr.Contain(input, 8)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, 8)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, 9)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, 9)
+			assert.Equal(t, want, output)
 		}
 	}
 	//array int L2
@@ -108,13 +108,13 @@ func Test_Contains(t *testing.T) {
 		var input = [...][3]int{{8, 5, 5}, {9, 5, 5}}
 		{
 			want := true
-			recv := dasharr.Contain(input, [3]int{9, 5, 5})
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, [3]int{9, 5, 5})
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, [3]int{9, 9, 6})
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, [3]int{9, 9, 6})
+			assert.Equal(t, want, output)
 		}
 	}
 	//array struct
@@ -138,8 +138,8 @@ func Test_Contains(t *testing.T) {
 		var input = [...]Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 	}
 	//array *struct
@@ -163,8 +163,8 @@ func Test_Contains(t *testing.T) {
 		var input = [...]*Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 	}
 
@@ -173,13 +173,13 @@ func Test_Contains(t *testing.T) {
 		var input = []int{8, 5, 5}
 		{
 			want := true
-			recv := dasharr.Contain(input, 8)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, 8)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, 9)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, 9)
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice float32
@@ -187,13 +187,13 @@ func Test_Contains(t *testing.T) {
 		var input = []float32{8.1, 5.23, 5.456}
 		{
 			want := true
-			recv := dasharr.Contain(input, float32(5.456))
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, float32(5.456))
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, float32(9))
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, float32(9))
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice string
@@ -201,18 +201,18 @@ func Test_Contains(t *testing.T) {
 		input := []string{"rbtyang", "robotyang", "大绵羊"}
 		{
 			want := true
-			recv := dasharr.Contain(input, "rbtyang")
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "rbtyang")
+			assert.Equal(t, want, output)
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, "robotyang")
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "robotyang")
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, "jackma")
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "jackma")
+			assert.Equal(t, want, output)
 		}
 	}
 
@@ -237,8 +237,8 @@ func Test_Contains(t *testing.T) {
 		var input = []Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 	}
 	//slice *struct
@@ -262,8 +262,8 @@ func Test_Contains(t *testing.T) {
 		var input = []*Coder{coderZS, coderLS, coderWW}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 	}
 
@@ -277,19 +277,19 @@ func Test_Contains(t *testing.T) {
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, "asdf")
-			//recv := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "asdf")
+			//output := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
+			assert.Equal(t, want, output)
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, "ghjk")
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "ghjk")
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, "asdxxx")
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, "asdxxx")
+			assert.Equal(t, want, output)
 		}
 	}
 
@@ -322,19 +322,19 @@ func Test_Contains(t *testing.T) {
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderZS)
-			//recv := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderZS)
+			//output := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
+			assert.Equal(t, want, output)
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, coderQL)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderQL)
+			assert.Equal(t, want, output)
 		}
 	}
 	//map *struct
@@ -366,19 +366,19 @@ func Test_Contains(t *testing.T) {
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderZS)
-			//recv := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderZS)
+			//output := arrdash.Contain(input, map[string]string{"123":"asdfasfasd"})
+			assert.Equal(t, want, output)
 		}
 		{
 			want := true
-			recv := dasharr.Contain(input, coderLS)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderLS)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := false //-
-			recv := dasharr.Contain(input, coderQL)
-			assert.Equal(t, want, recv)
+			output := dasharr.Contain(input, coderQL)
+			assert.Equal(t, want, output)
 		}
 	}
 }
@@ -391,14 +391,14 @@ func Test_ArrayToString(t *testing.T) {
 		{
 			input := []interface{}{"rbtyang", "num", 9527}
 			want := "rbtyang,num,9527"
-			recv := dasharr.JoinAny(input, ",")
-			assert.Equal(t, want, recv)
+			output := dasharr.JoinAny(input, ",")
+			assert.Equal(t, want, output)
 		}
 		{
 			input := []interface{}{"rbt yang", "num", 9527}
 			want := "rbt yang,num,9527"
-			recv := dasharr.JoinAny(input, ",")
-			assert.Equal(t, want, recv)
+			output := dasharr.JoinAny(input, ",")
+			assert.Equal(t, want, output)
 		}
 	}
 }
@@ -411,34 +411,34 @@ func Test_Chunk(t *testing.T) {
 		slice := []string{"a", "b", "c", "d"}
 		{
 			want := [][]string{{"a"}, {"b"}, {"c"}, {"d"}}
-			recv := dasharr.Chunk(slice, 1)
-			assert.Equal(t, want, recv)
+			output := dasharr.Chunk(slice, 1)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := [][]string{{"a", "b", "c"}, {"d"}}
-			recv := dasharr.Chunk(slice, 3)
-			assert.Equal(t, want, recv)
+			output := dasharr.Chunk(slice, 3)
+			assert.Equal(t, want, output)
 		}
 	}
 	{
 		slice := []any{"a", "b", 1, 2, "d"}
 		{
 			want := [][]any{{"a", "b", 1}, {2, "d"}}
-			recv := dasharr.Chunk(slice, 3)
-			assert.Equal(t, want, recv)
+			output := dasharr.Chunk(slice, 3)
+			assert.Equal(t, want, output)
 		}
 	}
 	{
 		slice := []string{"a", "b", "c", "d", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n"}
 		{
 			want := [][]string{{"a", "b", "c"}, {"d", "d", "f"}, {"g", "h", "i"}, {"j", "k", "l"}, {"m", "n"}}
-			recv := dasharr.Chunk(slice, 3)
-			assert.Equal(t, want, recv)
+			output := dasharr.Chunk(slice, 3)
+			assert.Equal(t, want, output)
 		}
 		{
 			want := [][]string{{"a", "b", "c", "d", "d", "f"}, {"g", "h", "i", "j", "k", "l"}, {"m", "n"}}
-			recv := dasharr.Chunk(slice, 6)
-			assert.Equal(t, want, recv)
+			output := dasharr.Chunk(slice, 6)
+			assert.Equal(t, want, output)
 		}
 	}
 }
@@ -461,24 +461,56 @@ func Test_Filter_EmptySlice(t *testing.T) {
 	var output []int
 
 	dashtime.CostPrint("FilterBy", time.Nanosecond, func() {
-		output = dasharr.FilterBy(input, func(int) bool {
-			return true
+		output = dasharr.FilterBy(input, func(item int) bool {
+			return item > 0
 		})
 		assert.Equal(t, 0, len(output))
 		assert.Equal(t, input, output)
 	})
 
 	dashtime.CostPrint("FilterByWg", time.Nanosecond, func() {
-		output = dasharr.FilterByWg(input, func(int) bool {
-			return true
+		output = dasharr.FilterByWg(input, func(item int) bool {
+			return item > 0
 		})
 		assert.Equal(t, 0, len(output))
 		assert.Equal(t, input, output)
 	})
 
 	dashtime.CostPrint("FilterByChan", time.Nanosecond, func() {
-		output = dasharr.FilterByChan(input, func(int) bool {
-			return true
+		output = dasharr.FilterByChan(input, func(item int) bool {
+			return item > 0
+		}, 5)
+		assert.Equal(t, 0, len(output))
+		assert.Equal(t, input, output)
+	})
+}
+
+/*
+Test_Filter_NilSlice 测试当传入的切片为空时，是否返回空切片。
+*/
+func Test_Filter_NilSlice(t *testing.T) {
+	var input []int
+	var output []int
+
+	dashtime.CostPrint("FilterBy", time.Nanosecond, func() {
+		output = dasharr.FilterBy(input, func(item int) bool {
+			return item > 0
+		})
+		assert.Equal(t, 0, len(output))
+		assert.Equal(t, input, output)
+	})
+
+	dashtime.CostPrint("FilterByWg", time.Nanosecond, func() {
+		output = dasharr.FilterByWg(input, func(item int) bool {
+			return item > 0
+		})
+		assert.Equal(t, 0, len(output))
+		assert.Equal(t, input, output)
+	})
+
+	dashtime.CostPrint("FilterByChan", time.Nanosecond, func() {
+		output = dasharr.FilterByChan(input, func(item int) bool {
+			return item > 0
 		}, 5)
 		assert.Equal(t, 0, len(output))
 		assert.Equal(t, input, output)
@@ -492,46 +524,68 @@ func Test_Filter_RandIntArr(t *testing.T) {
 	input := dashrand.NumSlice(100000, -100, 100)
 
 	dashtime.CostPrint("FilterBy", time.Nanosecond, func() {
-		recv1 := dasharr.FilterBy(input, func(item int) bool {
+		output1 := dasharr.FilterBy(input, func(item int) bool {
 			return item > 0
 		})
-		recv2 := dasharr.FilterBy(input, func(item int) bool {
+		output2 := dasharr.FilterBy(input, func(item int) bool {
 			return item <= 0
 		})
-		recv0 := append(recv1, recv2...)
+		output0 := append(output1, output2...)
 
 		want := dashsort.Quick(input)
-		recv := dashsort.Quick(recv0)
-		assert.Equal(t, want, recv)
+		output := dashsort.Quick(output0)
+		assert.Equal(t, want, output)
 	})
 
 	dashtime.CostPrint("FilterByWg", time.Nanosecond, func() {
-		recv1 := dasharr.FilterByWg(input, func(item int) bool {
+		output1 := dasharr.FilterByWg(input, func(item int) bool {
 			return item > 0
 		})
-		recv2 := dasharr.FilterByWg(input, func(item int) bool {
+		output2 := dasharr.FilterByWg(input, func(item int) bool {
 			return item <= 0
 		})
-		recv0 := append(recv1, recv2...)
+		output0 := append(output1, output2...)
 
 		want := dashsort.Quick(input)
-		recv := dashsort.Quick(recv0)
-		assert.Equal(t, want, recv)
+		output := dashsort.Quick(output0)
+		assert.Equal(t, want, output)
 	})
 
 	dashtime.CostPrint("FilterByChan", time.Nanosecond, func() {
-		recv1 := dasharr.FilterByChan(input, func(item int) bool {
+		output1 := dasharr.FilterByChan(input, func(item int) bool {
 			return item > 0
 		}, 10000)
-		recv2 := dasharr.FilterByChan(input, func(item int) bool {
+		output2 := dasharr.FilterByChan(input, func(item int) bool {
 			return item <= 0
 		}, 10000)
-		recv0 := append(recv1, recv2...)
+		output0 := append(output1, output2...)
 
 		want := dashsort.Quick(input)
-		recv := dashsort.Quick(recv0)
-		assert.Equal(t, want, recv)
+		output := dashsort.Quick(output0)
+		assert.Equal(t, want, output)
 	})
+}
+
+/*
+Test_Filter_NilSlice 测试当传入的切片为空时，是否返回空切片。
+*/
+func Test_FilterNull(t *testing.T) {
+	{
+		input := []int{1, 2, 0, 0, 3, 0, 4, 5}
+		dashtime.CostPrint("FilterByWg-FilterNull", time.Nanosecond, func() {
+			want := []int{1, 2, 3, 4, 5}
+			output := dasharr.FilterNull(input)
+			assert.Equal(t, want, dashsort.Quick(output))
+		})
+	}
+	{
+		input := []string{"1a", "2b", "0", "0", "3c", "0", "4d", "5f"}
+		dashtime.CostPrint("FilterByWg-FilterNull", time.Nanosecond, func() {
+			want := []string{"1a", "2b", "3c", "4d", "5e"}
+			output := dasharr.FilterNull(input) //lastedit
+			assert.Equal(t, want, output)
+		})
+	}
 }
 
 /*

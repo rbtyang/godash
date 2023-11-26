@@ -92,6 +92,9 @@ FilterBy 根据用户自定义函数，过滤数组元素（性能最佳）
 @Return 过滤后的数组
 */
 func FilterBy[T any](array []T, userFn func(T) bool) []T {
+	if len(array) == 0 {
+		return array
+	}
 	newArr := make([]T, 0, len(array))
 	for _, item := range array {
 		if userFn(item) {
@@ -111,6 +114,9 @@ Deprecated: FilterByWg 根据用户自定义函数，过滤数组元素（性能
 @Return 过滤后的数组
 */
 func FilterByWg[T any](array []T, userFn func(T) bool) []T {
+	if len(array) == 0 {
+		return array
+	}
 	var mu sync.Mutex
 	newArr := make([]T, 0, len(array))
 	var wg sync.WaitGroup
@@ -133,9 +139,16 @@ func FilterByWg[T any](array []T, userFn func(T) bool) []T {
 	return newArr
 }
 
+/*
+Deprecated: FilterNull 过滤数组空值元素（性能不佳，仅供学习）
+
+@Param array 待过滤的数组
+
+@Return 过滤后的数组
+*/
 func FilterNull[T any](array []T) []T {
 	return FilterByWg(array, func(item T) bool {
-		return cast.ToInt(item) == 0
+		return cast.ToInt(item) != 0
 	})
 }
 
@@ -149,6 +162,9 @@ Deprecated: FilterByChan 根据用户自定义函数，过滤数组元素（性�
 @Return 过滤后的数组
 */
 func FilterByChan[T any](array []T, userFn func(T) bool, maxGoroutines int) []T {
+	if len(array) == 0 {
+		return array
+	}
 	var wg sync.WaitGroup
 	chs := make([]chan T, maxGoroutines) // 定义多个channel，个数为最大并发goroutine数
 	sm := sync.Map{}

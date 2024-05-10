@@ -13,9 +13,9 @@ var curKey string //当前环境 curKey
 var curVal string //当前环境 curVal
 
 /*
-@Editor robotyang at 2023
+init @Editor robotyang at 2023
 
-init 初始化
+# init 初始化
 */
 func init() {
 	curKey = "GO_ENV"
@@ -23,9 +23,9 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
+Init @Editor robotyang at 2023
 
-Init 使用自定义 环境变量key 进行初始化
+# Init 使用自定义 环境变量key 进行初始化
 */
 func Init(key string) {
 	curKey = key
@@ -33,45 +33,45 @@ func Init(key string) {
 }
 
 /*
-@Editor robotyang at 2023
+isEnv @Editor robotyang at 2023
 
-isEnv 当前是否 env环境
+# isEnv 当前是否 env环境
 */
 func isEnv(env string) bool {
 	return curVal == env
 }
 
 /*
-@Editor robotyang at 2023
+IsDev @Editor robotyang at 2023
 
-IsDev 当前是否 开发环境
+# IsDev 当前是否 开发环境
 */
 func IsDev() bool {
 	return isEnv(Dev)
 }
 
 /*
-@Editor robotyang at 2023
+IsTest @Editor robotyang at 2023
 
-IsTest 当前是否 测试环境
+# IsTest 当前是否 测试环境
 */
 func IsTest() bool {
 	return isEnv(Test)
 }
 
 /*
-@Editor robotyang at 2023
+IsRelease @Editor robotyang at 2023
 
-IsRelease 当前是否 预发布环境
+# IsRelease 当前是否 预发布环境
 */
 func IsRelease() bool {
 	return isEnv(Release)
 }
 
 /*
-@Editor robotyang at 2023
+IsProd @Editor robotyang at 2023
 
-IsProd 当前是否 生产环境
+# IsProd 当前是否 生产环境
 */
 func IsProd() bool {
 	return isEnv(Prod)

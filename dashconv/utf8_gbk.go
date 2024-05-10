@@ -9,9 +9,9 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+GbkToUtf8 @Editor robotyang at 2023
 
-GbkToUtf8 is a ...
+# GbkToUtf8 转换 GBK字符串 为 UTF8字符串
 */
 func GbkToUtf8(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewDecoder())
@@ -23,9 +23,9 @@ func GbkToUtf8(s []byte) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
+Utf8ToGbk @Editor robotyang at 2023
 
-Utf8ToGbk is a ...
+# Utf8ToGbk 转换 UTF8字符串 为 GBK字符串
 */
 func Utf8ToGbk(s []byte) ([]byte, error) {
 	reader := transform.NewReader(bytes.NewReader(s), simplifiedchinese.GBK.NewEncoder())
@@ -37,9 +37,15 @@ func Utf8ToGbk(s []byte) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
+TransEncoding @Editor robotyang at 2023
 
-TransEncoding 转换编码类型
+# TransEncoding 转换 字符串 编码类型
+
+@Param src：原字符串
+
+@Param srcCode：原字符串 编码类型，如 "gbk"、"utf-8"
+
+@Param dstCode：目标字符串 编码类型，如 "gbk"、"utf-8"
 */
 func TransEncoding(src string, srcCode string, dstCode string) string {
 	srcCoder := mahonia.NewDecoder(srcCode)

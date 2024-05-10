@@ -7,9 +7,9 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+getCommentGroup @Editor robotyang at 2023
 
-getCommentGroup 提取注释
+# getCommentGroup 提取注释
 */
 func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 	if cg == nil {
@@ -22,9 +22,7 @@ func getCommentGroup(cg *ast.CommentGroup) (ret []string) {
 }
 
 /*
-@Editor robotyang at 2023
-
-getIdent is a ...
+getIdent @Editor robotyang at 2023
 */
 func getIdent(id *ast.Ident) (ret string) {
 	if id == nil {
@@ -46,9 +44,7 @@ func getTag(cg *ast.BasicLit) (ret string) {
 }
 
 /*
-@Editor robotyang at 2023
-
-getImportName is a ...
+getImportName @Editor robotyang at 2023
 */
 func getImportName(name, path string) string {
 	if name != "" {
@@ -66,9 +62,7 @@ func getImportName(name, path string) string {
 }
 
 /*
-@Editor robotyang at 2023
-
-getIdentName is a ...
+getIdentName @Editor robotyang at 2023
 */
 func getIdentName(i *ast.Ident) string {
 	if i == nil {
@@ -78,9 +72,7 @@ func getIdentName(i *ast.Ident) string {
 }
 
 /*
-@Editor robotyang at 2023
-
-getIdentsName is a ...
+getIdentsName @Editor robotyang at 2023
 */
 func getIdentsName(i []*ast.Ident) string {
 	if len(i) == 0 {
@@ -100,9 +92,7 @@ func CheckInnerStruct(name string) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
-getSortSlice is a ...
+getSortSlice @Editor robotyang at 2023
 */
 func getSortSlice(inMap map[int]interface{}) []interface{} {
 	if len(inMap) == 0 {

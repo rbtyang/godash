@@ -3,49 +3,39 @@ package dashtime
 import "time"
 
 const (
-	TimeLocDefault           = "Asia/Shanghai" // 默认时区
-	TimeFmt_Y_m_D_H_M_S      = "2006-01-02 15:04:05"
-	TimeFmt_H_M_S            = "15:04:05"
-	TimeFmt_Y_m_D_H_M_S_CST  = "2006-01-02 15:04:05 +0800 CST"
-	TimeFmt_YmDHMS           = "20060102150405"
-	TimeFmt_YmDhMS           = "20060102030405"
-	TimeFmt_Y_m_D            = "2006-01-02"
-	TimeFmt_YmD              = "20060102"
-	TimeFmtChinese_Y_m_D_H_M = "2006年01月02日15:04"
-	TimeFmt_Y_m_D_H_M        = "2006-01-02 15:04"
-	TimeFmtDate              = TimeFmt_Y_m_D
-	TimeFmtTime              = TimeFmt_H_M_S
-	TimeFmtDateTime          = TimeFmt_Y_m_D_H_M_S
+	Loc_UTC     = "UTC"                 //世界协调时间 标准时区
+	Loc_China   = "Asia/Shanghai"       //亚洲中国上海 标准时区
+	Loc_Germany = "Europe/Berlin"       //欧洲德国柏林 标准时区
+	Loc_America = "America/Los_Angeles" //美洲美国洛杉矶 标准时区
+
+	Fmt_Y_m_D_H_M_S     = "2006-01-02 15:04:05"
+	Fmt_H_M_S           = "15:04:05"
+	Fmt_Y_m_D_H_M_S_CST = "2006-01-02 15:04:05 +0800 CST"
+	Fmt_YmDHMS          = "20060102150405"
+	Fmt_YmDhMS          = "20060102030405"
+	Fmt_Y_m_D           = "2006-01-02"
+	Fmt_YmD             = "20060102"
+	Fmt_Zh_Y_m_D_H_M    = "2006年01月02日15:04"
+	Fmt_Zh_Y_m_D_H_M_S  = "2006年01月02日15:04:05"
+	Fmt_Y_m_D_H_M       = "2006-01-02 15:04"
+	Fmt_Date            = Fmt_Y_m_D
+	Fmt_Time            = Fmt_H_M_S
+	Fmt_DateTime        = Fmt_Y_m_D_H_M_S
 )
 
 /*
-@Editor robotyang at 2023
+ParseToChina @Editor robotyang at 2023
 
-Format  格式化时间(time.Time)为指定时间格式文本
+# ParseToChina 格式化 文本时间 (默认:2006-01-02 15:04:05) 为time.Time
 */
-func Format(timeSuk *time.Time, defaultFormat ...string) string {
-	if timeSuk == nil {
-		return ""
+func ParseToChina(timeStr string, format ...string) (time.Time, error) {
+	defFormat := Fmt_Y_m_D_H_M_S
+	for _, value := range format {
+		defFormat = value
+		break
 	}
-	format := TimeFmt_Y_m_D_H_M_S
-	for _, value := range defaultFormat {
-		format = value
-	}
-	return timeSuk.Format(format)
-}
-
-/*
-@Editor robotyang at 2023
-
-ParseString  格式化 文本时间 (默认:2006-01-02 15:04:05) 为time.Time
-*/
-func ParseString(timeStr string, defaultFormat ...string) (time.Time, error) {
-	format := TimeFmt_Y_m_D_H_M_S
-	for _, value := range defaultFormat {
-		format = value
-	}
-	var cstSh, _ = time.LoadLocation(TimeLocDefault)
-	timeUnix, err := time.ParseInLocation(format, timeStr, cstSh)
+	var cstSh, _ = time.LoadLocation(Loc_China)
+	timeUnix, err := time.ParseInLocation(defFormat, timeStr, cstSh)
 	if err != nil {
 		return time.Time{}, err
 	}
@@ -53,23 +43,44 @@ func ParseString(timeStr string, defaultFormat ...string) (time.Time, error) {
 }
 
 /*
-@Editor robotyang at 2023
+Format @Editor robotyang at 2023
 
-CurrentTimeString  获取 当前时间 并转换成 自定格式
+# Format  格式化时间(time.Time)为指定时间格式文本
+
+@Param time：待格式化时间
+
+@Param format：可选格式，否则默认格式 Fmt_Y_m_D_H_M_S
+*/
+func Format(times *time.Time, format ...string) string {
+	if times == nil {
+		return ""
+	}
+	defFormat := Fmt_Y_m_D_H_M_S
+	for _, value := range format {
+		defFormat = value
+		break
+	}
+	return times.Format(defFormat)
+}
+
+/*
+CurrentTimeString @Editor robotyang at 2023
+
+# CurrentTimeString  获取 当前时间 并转换成 自定格式
 */
 func CurrentTimeString(defaultFormat ...string) string {
-	format := TimeFmt_Y_m_D_H_M_S
+	format := Fmt_Y_m_D_H_M_S
 	for _, value := range defaultFormat {
 		format = value
 	}
-	loc, _ := time.LoadLocation(TimeLocDefault)
+	loc, _ := time.LoadLocation(Loc_China)
 	return time.Now().In(loc).Format(format)
 }
 
 /*
-@Editor robotyang at 2023
+RestNextDawn @Editor robotyang at 2023
 
-RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
+# RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
 */
 func RestNextDawn(now time.Time) time.Duration {
 	nextDay := now.AddDate(0, 0, 1)
@@ -78,9 +89,9 @@ func RestNextDawn(now time.Time) time.Duration {
 }
 
 /*
-@Editor robotyang at 2023
+CurrentTimePointer @Editor robotyang at 2023
 
-CurrentTimePointer  获取 now时间的 *time.Time 格式
+# CurrentTimePointer  获取 now时间的 *time.Time 格式
 */
 func CurrentTimePointer() *time.Time {
 	now := time.Now()
@@ -89,11 +100,11 @@ func CurrentTimePointer() *time.Time {
 }
 
 /*
-@Editor robotyang at 2023
+SetLocDefault @Editor robotyang at 2023
 
-SetLocDefault  设置time为 Asia/Shanghai默认时区
+# SetLocDefault  设置time为 Asia/Shanghai默认时区
 */
 func SetLocDefault(timeSuk *time.Time) time.Time {
-	var loc, _ = time.LoadLocation(TimeLocDefault)
+	var loc, _ = time.LoadLocation(Loc_China)
 	return timeSuk.In(loc)
 }

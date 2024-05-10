@@ -9,13 +9,13 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+AesDecrypt @Editor robotyang at 2023
 
-AesDecrypt CBC模式解密（支持前后端，是 AesDecryptJsHex 的别名）；
+# AesDecrypt CBC模式解密（支持前后端，是 AesDecryptJsHex 的别名）；
 
-@Param cipherstr 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
+@Param cipherstr：密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
 
-@Param secret 密钥；
+@Param secret：密钥；
 */
 func AesDecrypt(cipherstr, secret string) (string, error) {
 	return AesDecryptJsHex(cipherstr, secret)
@@ -24,13 +24,13 @@ func AesDecrypt(cipherstr, secret string) (string, error) {
 //-------------------------------------------------------------------------------------------------------
 
 /*
-@Editor robotyang at 2023
+AesDecryptJsHex @Editor robotyang at 2023
 
-AesDecryptJsHex CBC模式解密（支持前后端，先16进制解码，再走底层方法 AesDecryptJs 解密）；
+# AesDecryptJsHex CBC模式解密（支持前后端，先16进制解码，再走底层方法 AesDecryptJs 解密）；
 
-@Param cipherstr 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
+@Param cipherstr：密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
 
-@Param secret 密钥；
+@Param secret：密钥；
 
 @Reference https://mojotv.cn/go/crypto-js-with-golang
 */
@@ -49,13 +49,13 @@ func AesDecryptJsHex(cipherstr, secret string) (string, error) {
 //-------------------------------------------------------------------------------------------------------
 
 /*
-@Editor robotyang at 2023
+AesDecryptJs @Editor robotyang at 2023
 
-AesDecryptJs CBC模式解密（支持前后端）；
+# AesDecryptJs CBC模式解密（支持前后端）；
 
-@Param ciphertext 密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
+@Param ciphertext：密文（js的生成的密文后 进行了16进制的 hex.encoding，因此在调用该方法之前 go必须要进行 hex.DecodeString）；
 
-@Param secret 密钥；
+@Param secret：密钥；
 
 @Reference https://mojotv.cn/go/crypto-js-with-golang
 */
@@ -73,9 +73,9 @@ func AesDecryptJs(ciphertext, secret []byte) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
+secretFill @Editor robotyang at 2023
 
-secretFill 对密钥 进行补码（这个方案必须和js的方法是一样的）
+# secretFill 对密钥 进行补码（这个方案必须和js的方法是一样的）
 */
 func secretFill(secret []byte, pad byte, length int) []byte {
 	if len(secret) >= length {
@@ -86,9 +86,9 @@ func secretFill(secret []byte, pad byte, length int) []byte {
 }
 
 /*
-@Editor robotyang at 2023
+pKCS7UnFill @Editor robotyang at 2023
 
-pKCS7UnFill 对明文 去除补码
+# pKCS7UnFill 对明文 去除补码
 */
 func pKCS7UnFill(plantText []byte) []byte {
 	length := len(plantText)

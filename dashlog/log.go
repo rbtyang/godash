@@ -9,12 +9,10 @@ import (
 // 用户 自定义前缀
 var cuspre string
 
-// 设置 自定义msg前缀
-
 /*
-@Editor robotyang at 2023
+Pre @Editor robotyang at 2023
 
-Pre 设置日志前缀
+# Pre 设置日志前缀
 
 @Param pre 日志前缀字符串
 
@@ -29,9 +27,9 @@ func Pre(pre string) (func(), error) {
 }
 
 /*
-@Editor robotyang at 2023
+Debug @Editor robotyang at 2023
 
-Debug is a ...
+# Debug is a ...
 */
 func Debug(args ...interface{}) {
 	prefix := withPre("dashlog.Debug", dashrun.LastCallerFuncName(true))
@@ -39,9 +37,9 @@ func Debug(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Debugf @Editor robotyang at 2023
 
-Debugf is a ...
+# Debugf is a ...
 */
 func Debugf(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Debug", dashrun.LastCallerFuncName(true))
@@ -49,9 +47,9 @@ func Debugf(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Info @Editor robotyang at 2023
 
-Info is a ...
+# Info is a ...
 */
 func Info(args ...interface{}) {
 	prefix := withPre("dashlog.Info", dashrun.LastCallerFuncName(true))
@@ -59,9 +57,9 @@ func Info(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Infof @Editor robotyang at 2023
 
-Infof is a ...
+# Infof is a ...
 */
 func Infof(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Info", dashrun.LastCallerFuncName(true))
@@ -69,9 +67,9 @@ func Infof(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Warn @Editor robotyang at 2023
 
-Warn is a ...
+# Warn is a ...
 */
 func Warn(args ...interface{}) {
 	prefix := withPre("dashlog.Warn", dashrun.LastCallerFuncName(true))
@@ -79,9 +77,9 @@ func Warn(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Warnf @Editor robotyang at 2023
 
-Warnf is a ...
+# Warnf is a ...
 */
 func Warnf(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Warn", dashrun.LastCallerFuncName(true))
@@ -89,9 +87,9 @@ func Warnf(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Error @Editor robotyang at 2023
 
-Error is a ...
+# Error is a ...
 */
 func Error(args ...interface{}) {
 	prefix := withPre("dashlog.Error", dashrun.LastCallerFuncName(true))
@@ -99,9 +97,9 @@ func Error(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Errorf @Editor robotyang at 2023
 
-Errorf is a ...
+# Errorf is a ...
 */
 func Errorf(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Error", dashrun.LastCallerFuncName(true))
@@ -109,9 +107,9 @@ func Errorf(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Panic @Editor robotyang at 2023
 
-Panic is a ...
+# Panic is a ...
 */
 func Panic(args ...interface{}) {
 	prefix := withPre("dashlog.Panic", dashrun.LastCallerFuncName(true))
@@ -119,9 +117,9 @@ func Panic(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Panicf @Editor robotyang at 2023
 
-Panicf is a ...
+# Panicf is a ...
 */
 func Panicf(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Panic", dashrun.LastCallerFuncName(true))
@@ -129,9 +127,9 @@ func Panicf(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Fatal @Editor robotyang at 2023
 
-Fatal is a ...
+# Fatal is a ...
 */
 func Fatal(args ...interface{}) {
 	prefix := withPre("dashlog.Fatal", dashrun.LastCallerFuncName(true))
@@ -139,9 +137,9 @@ func Fatal(args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+Fatalf @Editor robotyang at 2023
 
-Fatalf is a ...
+# Fatalf is a ...
 */
 func Fatalf(format string, args ...interface{}) {
 	prefix := withPre("dashlog.Fatal", dashrun.LastCallerFuncName(true))
@@ -149,9 +147,9 @@ func Fatalf(format string, args ...interface{}) {
 }
 
 /*
-@Editor robotyang at 2023
+withPre @Editor robotyang at 2023
 
-withPre is a ...
+# withPre is a ...
 */
 func withPre(levelPre, lastFunc string) string {
 	var prefix string

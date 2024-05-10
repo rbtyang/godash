@@ -6,27 +6,27 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+StrToByte @Editor robotyang at 2023
 
-StrToByte is a ...
+# StrToByte 字符串 转 字节
 */
 func StrToByte(s string) []byte {
 	return []byte(s)
 }
 
 /*
-@Editor robotyang at 2023
+ByteToStr @Editor robotyang at 2023
 
-ByteToStr is a ...
+# ByteToStr 字节 转 字符串
 */
 func ByteToStr(b []byte) string {
 	return string(b)
 }
 
 /*
-@Editor robotyang at 2023
+StrToByteByUnsafe @Editor robotyang at 2023
 
-StrToByteByUnsafe is a ...
+# StrToByteByUnsafe 字符串 转 字节
 */
 func StrToByteByUnsafe(s string) []byte {
 	x := (*[2]uintptr)(unsafe.Pointer(&s))
@@ -35,18 +35,20 @@ func StrToByteByUnsafe(s string) []byte {
 }
 
 /*
-@Editor robotyang at 2023
+ByteToStrByUnsafe @Editor robotyang at 2023
 
-ByteToStrByUnsafe is a ...
+# ByteToStrByUnsafe 字节 转 字符串
 */
 func ByteToStrByUnsafe(b []byte) string {
 	return *(*string)(unsafe.Pointer(&b))
 }
 
 /*
-@Editor robotyang at 2023
+StrToByteByReflect @Editor robotyang at 2023
 
-StrToByteByReflect  converts string to a byte slice without memory allocation.
+# StrToByteByReflect 将字符串转换为字节片而不分配内存。注意，如果字符串和/或切片头在未来的go版本中改变，它可能会中断。
+
+# StrToByteByReflect converts string to a byte slice without memory allocation.
 Note it may break if string and/or slice header will change in the future go versions.
 */
 func StrToByteByReflect(s string) []byte {

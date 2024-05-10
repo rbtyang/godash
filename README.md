@@ -19,7 +19,7 @@
   <img src="https://contributors-img.web.app/image?repo=rbtyang/godash" />
 </a>
 
-### 开发规范
+## 开发规范
 
 - 必须使用 `commitizen` 插件提交规范的 commit msg
   - [官方插件仓库](https://github.com/commitizen/cz-cli)
@@ -30,6 +30,7 @@
   - [大佬介绍文档](https://cloud.tencent.com/developer/article/1959696?from=10910)
 - 必须设计 每个方法/类 的单测用例（至少4个case），建议编写 基准测试用例（benchmark），类包 必须设计 `example` 示例用例
 - 函数设计 请充分利用 go并发优势，比如可以提供 常规版本和并发版本 给使用者自由选择
+- 必须通过 整个项目的单测，参考 [./godash.go](./godash.go)
 
 ## 联系我们
 

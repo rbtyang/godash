@@ -34,7 +34,7 @@ func TestMd5(t *testing.T) {
 	}
 	{
 		want := "f1b90b4efd0e5c7db52dfa0efd6521a3"
-		enStr := dashhash.Hmac("key2", "hello")
+		enStr := dashhash.Hmac("hello", "key2")
 		assert.Equal(t, want, enStr)
 	}
 }

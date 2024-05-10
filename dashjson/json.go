@@ -8,18 +8,18 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+init @Editor robotyang at 2023
 
-init is a ...
+# init is a ...
 */
 func init() {
 	extra.RegisterFuzzyDecoders()
 }
 
 /*
-@Editor robotyang at 2023
+Marshal @Editor robotyang at 2023
 
-Marshal is a ...
+# Marshal is a ...
 */
 func Marshal(v interface{}) (string, error) {
 	if v == nil {
@@ -30,9 +30,9 @@ func Marshal(v interface{}) (string, error) {
 }
 
 /*
-@Editor robotyang at 2023
+MarshalNoErr @Editor robotyang at 2023
 
-MarshalNoErr is a ...
+# MarshalNoErr is a ...
 */
 func MarshalNoErr(v interface{}) string {
 	str, _ := Marshal(v)
@@ -40,9 +40,9 @@ func MarshalNoErr(v interface{}) string {
 }
 
 /*
-@Editor robotyang at 2023
+Unmarshal @Editor robotyang at 2023
 
-Unmarshal is a ...
+# Unmarshal is a ...
 */
 func Unmarshal(data string, v interface{}) error {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -50,18 +50,18 @@ func Unmarshal(data string, v interface{}) error {
 }
 
 /*
-@Editor robotyang at 2023
+UnmarshalFuzzyDecoders @Editor robotyang at 2023
 
-UnmarshalFuzzyDecoders is a ...
+# UnmarshalFuzzyDecoders is a ...
 */
 func UnmarshalFuzzyDecoders(data string, v interface{}) error {
 	return jsoniter.UnmarshalFromString(data, v)
 }
 
 /*
-@Editor robotyang at 2023
+MarshalToByte @Editor robotyang at 2023
 
-MarshalToByte is a ...
+# MarshalToByte is a ...
 */
 func MarshalToByte(v interface{}) ([]byte, error) {
 	if v == nil {
@@ -72,9 +72,9 @@ func MarshalToByte(v interface{}) ([]byte, error) {
 }
 
 /*
-@Editor robotyang at 2023
+UnmarshalByte @Editor robotyang at 2023
 
-UnmarshalByte is a ...
+# UnmarshalByte is a ...
 */
 func UnmarshalByte(data []byte, v interface{}) error {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary

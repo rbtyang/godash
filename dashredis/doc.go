@@ -1,5 +1,7 @@
 /*
-Redis 接口封装
+Package dashredis
+
+# Redis 接口封装
 
 Redis interface encapsulation
 */

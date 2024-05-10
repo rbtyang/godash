@@ -3,6 +3,7 @@ package dasharr_test
 //go:generate go test -v -run="none"  -bench=. -benchmem ./...
 
 import (
+	"fmt"
 	"github.com/rbtyang/godash/dasharr"
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/rbtyang/godash/dashsort"
@@ -418,9 +419,15 @@ func Test_Chunk(t *testing.T) {
 	{
 		array := []string{"a", "b", "c", "d"}
 		{
-			want := [][]string{{"a", "b", "c"}, {"d"}}
+			want := "dasharrr.Chunk: size cannot be zero"
+			defer func() {
+				if err := recover(); err != nil {
+					msg := fmt.Sprintf("%s", err)
+					assert.Equal(t, want, msg)
+				}
+			}()
 			recv := dasharr.Chunk(array, 0)
-			assert.Equal(t, want, recv)
+			_ = recv
 		}
 		{
 			want := [][]string{{"a", "b", "c"}, {"d"}}
@@ -509,6 +516,56 @@ func Test_Filter_EmptySlice(t *testing.T) {
 		assert.Equal(t, 0, len(output))
 		assert.Equal(t, input, output)
 	})
+}
+
+/*
+@Editor robotyang at 2023
+
+Test_Filter_NullSlice 测试过滤切片中的空值
+*/
+func Test_Filter_NullSlice(t *testing.T) {
+	{
+		input := []int{1, 2, 3, 0, 0.00, 4, 0, 5}
+		wantt := []int{1, 2, 3, 4, 5}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{
+		input := []bool{true, true, false, true}
+		wantt := []bool{true, true, true}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{
+		input := []string{"1", "2", "3", "", "0", "0.00", "0.01", "4", "0", "5"}
+		wantt := []string{"1", "2", "3", "0.01", "4", "5"}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{
+		input := []any{"1", "2", "3", "", "0", "0", "0.00", "0.01", "4", "5", nil, nil, false, true}
+		wantt := []any{"1", "2", "3", "0.01", "4", "5", true}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{ //slice
+		input := []any{[]int{1, 2}, []int{3, 4}, []int{}, []int{5, 6}}
+		wantt := []any{[]int{1, 2}, []int{3, 4}, []int{5, 6}}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{ //map
+		input := []any{map[int]string{1: "11"}, map[int]string{2: "22"}, map[int]string{}, map[int]string{3: "33"}}
+		wantt := []any{map[int]string{1: "11"}, map[int]string{2: "22"}, map[int]string{3: "33"}}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
+	{ //map point
+		input := []any{&map[int]string{1: "11"}, &map[int]string{2: "22"}, &map[int]string{}, &map[int]string{3: "33"}}
+		wantt := []any{&map[int]string{1: "11"}, &map[int]string{2: "22"}, &map[int]string{3: "33"}}
+		output := dasharr.FilterNull(input)
+		assert.Equal(t, wantt, output)
+	}
 }
 
 /*

@@ -6,9 +6,9 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+Cost @Editor robotyang at 2023
 
-Cost 计算函数耗时
+# Cost 计算函数耗时
 
 @Param fn 要执行的函数
 
@@ -21,9 +21,9 @@ func Cost(fn func()) time.Duration {
 }
 
 /*
-@Editor robotyang at 2023
+CostPrint @Editor robotyang at 2023
 
-CostPrint 计算函数耗时 并打印到控制台
+# CostPrint 计算函数耗时 并打印到控制台
 
 @Param title 打印时的函数说明标题
 

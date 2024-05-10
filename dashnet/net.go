@@ -7,9 +7,9 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+Ip2binary @Editor robotyang at 2023
 
-Ip2binary ip转二进制
+# Ip2binary ip转二进制
 
 @Param ip ip为字符串，如"192.168.56.4"
 
@@ -29,9 +29,9 @@ func Ip2binary(ip string) string {
 }
 
 /*
-@Editor robotyang at 2023
+MatchIp @Editor robotyang at 2023
 
-MatchIp 判断 ip地址 和 其他ip/ip段 是否匹配
+# MatchIp 判断 ip地址 和 其他ip/ip段 是否匹配
 
 @Param ip ip为字符串，如"192.168.56.4"
 

@@ -6,15 +6,15 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+FileEncryptByZyx @Editor robotyang at 2023
 
-FileEncryptByZyx 文件加密；
+# FileEncryptByZyx 文件加密；
 
-@Param srcFilePath 需加密的 文件路径；
+@Param srcFilePath：需加密的 文件路径；
 
-@Param dstFilePath 加密后 文件路径；
+@Param dstFilePath：加密后 文件路径；
 
-@Param secret 密钥；
+@Param secret：密钥；
 
 @Reference https://www.jianshu.com/p/0caab60fea9f
 */
@@ -73,15 +73,15 @@ func FileEncryptByZyx(srcFilePath, dstFilePath string, secret []byte) (err error
 }
 
 /*
-@Editor robotyang at 2023
+FileDecryptByZyx @Editor robotyang at 2023
 
-FileDecryptByZyx 文件解密；
+# FileDecryptByZyx 文件解密；
 
-@Param srcFilePath 需解密的 文件路径；
+@Param srcFilePath：需解密的 文件路径；
 
-@Param dstFilePath 解密后 文件路径；
+@Param dstFilePath：解密后 文件路径；
 
-@Param secret 密钥；
+@Param secret：密钥；
 
 @Reference https://www.jianshu.com/p/0caab60fea9f
 */

@@ -8,15 +8,15 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+NewAst @Editor robotyang at 2023
 
-NewAst 用于实例化解析工具对象
+# NewAst 用于实例化解析工具对象
 
-@Param options 额外作用选项
+@Param options：额外作用选项
 
-NewAst Used for instance resolution tool objects
+# NewAst Used for instance resolution tool objects
 
-@Param options Extra effect option
+@Param options：Extra effect option
 */
 func NewAst(options ...*Option) *Ast {
 	a := new(Ast)
@@ -27,11 +27,15 @@ func NewAst(options ...*Option) *Ast {
 }
 
 /*
-@Editor robotyang at 2023
+ParseFile @Editor robotyang at 2023
 
-ParseFile 解析指定路径的Go文件
+# ParseFile 解析指定路径的Go文件
 
-ParseFile Parses the Go file in the specified path
+@Param inputPath：输入文件路径
+
+# ParseFile Parses the Go file in the specified path
+
+@Param inputPath：Input file path
 */
 func (a *Ast) ParseFile(inputPath string) (err error) {
 	fset := token.NewFileSet()
@@ -63,9 +67,7 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseScopes is a ...
+ParseScopes @Editor robotyang at 2023
 */
 func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 	structs := map[int]interface{}{}    //用来排序
@@ -121,9 +123,7 @@ func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseDecls is a ...
+ParseDecls @Editor robotyang at 2023
 */
 func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
 	for _, decl := range Decls {
@@ -155,9 +155,7 @@ func (a *Ast) ParseDecls(Decls []ast.Decl) (err error) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseImport is a ...
+ParseImport @Editor robotyang at 2023
 */
 func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
 	ret.Path = i.Path.Value
@@ -169,9 +167,7 @@ func (a *Ast) ParseImport(i *ast.ImportSpec) (ret Import) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseStruct is a ...
+ParseStruct @Editor robotyang at 2023
 */
 func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
 	st := typ.Type.(*ast.StructType)
@@ -199,9 +195,7 @@ func (a *Ast) ParseStruct(typ *ast.TypeSpec) (ret Struct) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseField is a ...
+ParseField @Editor robotyang at 2023
 */
 func (a *Ast) ParseField(field *ast.Field) (ret Field) {
 	name := getIdentsName(field.Names)
@@ -214,9 +208,7 @@ func (a *Ast) ParseField(field *ast.Field) (ret Field) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseInterface is a ...
+ParseInterface @Editor robotyang at 2023
 */
 func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 	ret.Comments = getCommentGroup(typ.Comment)
@@ -244,9 +236,7 @@ func (a *Ast) ParseInterface(typ *ast.TypeSpec) (ret Interface) {
 }
 
 /*
-@Editor robotyang at 2023
-
-ParseFunc is a ...
+ParseFunc @Editor robotyang at 2023
 */
 func (a *Ast) ParseFunc(f *ast.FuncType) (ret Func) {
 	funcT := Func{}

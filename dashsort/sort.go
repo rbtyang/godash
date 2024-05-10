@@ -5,8 +5,9 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-//冒泡排序：
-//  依次两两交换，大的往前冒，不断重复遍历，直到有序
+/*
+Bubble 冒泡排序：依次两两交换，大的往前冒，不断重复遍历，直到有序
+*/
 func Bubble[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for true {
@@ -23,7 +24,9 @@ func Bubble[T constraints.Ordered](sli []T) {
 	}
 }
 
-//冒泡排序：
+/*
+Bubble2 冒泡排序：依次两两交换，大的往前冒，不断重复遍历，直到有序
+*/
 func Bubble2[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	//该层循环控制 需要冒泡的轮数
@@ -37,8 +40,9 @@ func Bubble2[T constraints.Ordered](sli []T) {
 	}
 }
 
-//插入排序：
-//  将 b区 中的 val 依次插到 a区中 最合适的位置
+/*
+Insertion 插入排序：将 b区 中的 val 依次插到 a区中 最合适的位置
+*/
 func Insertion[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for b := 0; b < leng; b++ { //b区
@@ -53,7 +57,9 @@ func Insertion[T constraints.Ordered](sli []T) {
 	}
 }
 
-//选择排序：
+/*
+Insertion2 插入排序：将 b区 中的 val 依次插到 a区中 最合适的位置
+*/
 func Insertion2[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	for i := 0; i < leng; i++ {
@@ -71,8 +77,9 @@ func Insertion2[T constraints.Ordered](sli []T) {
 	}
 }
 
-//选择排序：
-//  b区 中最小的 val 排到 a区 最后
+/*
+Selection 选择排序：b区 中最小的 val 排到 a区 最后
+*/
 func Selection[T constraints.Ordered](sli []T) {
 	leng := len(sli)
 	//双重循环完成，外层控制轮数，内层控制比较次数
@@ -93,10 +100,13 @@ func Selection[T constraints.Ordered](sli []T) {
 	}
 }
 
-//快速排序：
-//  1、先从数列中 取出一个数 作为基准数 val
-//  2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
-//  3、再对左右区间 重复第二步，直到各区间 只有一个数
+/*
+Quick 快速排序（串行版）：
+
+1、先从数列中 取出一个数 作为基准数 val
+2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
+3、再对左右区间 重复第二步，直到各区间 只有一个数
+*/
 func Quick[T constraints.Ordered](sli []T) []T {
 	leng := len(sli)
 	//先判断是否需要继续进行
@@ -128,10 +138,13 @@ func Quick[T constraints.Ordered](sli []T) []T {
 	return append(append(lfSort, kVal), rtSort...)
 }
 
-//快速排序：
-//  1、先从数列中 取出一个数 作为基准数 val
-//  2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
-//  3、再对左右区间 重复第二步，直到各区间 只有一个数
+/*
+QuickParallel 快速排序（并发版）：
+
+1、先从数列中 取出一个数 作为基准数 val
+2、分区过程，将比这个数大的数 全放到它的右边，小于或等于它的数 全放到它的左边 (右找小, 左找大)
+3、再对左右区间 重复第二步，直到各区间 只有一个数
+*/
 func QuickParallel[T constraints.Ordered](sli []T) []T {
 
 	leng := len(sli)

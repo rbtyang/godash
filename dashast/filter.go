@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-//返回true 可以继续执行，返回false 过滤掉这个数据
+// 返回true 可以继续执行，返回false 过滤掉这个数据
 type (
 	FieldFilter  func(*ast.Field) bool
 	StructFilter func(*ast.TypeSpec) bool
@@ -13,9 +13,7 @@ type (
 )
 
 /*
-@Editor robotyang at 2023
-
-WithFieldFilter is a ...
+WithFieldFilter @Editor robotyang at 2023
 */
 func WithFieldFilter(filter ...FieldFilter) *Option {
 	return &Option{
@@ -26,9 +24,7 @@ func WithFieldFilter(filter ...FieldFilter) *Option {
 }
 
 /*
-@Editor robotyang at 2023
-
-WithStructFilter is a ...
+WithStructFilter @Editor robotyang at 2023
 */
 func WithStructFilter(filter ...StructFilter) *Option {
 	return &Option{
@@ -39,9 +35,7 @@ func WithStructFilter(filter ...StructFilter) *Option {
 }
 
 /*
-@Editor robotyang at 2023
-
-WithFuncFilter is a ...
+WithFuncFilter @Editor robotyang at 2023
 */
 func WithFuncFilter(filter ...FuncFilter) *Option {
 	return &Option{
@@ -57,9 +51,9 @@ type FilterFuncOpt struct {
 }
 
 /*
-@Editor robotyang at 2023
+FilterFuncList @Editor robotyang at 2023
 
-FilterFuncList 只返回 符合的 函数列表
+# FilterFuncList 只返回 符合的 函数列表
 */
 func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	return func(f *Func) bool {
@@ -85,7 +79,7 @@ func FilterFuncList(funcList []FilterFuncOpt) FuncFilter {
 	}
 }
 
-//新版proto 内部字段 需要过滤
+// 新版proto 内部字段 需要过滤
 var protoField = []string{
 	"state",
 	"sizeCache",
@@ -93,9 +87,7 @@ var protoField = []string{
 }
 
 /*
-@Editor robotyang at 2023
-
-FilterProtoInner is a ...
+FilterProtoInner @Editor robotyang at 2023
 */
 func FilterProtoInner(field *ast.Field) bool {
 	name := field.Names[0].Name
@@ -112,9 +104,9 @@ func FilterProtoInner(field *ast.Field) bool {
 }
 
 /*
-@Editor robotyang at 2023
+FilterInnerField @Editor robotyang at 2023
 
-FilterInnerField 过滤小写字段
+# FilterInnerField 过滤小写字段
 */
 func FilterInnerField(field *ast.Field) bool {
 	name := field.Names[0].Name
@@ -128,9 +120,7 @@ func FilterInnerField(field *ast.Field) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
-FilterInnerSt is a ...
+FilterInnerSt @Editor robotyang at 2023
 */
 func FilterInnerSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()
@@ -144,9 +134,7 @@ func FilterInnerSt(st *ast.TypeSpec) bool {
 }
 
 /*
-@Editor robotyang at 2023
-
-FilterProtoSt is a ...
+FilterProtoSt @Editor robotyang at 2023
 */
 func FilterProtoSt(st *ast.TypeSpec) bool {
 	name := st.Name.String()

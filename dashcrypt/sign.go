@@ -8,11 +8,11 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+SignFlatMap @Editor robotyang at 2023
 
-SignFlatMap 根据参数计算签名
+# SignFlatMap 根据参数计算签名
 
-@Param data map[string]string / struct / url.Values
+@Param data：仅支持 map[string]string / struct / url.Values
 
 @Reference https://developers.weixin.qq.com/doc/offiaccount/Shake_Nearby/Shake_RedPack/Red_Packet_JSAPI.html
 */
@@ -50,9 +50,9 @@ func SignFlatMap(data map[string]string, secret string) string {
 }
 
 /*
-@Editor robotyang at 2023
+CheckSignFlatMap @Editor robotyang at 2023
 
-CheckSignFlatMap 检查参数签名
+# CheckSignFlatMap 检查参数签名
 */
 func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {
 	return inSign == SignFlatMap(data, secret)

@@ -15,27 +15,27 @@ type (
 )
 
 /*
-@Editor robotyang at 2023
+NewPager @Editor robotyang at 2023
 
-NewPager is a ...
+# NewPager is a ...
 */
 func NewPager(index, size uint32) *Pager {
 	return newPager(index, size, false)
 }
 
 /*
-@Editor robotyang at 2023
+NewPagerAll @Editor robotyang at 2023
 
-NewPagerAll is a ...
+# NewPagerAll is a ...
 */
 func NewPagerAll(index, size uint32, needAll bool) *Pager {
 	return newPager(index, size, needAll)
 }
 
 /*
-@Editor robotyang at 2023
+newPager @Editor robotyang at 2023
 
-newPager is a ...
+# newPager is a ...
 */
 func newPager(index, size uint32, needAll bool) *Pager {
 	if index < 1 {

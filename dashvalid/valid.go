@@ -16,9 +16,11 @@ type Valid struct {
 }
 
 /*
-@Editor robotyang at 2023
+New @Editor robotyang at 2023
 
-New 支持 string msg, err obj
+# New 支持 string msg, err obj
+
+@Reference https://juejin.cn/post/6847902214279659533
 */
 func New() *Valid {
 	v := &Valid{
@@ -46,13 +48,13 @@ func New() *Valid {
 	return v
 }
 
-//设置 消息分隔符
+// Sep 设置 消息分隔符
 func (v *Valid) Sep(connector string) *Valid {
 	v.separate = connector
 	return v
 }
 
-//返回 消息切片（不带分隔符）
+// List 返回 消息切片（不带分隔符）
 func (v *Valid) List(err error) []string {
 	var errList []string
 	errs := err.(validator.ValidationErrors)
@@ -62,7 +64,11 @@ func (v *Valid) List(err error) []string {
 	return errList
 }
 
-//返回 消息字符串（分隔符区分）
+// Str 返回 消息字符串（分隔符区分）
 func (v *Valid) Str(err error) string {
-	return strings.Join(v.List(err), v.separate)
+	if err == nil {
+		return ""
+	} else {
+		return strings.Join(v.List(err), v.separate)
+	}
 }

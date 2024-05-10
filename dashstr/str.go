@@ -7,9 +7,9 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
+UpperFirst @Editor robotyang at 2023
 
-UpperFirst  首字母大写
+# UpperFirst  首字母大写
 */
 func UpperFirst(s string) string {
 	if s == "" {
@@ -19,33 +19,33 @@ func UpperFirst(s string) string {
 }
 
 /*
-@Editor robotyang at 2023
+@驼峰转蛇形 Editor robotyang at 2023
 
- 驼峰转蛇形 snake string
- @description XxYy to xx_yy , XxYY to xx_y_y
- @param s 需要转换的字符串
- @Return string
+	# 驼峰转蛇形 snake string
+	@description XxYy to xx_yy , XxYY to xx_y_y
+	@param s 需要转换的字符串
+	@Return string
 */
 func SnakeString(s string) string {
 	return snakeStr(s, '_')
 }
 
 /*
-@Editor robotyang at 2023
+@驼峰转蛇形 Editor robotyang at 2023
 
- 驼峰转蛇形 snake string
- @description XxYy to xx-yy , XxYY to xx-y-y
- @param s 需要转换的字符串
- @Return string
+	# 驼峰转蛇形 snake string
+	@description XxYy to xx-yy , XxYY to xx-y-y
+	@param s 需要转换的字符串
+	@Return string
 */
 func SnakeStringStrike(s string) string {
 	return snakeStr(s, '-')
 }
 
 /*
-@Editor robotyang at 2023
+snakeStr @Editor robotyang at 2023
 
-snakeStr  通用转换
+# snakeStr  通用转换
 */
 func snakeStr(s string, sep byte) string {
 	data := make([]byte, 0, len(s)*2)
@@ -69,33 +69,33 @@ func snakeStr(s string, sep byte) string {
 }
 
 /*
-@Editor robotyang at 2023
+@蛇形转驼峰 Editor robotyang at 2023
 
- 蛇形转驼峰
- @description xx_yy to XxYx  xx_y_y to XxYY
- @param s要转换的字符串
- @Return string
+	# 蛇形转驼峰
+	@description xx_yy to XxYx  xx_y_y to XxYY
+	@param s要转换的字符串
+	@Return string
 */
 func CamelStringStrike(s string) string {
 	return camelStr(s, '-')
 }
 
 /*
-@Editor robotyang at 2023
+@蛇形转驼峰 Editor robotyang at 2023
 
- 蛇形转驼峰
- @description xx-yy to XxYx  xx-y-y to XxYY
- @param s要转换的字符串
- @Return string
+	# 蛇形转驼峰
+	@description xx-yy to XxYx  xx-y-y to XxYY
+	@param s要转换的字符串
+	@Return string
 */
 func CamelString(s string) string {
 	return camelStr(s, '_')
 }
 
 /*
-@Editor robotyang at 2023
+camelStr @Editor robotyang at 2023
 
-camelStr  通用驼峰转换
+# camelStr  通用驼峰转换
 */
 func camelStr(s string, sep byte) string {
 	data := make([]byte, 0, len(s))
@@ -122,9 +122,9 @@ func camelStr(s string, sep byte) string {
 }
 
 /*
-@Editor robotyang at 2023
+IsDigit @Editor robotyang at 2023
 
-IsDigit 判断是否为 纯整数
+# IsDigit 判断是否为 纯整数
 
 @Param str 待判断的字符
 */
@@ -141,9 +141,9 @@ func IsDigit(str string) bool {
 }
 
 /*
-@Editor robotyang at 2023
+IsLetter @Editor robotyang at 2023
 
-IsLetter 判断是否为 纯字母
+# IsLetter 判断是否为 纯字母
 
 @Param str 待判断的字符
 */
@@ -156,9 +156,9 @@ func IsLetter(str string) bool {
 }
 
 /*
-@Editor robotyang at 2023
+IsDigitLetter @Editor robotyang at 2023
 
-IsDigitLetter 判断是否为 整数+字母
+# IsDigitLetter 判断是否为 整数+字母
 
 @Param str 待判断的字符
 */
@@ -171,9 +171,9 @@ func IsDigitLetter(str string) bool {
 }
 
 /*
-@Editor robotyang at 2023
+IsCapitalLetter @Editor robotyang at 2023
 
-IsCapitalLetter 判断是否为 纯大写字母
+# IsCapitalLetter 判断是否为 纯大写字母
 
 @Param str 待判断的字符
 */
@@ -186,9 +186,9 @@ func IsCapitalLetter(str string) bool {
 }
 
 /*
-@Editor robotyang at 2023
+IsSmallLetter @Editor robotyang at 2023
 
-IsSmallLetter 判断是否为 纯小写字母
+# IsSmallLetter 判断是否为 纯小写字母
 
 @Param str 待判断的字符
 */

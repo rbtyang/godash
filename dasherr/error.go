@@ -13,7 +13,7 @@ type RpcError interface {
 	GRPCStatus() *status.Status
 }
 
-// error struct
+// Dasherr error struct
 type Dasherr struct {
 	Pres  string   //错误信息前缀
 	Codes uint32   //错误码
@@ -23,9 +23,9 @@ type Dasherr struct {
 }
 
 /*
-@Editor robotyang at 2023
+New @Editor robotyang at 2023
 
-New 实例化错误类
+# New 实例化错误类
 */
 func New(err ...error) *Dasherr {
 	dsErr := &Dasherr{
@@ -38,81 +38,81 @@ func New(err ...error) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Err @Editor robotyang at 2023
 
-Err is a ...
+# Err is a ...
 */
 func Err(err ...error) *Dasherr {
 	return New(err...)
 }
 
 /*
-@Editor robotyang at 2023
+Code @Editor robotyang at 2023
 
-Code is a ...
+# Code is a ...
 */
 func Code(code uint32) *Dasherr {
 	return New().Code(code)
 }
 
 /*
-@Editor robotyang at 2023
+Pre @Editor robotyang at 2023
 
-Pre is a ...
+# Pre is a ...
 */
 func Pre(msg string) *Dasherr {
 	return New().Pre(msg)
 }
 
 /*
-@Editor robotyang at 2023
+Pref @Editor robotyang at 2023
 
-Pref is a ...
+# Pref is a ...
 */
 func Pref(format string, a ...interface{}) *Dasherr {
 	return New().Pref(format, a...)
 }
 
 /*
-@Editor robotyang at 2023
+Msg @Editor robotyang at 2023
 
-Msg is a ...
+# Msg is a ...
 */
 func Msg(msg string) *Dasherr {
 	return New().Msg(msg)
 }
 
 /*
-@Editor robotyang at 2023
+Msgf @Editor robotyang at 2023
 
-Msgf is a ...
+# Msgf is a ...
 */
 func Msgf(format string, a ...interface{}) *Dasherr {
 	return New().Msgf(format, a...)
 }
 
 /*
-@Editor robotyang at 2023
+Log @Editor robotyang at 2023
 
-Log is a ...
+# Log is a ...
 */
 func Log(log string) *Dasherr {
 	return New().Log(log)
 }
 
 /*
-@Editor robotyang at 2023
+Logf @Editor robotyang at 2023
 
-Logf is a ...
+# Logf is a ...
 */
 func Logf(format string, a ...interface{}) *Dasherr {
 	return New().Logf(format, a...)
 }
 
 /*
-@Editor robotyang at 2023
+Err @Editor robotyang at 2023
 
-Err is a ...
+# Err is a ...
 */
 func (m *Dasherr) Err(err error) *Dasherr {
 	switch err.(type) {
@@ -151,9 +151,9 @@ func (m *Dasherr) Err(err error) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Pre @Editor robotyang at 2023
 
-Pre is a ...
+# Pre is a ...
 */
 func (m *Dasherr) Pre(prefix string) *Dasherr {
 	m.Pres = prefix
@@ -161,18 +161,18 @@ func (m *Dasherr) Pre(prefix string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Pref @Editor robotyang at 2023
 
-Pref is a ...
+# Pref is a ...
 */
 func (m *Dasherr) Pref(format string, a ...interface{}) *Dasherr {
 	return m.Pre(fmt.Sprintf(format, a...))
 }
 
 /*
-@Editor robotyang at 2023
+withPre @Editor robotyang at 2023
 
-withPre 错误加前缀
+# withPre 错误加前缀
 */
 func (m *Dasherr) withPre(errStr string) string {
 	if m.Pres != "" {
@@ -183,9 +183,9 @@ func (m *Dasherr) withPre(errStr string) string {
 }
 
 /*
-@Editor robotyang at 2023
+Code @Editor robotyang at 2023
 
-Code 设置错误码
+# Code 设置错误码
 */
 func (m *Dasherr) Code(code uint32) *Dasherr {
 	msg := GetCodeMsg(code)
@@ -196,9 +196,9 @@ func (m *Dasherr) Code(code uint32) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Msg @Editor robotyang at 2023
 
-Msg 设置 错误消息（用户看）
+# Msg 设置 错误消息（用户看）
 */
 func (m *Dasherr) Msg(msg string) *Dasherr {
 	if msg == "" {
@@ -210,18 +210,18 @@ func (m *Dasherr) Msg(msg string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Msgf @Editor robotyang at 2023
 
-Msgf 设置 错误消息（用户看）
+# Msgf 设置 错误消息（用户看）
 */
 func (m *Dasherr) Msgf(format string, a ...interface{}) *Dasherr {
 	return m.Msg(fmt.Sprintf(format, a...))
 }
 
 /*
-@Editor robotyang at 2023
+Log @Editor robotyang at 2023
 
-Log 设置 日志消息（开发看）
+# Log 设置 日志消息（开发看）
 */
 func (m *Dasherr) Log(log string) *Dasherr {
 	m.Logs = append(m.Logs, m.withPre(log))
@@ -229,18 +229,18 @@ func (m *Dasherr) Log(log string) *Dasherr {
 }
 
 /*
-@Editor robotyang at 2023
+Logf @Editor robotyang at 2023
 
-Logf 设置 日志消息（开发看）
+# Logf 设置 日志消息（开发看）
 */
 func (m *Dasherr) Logf(format string, a ...interface{}) *Dasherr {
 	return m.Log(fmt.Sprintf(format, a...))
 }
 
 /*
-@Editor robotyang at 2023
+Error @Editor robotyang at 2023
 
-Error 必须实现的接口
+# Error 必须实现的接口
 */
 func (m *Dasherr) Error() string {
 	return m.Msgs

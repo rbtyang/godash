@@ -21,21 +21,21 @@ func init() {
 /*
 @Editor robotyang at 2023
 
-TestErrGroup is a ...
+DebugErrGroup is a ...
 */
 func TestErrGroup(t *testing.T) {
 	var erg errgroup.Group
 
 	erg.Go(func() error {
-		assert.Equal(t, "ZhangSan Ni Hao", dashdemo.SomeFunc("ZhangSan"))
+		assert.Equal(t, "ZhangSan Ni Hao", dashdemo.DebugErrGroup("ZhangSan"))
 		return nil
 	})
 	erg.Go(func() error {
-		assert.Equal(t, "LiSi Ni Hao", dashdemo.SomeFunc("LiSi"))
+		assert.Equal(t, "LiSi Ni Hao", dashdemo.DebugErrGroup("LiSi"))
 		return nil
 	})
 	erg.Go(func() error {
-		assert.Equal(t, "WangWu Ni Hao", dashdemo.SomeFunc("WangWu"))
+		assert.Equal(t, "WangWu Ni Hao", dashdemo.DebugErrGroup("WangWu"))
 		return nil
 	})
 

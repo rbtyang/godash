@@ -7,7 +7,11 @@ import (
 	"strings"
 )
 
-//获取异常的堆栈信息
+/*
+PanicTrace  @Editor robotyang at 2023
+
+# PanicTrace 获取异常的堆栈信息
+*/
 func PanicTrace(kb int) []byte {
 	s := []byte("/src/runtime/panic.go")
 	e := []byte("\ngoroutine ")
@@ -30,8 +34,13 @@ func PanicTrace(kb int) []byte {
 	return stack
 }
 
-//获取包外的最后一个调用位置
-//@param curFileName 调用者所在文件路径，通过 _, curFileName, _, _ = runtime.Caller(0) 获得
+/*
+LastCallerPlace @Editor robotyang at 2023
+
+# LastCallerPlace 获取包外的最后一个调用位置
+
+@Param curFileName 调用者所在文件路径，通过 _, curFileName, _, _ = runtime.Caller(0) 获得
+*/
 func LastCallerPlace(curFileName string) string {
 	stack := ""
 	for i := 2; i < 8; i++ { //最多向外延伸6层堆栈
@@ -44,8 +53,13 @@ func LastCallerPlace(curFileName string) string {
 	return stack
 }
 
-//获取调用者的方法名
-//@param short 是否只返回 不带包路径的 方法名
+/*
+LastCallerFuncName @Editor robotyang at 2023
+
+# LastCallerFuncName 获取调用者的方法名
+
+@Param short 是否只返回 不带包路径的 方法名
+*/
 func LastCallerFuncName(short bool) string {
 	pc, _, _, ok := runtime.Caller(2)
 	if !ok {

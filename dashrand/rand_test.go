@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -18,8 +16,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestStr is a ...
 */
 func TestStr(t *testing.T) {
@@ -74,8 +70,6 @@ func TestStr(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestNum is a ...
 */
 func TestNum(t *testing.T) {
@@ -142,8 +136,6 @@ func TestNum(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestIntSli is a ...
 */
 func TestIntSli(t *testing.T) {

@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 TestIntSet is a ...
 */
 func TestIntSet(t *testing.T) {

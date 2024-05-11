@@ -14,8 +14,6 @@ var (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -23,8 +21,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestSnowOne is a ...
 */
 func TestSnowOne(t *testing.T) {
@@ -41,8 +37,6 @@ func TestSnowOne(t *testing.T) {
 //串行基准测试
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkSnowSeri go test -bench=SnowSeri$
 */
 func BenchmarkSnowSeri(b *testing.B) {
@@ -70,8 +64,6 @@ func BenchmarkSnowSeri(b *testing.B) {
 //并行基准测试
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkSnowPara go test -bench=SnowPara$
 */
 func BenchmarkSnowPara(b *testing.B) {
@@ -100,8 +92,6 @@ func BenchmarkSnowPara(b *testing.B) {
 //并行基准测试
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkSnowRandNode go test -bench=SnowRandNode$
 */
 func BenchmarkSnowRandNode(b *testing.B) {

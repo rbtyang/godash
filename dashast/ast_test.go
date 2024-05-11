@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 TestParseFile is a ...
 */
 func TestParseFile(t *testing.T) {

@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 TestIsExist is a ...
 */
 func TestIsExist(t *testing.T) {
@@ -39,8 +37,6 @@ func TestIsExist(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestIsDir is a ...
 */
 func TestIsDir(t *testing.T) {
@@ -67,8 +63,6 @@ func TestIsDir(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestIsFile is a ...
 */
 func TestIsFile(t *testing.T) {
@@ -258,8 +252,6 @@ func TestAppendFile(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestGetLastDir is a ...
 */
 func TestGetLastDir(t *testing.T) {
@@ -311,8 +303,6 @@ func TestGetLastDir(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestGetLastDir is a ...
 */
 func TestGetLastDirWithCheck(t *testing.T) {
@@ -329,8 +319,6 @@ func TestGetLastDirWithCheck(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestGetFilePathList is a ...
 */
 func TestGetFileList(t *testing.T) {
@@ -374,8 +362,6 @@ func TestGetFileList(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestGetFileListFilter is a ...
 */
 func TestGetFileListFilter(t *testing.T) {

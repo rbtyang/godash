@@ -7,8 +7,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 ExampleNewAst is a ...
 */
 func ExampleNewAst() {

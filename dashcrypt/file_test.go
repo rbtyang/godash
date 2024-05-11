@@ -13,8 +13,6 @@ const filePrefix = "temp/dashcrypt_file_test"
 const originFilePath = filePrefix + ".md"
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -53,8 +51,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestFileEncrypt is a ...
 */
 func TestFileEncrypt(t *testing.T) {

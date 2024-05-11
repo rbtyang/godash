@@ -8,8 +8,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -17,8 +15,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestStrToByte is a ...
 */
 func TestStrToByte(t *testing.T) {
@@ -35,8 +31,6 @@ func TestStrToByte(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestStrToByteByUnsafe is a ...
 */
 func TestStrToByteByUnsafe(t *testing.T) {
@@ -53,8 +47,6 @@ func TestStrToByteByUnsafe(t *testing.T) {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestStrToByteByReflect is a ...
 */
 func TestStrToByteByReflect(t *testing.T) {

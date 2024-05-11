@@ -9,8 +9,6 @@ import (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -18,8 +16,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestSysinfoPercent is a ...
 */
 func TestSysinfoPercent(t *testing.T) {

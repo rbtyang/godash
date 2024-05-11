@@ -28,8 +28,6 @@ type Stock struct {
 }
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -37,8 +35,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestObjToMap is a ...
 */
 func TestObjToMap(t *testing.T) {

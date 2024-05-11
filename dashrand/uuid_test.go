@@ -12,8 +12,6 @@ var (
 )
 
 /*
-@Editor robotyang at 2023
-
 init is a ...
 */
 func init() {
@@ -21,8 +19,6 @@ func init() {
 }
 
 /*
-@Editor robotyang at 2023
-
 TestUuidOne is a ...
 */
 func TestUuidOne(t *testing.T) {
@@ -35,8 +31,6 @@ func TestUuidOne(t *testing.T) {
 //串行基准测试
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkUuidSeri go test -bench=UuidSeri$
 */
 func BenchmarkUuidSeri(b *testing.B) {
@@ -60,8 +54,6 @@ func BenchmarkUuidSeri(b *testing.B) {
 //并行基准测试
 
 /*
-@Editor robotyang at 2023
-
 BenchmarkUuidRandNode go test -bench=UuidRandNode$
 */
 func BenchmarkUuidRandNode(b *testing.B) {

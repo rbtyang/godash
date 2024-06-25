@@ -396,13 +396,13 @@ Test_ArrayToString is a ...
 func Test_ArrayToString(t *testing.T) {
 	{
 		{
-			input := []interface{}{"rbtyang", "num", 9527}
+			input := []any{"rbtyang", "num", 9527}
 			want := "rbtyang,num,9527"
 			recv := dasharr.JoinAny(input, ",")
 			assert.Equal(t, want, recv)
 		}
 		{
-			input := []interface{}{"rbt yang", "num", 9527}
+			input := []any{"rbt yang", "num", 9527}
 			want := "rbt yang,num,9527"
 			recv := dasharr.JoinAny(input, ",")
 			assert.Equal(t, want, recv)

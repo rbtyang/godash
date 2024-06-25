@@ -69,7 +69,7 @@ Pref @Editor robotyang at 2023
 
 # Pref is a ...
 */
-func Pref(format string, a ...interface{}) *Dasherr {
+func Pref(format string, a ...any) *Dasherr {
 	return New().Pref(format, a...)
 }
 
@@ -87,7 +87,7 @@ Msgf @Editor robotyang at 2023
 
 # Msgf is a ...
 */
-func Msgf(format string, a ...interface{}) *Dasherr {
+func Msgf(format string, a ...any) *Dasherr {
 	return New().Msgf(format, a...)
 }
 
@@ -105,7 +105,7 @@ Logf @Editor robotyang at 2023
 
 # Logf is a ...
 */
-func Logf(format string, a ...interface{}) *Dasherr {
+func Logf(format string, a ...any) *Dasherr {
 	return New().Logf(format, a...)
 }
 
@@ -165,7 +165,7 @@ Pref @Editor robotyang at 2023
 
 # Pref is a ...
 */
-func (m *Dasherr) Pref(format string, a ...interface{}) *Dasherr {
+func (m *Dasherr) Pref(format string, a ...any) *Dasherr {
 	return m.Pre(fmt.Sprintf(format, a...))
 }
 
@@ -214,7 +214,7 @@ Msgf @Editor robotyang at 2023
 
 # Msgf 设置 错误消息（用户看）
 */
-func (m *Dasherr) Msgf(format string, a ...interface{}) *Dasherr {
+func (m *Dasherr) Msgf(format string, a ...any) *Dasherr {
 	return m.Msg(fmt.Sprintf(format, a...))
 }
 
@@ -233,7 +233,7 @@ Logf @Editor robotyang at 2023
 
 # Logf 设置 日志消息（开发看）
 */
-func (m *Dasherr) Logf(format string, a ...interface{}) *Dasherr {
+func (m *Dasherr) Logf(format string, a ...any) *Dasherr {
 	return m.Log(fmt.Sprintf(format, a...))
 }
 

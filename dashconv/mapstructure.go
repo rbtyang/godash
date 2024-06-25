@@ -13,7 +13,7 @@ WeakMapToStructWithTag @Editor robotyang at 2023
 
 @Param tagName：结构体的关联tag名
 */
-func WeakMapToStructWithTag(inMap, outStruct interface{}, tagName string) error {
+func WeakMapToStructWithTag(inMap, outStruct any, tagName string) error {
 	cfg := &mapstructure.DecoderConfig{
 		Metadata:         nil,
 		Result:           outStruct,

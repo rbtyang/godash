@@ -1,110 +1,160 @@
 package dashtime
 
-import "time"
+import (
+	"errors"
+	"time"
+)
 
 const (
 	Loc_UTC     = "UTC"                 //世界协调时间 标准时区
+	Loc_Local   = "Local"               //系统所在当地 标准时区
 	Loc_China   = "Asia/Shanghai"       //亚洲中国上海 标准时区
 	Loc_Germany = "Europe/Berlin"       //欧洲德国柏林 标准时区
 	Loc_America = "America/Los_Angeles" //美洲美国洛杉矶 标准时区
+)
 
-	Fmt_Y_m_D_H_M_S     = "2006-01-02 15:04:05"
-	Fmt_H_M_S           = "15:04:05"
-	Fmt_Y_m_D_H_M_S_CST = "2006-01-02 15:04:05 +0800 CST"
-	Fmt_YmDHMS          = "20060102150405"
-	Fmt_YmDhMS          = "20060102030405"
-	Fmt_Y_m_D           = "2006-01-02"
-	Fmt_YmD             = "20060102"
-	Fmt_Zh_Y_m_D_H_M    = "2006年01月02日15:04"
-	Fmt_Zh_Y_m_D_H_M_S  = "2006年01月02日15:04:05"
-	Fmt_Y_m_D_H_M       = "2006-01-02 15:04"
-	Fmt_Date            = Fmt_Y_m_D
-	Fmt_Time            = Fmt_H_M_S
-	Fmt_DateTime        = Fmt_Y_m_D_H_M_S
+const (
+	Lay_YmDHMS_CST = "2006-01-02 15:04:05 +0800 CST"
+	Lay_YmDHMS     = "2006-01-02 15:04:05"
+	Lay_YmDHM      = "2006-01-02 15:04"
+	Lay_YmDH       = "2006-01-02 15"
+	Lay_YmD        = "2006-01-02"
+	Lay_HMS        = "15:04:05"
+
+	Lay_YmDHMS_S = "20060102150405"
+	Lay_YmDHM_S  = "200601021504"
+	Lay_YmDH_S   = "2006010215"
+	Lay_YmD_S    = "20060102"
+	Lay_HMS_S    = "150405"
+
+	Lay_YmDHMS_Zh = "2006年01月02日15:04:05"
+	Lay_YmDHM_Zh  = "2006年01月02日15:04"
+	Lay_YmDH_Zh   = "2006年01月02日15"
+	Lay_YmD_Zh    = "2006年01月02日"
+	Lay_HMS_Zh    = "15:04:05"
+
+	Lay_Date        = Lay_YmD
+	Lay_Time        = Lay_HMS
+	Lay_DateTime    = Lay_YmDHMS
+	Lay_Date_S      = Lay_YmD_S
+	Lay_Time_S      = Lay_HMS_S
+	Lay_DateTime_S  = Lay_YmDHMS_S
+	Lay_Date_Zh     = Lay_YmD_Zh
+	Lay_Time_Zh     = Lay_HMS_Zh
+	Lay_DateTime_Zh = Lay_YmDHMS_Zh
+
+	Lay_Layout      = time.Layout
+	Lay_ANSIC       = time.ANSIC
+	Lay_UnixDate    = time.UnixDate
+	Lay_RubyDate    = time.RubyDate
+	Lay_RFC822      = time.RFC822
+	Lay_RFC822Z     = time.RFC822Z
+	Lay_RFC850      = time.RFC850
+	Lay_RFC1123     = time.RFC1123
+	Lay_RFC1123Z    = time.RFC1123Z
+	Lay_RFC3339     = time.RFC3339
+	Lay_RFC3339Nano = time.RFC3339Nano
+	Lay_Kitchen     = time.Kitchen
+	Lay_Stamp       = time.Stamp
+	Lay_StampMilli  = time.StampMilli
+	Lay_StampMicro  = time.StampMicro
+	Lay_StampNano   = time.StampNano
 )
 
 /*
-ParseToChina @Editor robotyang at 2023
+Layout @Editor robotyang at 2023
 
-# ParseToChina 格式化 文本时间 (默认:2006-01-02 15:04:05) 为time.Time
+# Layout 解析任意时间字符串的布局类型
+
+@Param timStr 待解析时间字符串
 */
-func ParseToChina(timeStr string, format ...string) (time.Time, error) {
-	defFormat := Fmt_Y_m_D_H_M_S
-	for _, value := range format {
-		defFormat = value
-		break
+func Layout(timStr string) (string, error) {
+	layouts := []string{
+		Lay_YmDHMS_CST,
+		Lay_YmDHMS,
+		Lay_YmDHM,
+		Lay_YmDH,
+		Lay_YmD,
+		Lay_HMS,
+		Lay_YmDHMS_S,
+		Lay_YmDHM_S,
+		Lay_YmDH_S,
+		Lay_YmD_S,
+		Lay_HMS_S,
+		Lay_YmDHMS_Zh,
+		Lay_YmDHM_Zh,
+		Lay_YmDH_Zh,
+		Lay_YmD_Zh,
+		Lay_HMS_Zh,
+		time.Layout,
+		time.ANSIC,
+		time.UnixDate,
+		time.RubyDate,
+		time.RFC822,
+		time.RFC822Z,
+		time.RFC850,
+		time.RFC1123,
+		time.RFC1123Z,
+		time.RFC3339,
+		time.RFC3339Nano,
+		time.Kitchen,
+		time.Stamp,
+		time.StampMilli,
+		time.StampMicro,
+		time.StampNano,
 	}
-	var cstSh, _ = time.LoadLocation(Loc_China)
-	timeUnix, err := time.ParseInLocation(defFormat, timeStr, cstSh)
-	if err != nil {
-		return time.Time{}, err
+
+	for _, layout := range layouts {
+		if _, err := time.Parse(layout, timStr); err == nil {
+			return layout, nil
+		}
 	}
-	return timeUnix, nil
+	return "", errors.New("not yet supported layout")
 }
 
 /*
-Format @Editor robotyang at 2023
+Parse @Editor robotyang at 2023
 
-# Format  格式化时间(time.Time)为指定时间格式文本
+# Parse 解析任意时间字符串为 *time.Time
 
-@Param time：待格式化时间
-
-@Param format：可选格式，否则默认格式 Fmt_Y_m_D_H_M_S
+@Param timStr 待解析时间字符串
 */
-func Format(times *time.Time, format ...string) string {
-	if times == nil {
-		return ""
+func Parse(timStr string) (*time.Time, error) {
+	if lay, err := Layout(timStr); err != nil {
+		return nil, err
+	} else {
+		tim, err := time.Parse(lay, timStr)
+		return &tim, err
 	}
-	defFormat := Fmt_Y_m_D_H_M_S
-	for _, value := range format {
-		defFormat = value
-		break
+}
+
+/*
+ParseLoc @Editor robotyang at 2023
+
+# ParseLoc 解析任意时间字符串为 *time.Time（并指定时区）
+
+@Param timStr 待解析时间字符串
+
+@Param loc 指定时区
+*/
+func ParseLoc(timStr string, locStr string) (*time.Time, error) {
+	if lay, err := Layout(timStr); err != nil {
+		return nil, err
+	} else {
+		var loc, _ = time.LoadLocation(locStr)
+		tim, err := time.ParseInLocation(lay, timStr, loc)
+		return &tim, err
 	}
-	return times.Format(defFormat)
 }
 
 /*
-CurrentTimeString @Editor robotyang at 2023
+DuraNextDawn @Editor robotyang at 2023
 
-# CurrentTimeString  获取 当前时间 并转换成 自定格式
+# DuraNextDawn  获取 times 对应到 凌晨的时间(到明天凌晨零点的时间)
 */
-func CurrentTimeString(defaultFormat ...string) string {
-	format := Fmt_Y_m_D_H_M_S
-	for _, value := range defaultFormat {
-		format = value
-	}
-	loc, _ := time.LoadLocation(Loc_China)
-	return time.Now().In(loc).Format(format)
-}
-
-/*
-RestNextDawn @Editor robotyang at 2023
-
-# RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
-*/
-func RestNextDawn(now time.Time) time.Duration {
-	nextDay := now.AddDate(0, 0, 1)
-	nextDay = time.Date(nextDay.Year(), nextDay.Month(), nextDay.Day(), 0, 0, 0, 0, nextDay.Location())
-	return nextDay.Sub(now)
-}
-
-/*
-CurrentTimePointer @Editor robotyang at 2023
-
-# CurrentTimePointer  获取 now时间的 *time.Time 格式
-*/
-func CurrentTimePointer() *time.Time {
-	now := time.Now()
-	now = SetLocDefault(&now)
-	return &now
-}
-
-/*
-SetLocDefault @Editor robotyang at 2023
-
-# SetLocDefault  设置time为 Asia/Shanghai默认时区
-*/
-func SetLocDefault(timeSuk *time.Time) time.Time {
-	var loc, _ = time.LoadLocation(Loc_China)
-	return timeSuk.In(loc)
+func DuraNextDawn(tim *time.Time) *time.Duration {
+	next := tim.AddDate(0, 0, 1)
+	nextDawn := time.Date(next.Year(), next.Month(), next.Day(), 0, 0, 0, 0, next.Location())
+	dura := nextDawn.Sub(*tim)
+	return &dura
 }

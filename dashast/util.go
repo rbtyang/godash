@@ -94,7 +94,7 @@ func CheckInnerStruct(name string) bool {
 /*
 getSortSlice @Editor robotyang at 2023
 */
-func getSortSlice(inMap map[int]interface{}) []interface{} {
+func getSortSlice(inMap map[int]any) []any {
 	if len(inMap) == 0 {
 		return nil
 	}
@@ -105,7 +105,7 @@ func getSortSlice(inMap map[int]interface{}) []interface{} {
 	}
 	sort.Ints(idxSlice)
 
-	valSlice := make([]interface{}, 0, len(inMap))
+	valSlice := make([]any, 0, len(inMap))
 	for _, v := range idxSlice {
 		valSlice = append(valSlice, inMap[v])
 	}

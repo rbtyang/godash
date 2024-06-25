@@ -199,3 +199,14 @@ func IsSmallLetter(str string) bool {
 	}
 	return b
 }
+
+/*
+TrimBlank 去除全角空格和常规空白字符。
+
+含半角空格、回车\r 换行\n 水平制表符\t 垂直制表符\v 换页符\f
+
+@Reference 空格说明：https://www.wejias.com/html/article/article-24.html
+*/
+func TrimBlank(mob string) string {
+	return regexp.MustCompile(`\s|\v|　`).ReplaceAllString(mob, "")
+}

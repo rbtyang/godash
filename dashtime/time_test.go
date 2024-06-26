@@ -43,19 +43,38 @@ func TestLayout(t *testing.T) {
 	}
 
 	{
-		want := dashtime.Lay_YmDHMS_Zh
+		want := dashtime.Lay_YmDHMS_ZH
+		recv, err := dashtime.Layout("2116年11月12日15点14分15秒")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := dashtime.Lay_YmDHM_ZH
+		recv, err := dashtime.Layout("2116年11月12日15点14分")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv)
+	}
+	{
+		want := dashtime.Lay_YmD_ZH
+		recv, err := dashtime.Layout("2116年11月12日")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv)
+	}
+
+	{
+		want := dashtime.Lay_YmDHMS_zh
 		recv, err := dashtime.Layout("2116年11月12日15:14:15")
 		assert.Equal(t, nil, err)
 		assert.Equal(t, want, recv)
 	}
 	{
-		want := dashtime.Lay_YmDHM_Zh
+		want := dashtime.Lay_YmDHM_zh
 		recv, err := dashtime.Layout("2116年11月12日15:14")
 		assert.Equal(t, nil, err)
 		assert.Equal(t, want, recv)
 	}
 	{
-		want := dashtime.Lay_YmD_Zh
+		want := dashtime.Lay_YmD_zh
 		recv, err := dashtime.Layout("2116年11月12日")
 		assert.Equal(t, nil, err)
 		assert.Equal(t, want, recv)
@@ -90,26 +109,56 @@ func TestLayout(t *testing.T) {
 TestParse is a ...
 */
 func TestParse(t *testing.T) {
-	want := getTestTime()
 	{
+		want := "2024-05-01 00:00:00 +0000 UTC"
 		recv, err := dashtime.Parse("2024-05-01")
 		assert.Equal(t, nil, err)
-		assert.Equal(t, want, recv) //TODO debug
+		assert.Equal(t, want, recv.String())
 	}
 	{
-		recv, err := dashtime.Parse("2024-05-01 12:34:56")
+		want := "2024-05-01 12:00:00 +0000 UTC"
+		recv, err := dashtime.Parse("2024-05-01 12")
 		assert.Equal(t, nil, err)
-		assert.Equal(t, want, recv)
+		assert.Equal(t, want, recv.String())
+	}
+
+	{
+		want := "2024-05-01 12:34:56 +0000 UTC"
+		recv, err := dashtime.Parse("20240501123456")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv.String())
 	}
 	{
-		recv, err := dashtime.Parse("2024-05-01 12:34:56")
+		want := "2024-05-01 12:00:00 +0000 UTC"
+		recv, err := dashtime.Parse("2024050112")
 		assert.Equal(t, nil, err)
-		assert.Equal(t, want, recv)
+		assert.Equal(t, want, recv.String())
+	}
+
+	{
+		want := "2024-05-01 12:34:56 +0000 UTC"
+		recv, err := dashtime.Parse("2024年05月01日12:34:56")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv.String())
 	}
 	{
-		recv, err := dashtime.Parse("2024-05-01 12:34:56")
+		want := "2024-05-01 12:34:56 +0000 UTC"
+		recv, err := dashtime.Parse("2024年05月01日12:34:56")
 		assert.Equal(t, nil, err)
-		assert.Equal(t, want, recv)
+		assert.Equal(t, want, recv.String())
+	}
+
+	{
+		want := "2024-05-01 12:34:56 +0000 UTC"
+		recv, err := dashtime.Parse("2024年05月01日12点34分56秒")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv.String())
+	}
+	{
+		want := "2024-05-01 12:34:56 +0000 UTC"
+		recv, err := dashtime.Parse("2024年05月01日12点34分56秒")
+		assert.Equal(t, nil, err)
+		assert.Equal(t, want, recv.String())
 	}
 }
 
@@ -172,7 +221,7 @@ func TestDuraNextDawn(t *testing.T) {
 		assert.Equal(t, nil, err)
 		assert.Equal(t, 10.741666666666667, dH)
 		assert.Equal(t, 644.5, dM)
-		assert.Equal(t, 38670, dS)
+		assert.Equal(t, 38670.0, dS)
 	}
 	{
 		tim, err := dashtime.Parse(nowDateStr + " 01:02:03")
@@ -183,6 +232,6 @@ func TestDuraNextDawn(t *testing.T) {
 		assert.Equal(t, nil, err)
 		assert.Equal(t, 22.965833333333332, dH)
 		assert.Equal(t, 1377.95, dM)
-		assert.Equal(t, 82677, dS)
+		assert.Equal(t, 82677.0, dS)
 	}
 }

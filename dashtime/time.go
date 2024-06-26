@@ -27,11 +27,16 @@ const (
 	Lay_YmD_S    = "20060102"
 	Lay_HMS_S    = "150405"
 
-	Lay_YmDHMS_Zh = "2006年01月02日15:04:05"
-	Lay_YmDHM_Zh  = "2006年01月02日15:04"
-	Lay_YmDH_Zh   = "2006年01月02日15"
-	Lay_YmD_Zh    = "2006年01月02日"
-	Lay_HMS_Zh    = "15:04:05"
+	Lay_YmDHMS_ZH = "2006年01月02日15点04分05秒"
+	Lay_YmDHM_ZH  = "2006年01月02日15点04分"
+	Lay_YmDH_ZH   = "2006年01月02日15点"
+	Lay_YmD_ZH    = "2006年01月02日"
+	Lay_HMS_ZH    = "15点04分05秒"
+	Lay_YmDHMS_zh = "2006年01月02日15:04:05"
+	Lay_YmDHM_zh  = "2006年01月02日15:04"
+	Lay_YmDH_zh   = "2006年01月02日15"
+	Lay_YmD_zh    = "2006年01月02日"
+	Lay_HMS_zh    = "15:04:05"
 
 	Lay_Date        = Lay_YmD
 	Lay_Time        = Lay_HMS
@@ -39,9 +44,12 @@ const (
 	Lay_Date_S      = Lay_YmD_S
 	Lay_Time_S      = Lay_HMS_S
 	Lay_DateTime_S  = Lay_YmDHMS_S
-	Lay_Date_Zh     = Lay_YmD_Zh
-	Lay_Time_Zh     = Lay_HMS_Zh
-	Lay_DateTime_Zh = Lay_YmDHMS_Zh
+	Lay_Date_ZH     = Lay_YmD_ZH
+	Lay_Time_ZH     = Lay_HMS_ZH
+	Lay_DateTime_ZH = Lay_YmDHMS_ZH
+	Lay_Date_zh     = Lay_YmD_zh
+	Lay_Time_zh     = Lay_HMS_zh
+	Lay_DateTime_zh = Lay_YmDHMS_zh
 
 	Lay_Layout      = time.Layout
 	Lay_ANSIC       = time.ANSIC
@@ -81,11 +89,16 @@ func Layout(timStr string) (string, error) {
 		Lay_YmDH_S,
 		Lay_YmD_S,
 		Lay_HMS_S,
-		Lay_YmDHMS_Zh,
-		Lay_YmDHM_Zh,
-		Lay_YmDH_Zh,
-		Lay_YmD_Zh,
-		Lay_HMS_Zh,
+		Lay_YmDHMS_ZH,
+		Lay_YmDHM_ZH,
+		Lay_YmDH_ZH,
+		Lay_YmD_ZH,
+		Lay_HMS_ZH,
+		Lay_YmDHMS_zh,
+		Lay_YmDHM_zh,
+		Lay_YmDH_zh,
+		Lay_YmD_zh,
+		Lay_HMS_zh,
 		time.Layout,
 		time.ANSIC,
 		time.UnixDate,

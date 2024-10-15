@@ -51,10 +51,7 @@ Format @Editor robotyang at 2023
 
 @Param format：可选格式，否则默认格式 Fmt_Y_m_D_H_M_S
 */
-func Format(times *time.Time, format ...string) string {
-	if times == nil {
-		return ""
-	}
+func Format(times time.Time, format ...string) string {
 	defFormat := Fmt_Y_m_D_H_M_S
 	for _, value := range format {
 		defFormat = value
@@ -82,29 +79,18 @@ RestNextDawn @Editor robotyang at 2023
 
 # RestNextDawn  获取 now 对应到 凌晨的时间(到明天凌晨零点的时间)
 */
-func RestNextDawn(now time.Time) time.Duration {
-	nextDay := now.AddDate(0, 0, 1)
+func RestNextDawn(times time.Time) time.Duration {
+	nextDay := times.AddDate(0, 0, 1)
 	nextDay = time.Date(nextDay.Year(), nextDay.Month(), nextDay.Day(), 0, 0, 0, 0, nextDay.Location())
-	return nextDay.Sub(now)
+	return nextDay.Sub(times)
 }
 
 /*
-CurrentTimePointer @Editor robotyang at 2023
+LocChina @Editor robotyang at 2023
 
-# CurrentTimePointer  获取 now时间的 *time.Time 格式
+# LocChina  设置time为 Asia/Shanghai默认时区
 */
-func CurrentTimePointer() *time.Time {
-	now := time.Now()
-	now = SetLocDefault(&now)
-	return &now
-}
-
-/*
-SetLocDefault @Editor robotyang at 2023
-
-# SetLocDefault  设置time为 Asia/Shanghai默认时区
-*/
-func SetLocDefault(timeSuk *time.Time) time.Time {
+func LocChina(times time.Time) time.Time {
 	var loc, _ = time.LoadLocation(Loc_China)
-	return timeSuk.In(loc)
+	return times.In(loc)
 }

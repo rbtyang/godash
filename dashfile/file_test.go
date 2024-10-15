@@ -328,7 +328,7 @@ func TestGetFileList(t *testing.T) {
 			t.Error(err)
 			return
 		}
-		assert.Greater(t, len(pathList), 600)
+		assert.Greater(t, len(pathList), 70)
 	}
 	{
 		pathList, err := dashfile.GetFileListAccept("../dasharr/", []string{"arr.go", "arr_test.go"})

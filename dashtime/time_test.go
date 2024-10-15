@@ -7,13 +7,13 @@ import (
 	"time"
 )
 
-func getTestTime() *time.Time {
+func getTestTime() time.Time {
 	loc, err := time.LoadLocation(dashtime.Loc_China)
 	if err != nil {
 		panic(err)
 	}
 	t1 := time.Date(2024, 5, 1, 12, 34, 56, 0, loc)
-	return &t1
+	return t1
 }
 
 /*

@@ -61,6 +61,7 @@
 "golang.org/x/sync/errgroup" //并发编程，参考 godash\dashdemo\errgroup_test.go
 "github.com/bwmarrin/snowflake" //雪花ID生成，参考 godash\dashrand\snow_test.go
 "github.com/google/uuid" //UUID生成，参考 godash\dashrand\uuid_test.go
+"github.com/deckarep/golang-set/v2" //用map实现的集合及其相关操作
 ```
 
 #### 前端

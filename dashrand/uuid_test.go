@@ -1,10 +1,11 @@
 package dashrand_test
 
 import (
-	"github.com/google/uuid"
 	"log"
 	"sync"
 	"testing"
+
+	"github.com/google/uuid"
 )
 
 var (

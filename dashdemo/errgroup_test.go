@@ -1,12 +1,13 @@
 package dashdemo_test
 
 import (
+	"log"
+	"testing"
+
 	"github.com/rbtyang/godash/dashdemo"
 	"github.com/rbtyang/godash/dashlog"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/sync/errgroup"
-	"log"
-	"testing"
 )
 
 /*

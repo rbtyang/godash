@@ -2,9 +2,10 @@ package dashjson_test
 
 import (
 	"encoding/json"
+	"testing"
+
 	"github.com/rbtyang/godash/dashjson"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 type Student struct {

@@ -1,10 +1,11 @@
 package dashende_test
 
 import (
-	"github.com/rbtyang/godash/dashende"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
+
+	"github.com/rbtyang/godash/dashende"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

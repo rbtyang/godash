@@ -1,11 +1,12 @@
 package runtest
 
 import (
-	"github.com/rbtyang/godash/dashrun"
-	"github.com/stretchr/testify/assert"
 	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/rbtyang/godash/dashrun"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestLastCallerPlace(t *testing.T, data []string) []string {

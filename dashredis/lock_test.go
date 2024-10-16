@@ -2,13 +2,14 @@ package dashredis_test
 
 import (
 	"context"
+	"log"
+	"testing"
+	"time"
+
 	"github.com/go-redis/redis/v8"
 	"github.com/rbtyang/godash/dashredis"
 	"github.com/rbtyang/godash/internal"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"testing"
-	"time"
 )
 
 var redisCli *redis.Client

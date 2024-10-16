@@ -1,9 +1,10 @@
 package dashconv_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashconv"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 /*

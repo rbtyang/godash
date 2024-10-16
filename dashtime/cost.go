@@ -1,8 +1,9 @@
 package dashtime
 
 import (
-	"github.com/rbtyang/godash/dashlog"
 	"time"
+
+	"github.com/rbtyang/godash/dashlog"
 )
 
 /*

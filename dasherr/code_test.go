@@ -1,11 +1,12 @@
 package dasherr_test
 
 import (
+	"log"
+	"testing"
+
 	"github.com/rbtyang/godash/dasherr"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc/codes"
-	"log"
-	"testing"
 )
 
 /*

@@ -1,10 +1,11 @@
 package internal
 
 import (
-	"github.com/rbtyang/godash/dashfile"
-	"gopkg.in/yaml.v3"
 	"log"
 	"os"
+
+	"github.com/rbtyang/godash/dashfile"
+	"gopkg.in/yaml.v3"
 )
 
 type Config struct {

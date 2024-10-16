@@ -1,9 +1,10 @@
 package dashstr_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashstr"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func Test_IsZHMobile(t *testing.T) {

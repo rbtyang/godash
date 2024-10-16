@@ -1,10 +1,11 @@
 package dashtime_test
 
 import (
-	"github.com/rbtyang/godash/dashtime"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/rbtyang/godash/dashtime"
+	"github.com/stretchr/testify/assert"
 )
 
 func getTestTime() time.Time {

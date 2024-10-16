@@ -1,11 +1,12 @@
 package dashcrypt_test
 
 import (
+	"log"
+	"testing"
+
 	"github.com/rbtyang/godash/dashcrypt"
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"testing"
 )
 
 /*

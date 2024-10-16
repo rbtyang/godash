@@ -2,9 +2,10 @@ package dashconv_test
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashconv"
 	"log"
 	"testing"
+
+	"github.com/rbtyang/godash/dashconv"
 )
 
 /*

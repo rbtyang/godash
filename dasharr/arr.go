@@ -1,11 +1,12 @@
 package dasharr
 
 import (
-	"github.com/rbtyang/godash/dashlog"
-	"github.com/spf13/cast"
 	"reflect"
 	"strings"
 	"sync"
+
+	"github.com/rbtyang/godash/dashlog"
+	"github.com/spf13/cast"
 )
 
 /*

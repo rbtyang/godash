@@ -2,13 +2,14 @@ package dashrun_test
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashrun"
-	"github.com/rbtyang/godash/dashrun/internal/runtest"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/rbtyang/godash/dashrun"
+	"github.com/rbtyang/godash/dashrun/internal/runtest"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

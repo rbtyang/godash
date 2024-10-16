@@ -1,10 +1,11 @@
 package dashconv_test
 
 import (
-	"github.com/rbtyang/godash/dashconv"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"testing"
+
+	"github.com/rbtyang/godash/dashconv"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

@@ -2,7 +2,8 @@ package dashjson
 
 import (
 	"errors"
-	"github.com/json-iterator/go"
+
+	jsoniter "github.com/json-iterator/go"
 	"github.com/json-iterator/go/extra"
 	"github.com/rbtyang/godash/dashconv"
 )

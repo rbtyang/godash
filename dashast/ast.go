@@ -1,10 +1,11 @@
 package dashast
 
 import (
-	"github.com/rbtyang/godash/dashlog"
 	"go/ast"
 	"go/parser"
 	"go/token"
+
+	"github.com/rbtyang/godash/dashlog"
 )
 
 /*

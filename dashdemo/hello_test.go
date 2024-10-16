@@ -1,11 +1,12 @@
 package dashdemo_test
 
 import (
-	"github.com/rbtyang/godash/dashdemo"
-	"github.com/stretchr/testify/assert"
 	"log"
 	"strconv"
 	"testing"
+
+	"github.com/rbtyang/godash/dashdemo"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

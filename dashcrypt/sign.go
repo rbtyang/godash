@@ -2,9 +2,10 @@ package dashcrypt
 
 import (
 	"bytes"
-	"github.com/rbtyang/godash/dashhash"
 	"sort"
 	"strings"
+
+	"github.com/rbtyang/godash/dashhash"
 )
 
 /*

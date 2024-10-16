@@ -1,6 +1,8 @@
 package dashdemo
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 DebugErrGroup @Editor robotyang at 2023

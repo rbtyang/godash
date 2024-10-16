@@ -3,55 +3,23 @@ package dashredis_test
 import (
 	"context"
 	"github.com/go-redis/redis/v8"
-	"github.com/rbtyang/godash/dashfile"
 	"github.com/rbtyang/godash/dashredis"
+	"github.com/rbtyang/godash/internal"
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/yaml.v3"
 	"log"
-	"os"
 	"testing"
 	"time"
 )
 
 var redisCli *redis.Client
 
-type configSt struct {
-	Redis *redisSt `yaml:"redis"` //这里Redis首字母要大写，否则读不到配置
-}
-type redisSt struct {
-	Host     string `yaml:"host"`
-	Port     string `yaml:"port"`
-	Password string `yaml:"password"`
-	DB       int    `yaml:"db"`
-}
-
-var config = configSt{&redisSt{}}
-
 /*
 init is a ...
 */
 func init() {
-	log.Println("Before lock_test.go tests")
-
-	var err error
-	var yamlFile *os.File
-
-	yamlFile, err = os.OpenFile("../test.yaml", os.O_RDONLY, os.ModePerm)
+	config, err := internal.LoadConfig()
 	if err != nil {
 		log.Panicln(err)
-		return
-	}
-	defer yamlFile.Close()
-
-	yamlFileByt, err := dashfile.ReadByFile(yamlFile)
-	if err != nil {
-		log.Panicln(err)
-		return
-	}
-	err = yaml.Unmarshal(yamlFileByt, &config)
-	if err != nil {
-		log.Panicln(err)
-		return
 	}
 
 	redisCli = redis.NewClient(&redis.Options{

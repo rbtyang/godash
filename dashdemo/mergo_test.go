@@ -1,4 +1,4 @@
-package dashconv
+package dashdemo
 
 import (
 	"fmt"

@@ -1,6 +1,8 @@
 package dashdemo
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 HelloWorld @Editor robotyang at 2023

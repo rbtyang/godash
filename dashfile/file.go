@@ -266,7 +266,7 @@ func GetLastDirWithCheck(path string) (string, error) {
 /*
 GetFileList @Editor robotyang at 2023
 
-# GetFileList is a ...
+# GetFileList 递归获取目录下的所有子文件
 */
 func GetFileList(path string) ([]string, error) {
 	return getFileList(path, nil, nil)

@@ -30,6 +30,7 @@
   - [大佬介绍文档](https://cloud.tencent.com/developer/article/1959696?from=10910)
 - 必须设计 每个方法/类 的单测用例（至少4个case），建议编写 基准测试用例（benchmark），类包 必须设计 `example` 示例用例
 - 函数设计 请充分利用 go并发优势，比如可以提供 常规版本和并发版本 给使用者自由选择
+- 注意考虑 函数应用过程中的 并发性能和并发安全。
 - 必须通过 整个项目的单测，参考 [./godash.go](./godash.go)
 
 ## 联系我们
@@ -51,24 +52,53 @@
 
 #### 后端
 
-```shell script
-"github.com/stretchr/testify/assert" //单测类型断言，参考 各个_test.go
-"github.com/spf13/cast" //各种类型转换
-"github.com/fatih/structs" //结构体转Map
-"github.com/goinggo/mapstructure" //Map转结构体，参考 godash\dashconv\mapstructure.go
-"github.com/imdario/mergo" //结构体合并，参考 godash\dashconv\mergo_test.go
-"github.com/spf13/viper" //配置文件读取和管理
-"golang.org/x/sync/errgroup" //并发编程，参考 godash\dashdemo\errgroup_test.go
-"github.com/bwmarrin/snowflake" //雪花ID生成，参考 godash\dashrand\snow_test.go
-"github.com/google/uuid" //UUID生成，参考 godash\dashrand\uuid_test.go
+- 引用的包
+```shell
+github.com/axgle/mahonia //字符集转换
+github.com/bwmarrin/snowflake //雪花ID生成，参考 godash\dashrand\snow_test.go
+github.com/go-playground/validator/v10 //结构和参数字段规则验证器
+github.com/go-redis/redis/v8 //redis客户端
+github.com/goinggo/mapstructure //Map转结构体，参考 godash\dashconv\mapstructure.go
+github.com/google/uuid //UUID生成，参考 godash\dashrand\uuid_test.go
+github.com/shirou/gopsutil/v3 //读取系统性能指标
+	- "github.com/shirou/gopsutil/v3/cpu"
+	- "github.com/shirou/gopsutil/v3/disk"
+	- "github.com/shirou/gopsutil/v3/mem"
+github.com/spf13/cast //各种类型转换
+github.com/stretchr/testify //单测工具
+  - "github.com/stretchr/testify/assert" //类型断言，参考 各个_test.go
+golang.org/x/exp //go官方实验性或废弃的包
+	- "golang.org/x/exp/constraints" //泛型的类型约束
+golang.org/x/text //go官方文本处理的补充Go库
+	- "golang.org/x/text/encoding/simplifiedchinese" //简体中文编解码器
+	- "golang.org/x/text/transform" //各种字符集的阅读器和编写器的封装
+google.golang.org/grpc //gprc库
+	- "google.golang.org/grpc/codes" //grpc标准规范错误码
+	- "google.golang.org/grpc/status" //grpc状态对象
+gopkg.in/yaml.v3 //读取yaml配置文件
+```
+
+- 推荐的包
+```shell
+github.com/fatih/structs //结构体转Map
+github.com/imdario/mergo //结构体合并，参考 godash\dashconv\mergo_test.go
+github.com/spf13/viper //配置文件读取和管理
+golang.org/x/sync //go官方sync包的扩展
+	- "golang.org/x/sync/errgroup" //用于并发执行多个任务‌，参考 godash\dashdemo\errgroup_test.go
+github.com/deckarep/golang-set/v2 //用map实现的集合及其相关操作
 ```
 
 #### 前端
 
-```shell script
+- 引用的包
+```shell
 crypto-js //加解密、哈希
-assert //断言
 mocha //单测
+assert //断言
+```
+
+- 推荐的包
+```shell
 ```
 
 ## 友情链接

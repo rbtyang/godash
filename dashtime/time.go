@@ -171,3 +171,13 @@ func DuraNextDawn(tim *time.Time) *time.Duration {
 	dura := nextDawn.Sub(*tim)
 	return &dura
 }
+
+/*
+LocChina @Editor robotyang at 2023
+
+# LocChina  设置time为 Asia/Shanghai默认时区
+*/
+func LocChina(times time.Time) time.Time {
+	var loc, _ = time.LoadLocation(Loc_China)
+	return times.In(loc)
+}

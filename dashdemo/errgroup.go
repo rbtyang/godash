@@ -5,10 +5,10 @@ import (
 )
 
 /*
-DebugErrGroup @Editor robotyang at 2023
+ErrGroup @Editor robotyang at 2023
 
-# DebugErrGroup 请查看同级目录下的单测文件 errgroup_test.go
+# ErrGroup 请查看同级目录下的单测文件 errgroup_test.go
 */
-func DebugErrGroup(user string) string {
+func ErrGroup(user string) string {
 	return fmt.Sprintf("%v Ni Hao", user)
 }

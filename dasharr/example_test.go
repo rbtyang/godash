@@ -14,8 +14,7 @@ func ExampleInclude_slice_general() {
 	var data1 = []int{8, 5, 5}
 	recv := dasharr.Include(data1, 8) //here
 	fmt.Println(recv)
-	//Output:
-	//true
+	// Output: true
 }
 
 /*
@@ -40,7 +39,6 @@ func ExampleInclude_slice_struct() {
 	{
 		recv := dasharr.Include(data, coderLS) //here
 		fmt.Println(recv)
-		//Output:
-		//true
 	}
+	//Output: true
 }

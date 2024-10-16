@@ -1,9 +1,10 @@
 package dashhash_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashhash"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestMd5(t *testing.T) {

@@ -4,13 +4,14 @@ package dasharr_test
 
 import (
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/rbtyang/godash/dasharr"
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/rbtyang/godash/dashsort"
 	"github.com/rbtyang/godash/dashtime"
 	"github.com/stretchr/testify/assert"
-	"testing"
-	"time"
 )
 
 /*
@@ -396,13 +397,13 @@ Test_ArrayToString is a ...
 func Test_ArrayToString(t *testing.T) {
 	{
 		{
-			input := []interface{}{"rbtyang", "num", 9527}
+			input := []any{"rbtyang", "num", 9527}
 			want := "rbtyang,num,9527"
 			recv := dasharr.JoinAny(input, ",")
 			assert.Equal(t, want, recv)
 		}
 		{
-			input := []interface{}{"rbt yang", "num", 9527}
+			input := []any{"rbt yang", "num", 9527}
 			want := "rbt yang,num,9527"
 			recv := dasharr.JoinAny(input, ",")
 			assert.Equal(t, want, recv)

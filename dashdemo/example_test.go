@@ -2,10 +2,11 @@ package dashdemo_test
 
 import (
 	"fmt"
+	"sort"
+
 	"github.com/rbtyang/godash/dashdemo"
 	"github.com/rbtyang/godash/dashlog"
 	"golang.org/x/sync/errgroup"
-	"sort"
 )
 
 /*

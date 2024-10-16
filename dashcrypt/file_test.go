@@ -1,12 +1,13 @@
 package dashcrypt_test
 
 import (
+	"log"
+	"testing"
+
 	"github.com/rbtyang/godash/dashcrypt"
 	"github.com/rbtyang/godash/dashfile"
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"testing"
 )
 
 const filePrefix = "temp/dashcrypt_file_test"

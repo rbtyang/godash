@@ -1,9 +1,10 @@
 package dashnet_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashnet"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 /*

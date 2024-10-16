@@ -2,13 +2,14 @@ package dashredis_test
 
 import (
 	"context"
+	"log"
+	"testing"
+	"time"
+
 	"github.com/go-redis/redis/v8"
 	"github.com/rbtyang/godash/dashredis"
 	"github.com/rbtyang/godash/internal"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"testing"
-	"time"
 )
 
 var redisCli *redis.Client
@@ -61,11 +62,12 @@ func TestLock(t *testing.T) {
 		}
 
 		{ //free lock
-			_, err := lock.Free(key) //释放锁
+			res, err := lock.Unlock(key) //释放锁
 			if err != nil {
 				t.Error(err)
 				return
 			}
+			assert.Equal(t, res, int64(1))
 		}
 
 		{ //again lock
@@ -78,11 +80,48 @@ func TestLock(t *testing.T) {
 		}
 
 		{ //again free lock
-			_, err := lock.Free(key) //再次释放锁
+			res, err := lock.UnlockScript(key) //再次释放锁
 			if err != nil {
 				t.Error(err)
 				return
 			}
+			assert.Equal(t, res, int64(1))
+		}
+
+		{ //again lock
+			ok, err := lock.Lock(key, 55*time.Second)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			assert.Equal(t, ok, true) //再次上锁成功
+		}
+
+		{ //again free lock
+			res, err := lock.Unlock(key) //再次释放锁(值存在)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			assert.Equal(t, res, int64(1))
+		}
+
+		{ //again free lock
+			res, err := lock.Unlock(key) //再再次释放锁(值不存在时)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			assert.Equal(t, res, int64(0))
+		}
+
+		{ //again free lock
+			res, err := lock.UnlockScript(key) //再再再次释放锁(值不存在时)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			assert.Equal(t, res, int64(0))
 		}
 
 	}

@@ -2,9 +2,10 @@ package dashcrypt
 
 import (
 	"bytes"
-	"github.com/rbtyang/godash/dashhash"
 	"sort"
 	"strings"
+
+	"github.com/rbtyang/godash/dashhash"
 )
 
 /*
@@ -59,14 +60,14 @@ func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {
 }
 
 // //TODO 支持各种结构的签名计算
-//func SignObj(data interface{}, secret string) (string, error) {
+//func SignObj(data any, secret string) (string, error) {
 //	maps, err := convdash.ObjToMap(data)
 //	if err != nil {
 //		return "", err
 //	}
 //	switch maps.(type) {
-//	case []interface{}:
-//		maps := maps.([]interface{})
+//	case []any:
+//		maps := maps.([]any)
 //		if maps == nil {
 //			return "", nil
 //		}
@@ -76,8 +77,8 @@ func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {
 //				keys = append(keys, mp["SignSort"])
 //			}
 //		}
-//	case map[string]interface{}:
-//		maps := maps.(map[string]interface{})
+//	case map[string]any:
+//		maps := maps.(map[string]any)
 //		keys := make([]string, 0, len(maps))
 //		for k := range maps {
 //			if k == "sign" {
@@ -93,7 +94,7 @@ func CheckSignFlatMap(data map[string]string, secret, inSign string) bool {
 //}
 //
 //// 检查参数签名
-//func CheckSignObj(data interface{}, secret, inSign string) bool {
+//func CheckSignObj(data any, secret, inSign string) bool {
 //	newSign, err :=  SignObj(data, secret)
 //	if err != nil {
 //		return false

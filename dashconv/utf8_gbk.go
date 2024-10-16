@@ -2,10 +2,11 @@ package dashconv
 
 import (
 	"bytes"
+	"io/ioutil"
+
 	"github.com/axgle/mahonia"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
-	"io/ioutil"
 )
 
 /*

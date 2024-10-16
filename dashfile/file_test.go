@@ -1,11 +1,12 @@
 package dashfile_test
 
 import (
+	"os"
+	"testing"
+
 	"github.com/rbtyang/godash/dasharr"
 	"github.com/rbtyang/godash/dashfile"
 	"github.com/stretchr/testify/assert"
-	"os"
-	"testing"
 )
 
 /*

@@ -1,9 +1,10 @@
 package dashconv_test
 
 import (
-	"github.com/rbtyang/godash/dashconv"
 	"log"
 	"testing"
+
+	"github.com/rbtyang/godash/dashconv"
 )
 
 type Order struct {

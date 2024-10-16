@@ -2,8 +2,9 @@ package dashast_test
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashast"
 	"log"
+
+	"github.com/rbtyang/godash/dashast"
 )
 
 /*
@@ -20,6 +21,6 @@ func ExampleNewAst() {
 	fmt.Println(a.Funcs[0].Name)
 	//Output:
 	//dasharr
-	//dashlog
+	//reflect
 	//Contain
 }

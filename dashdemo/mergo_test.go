@@ -2,9 +2,10 @@ package dashdemo
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/imdario/mergo"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 type Config struct {

@@ -40,6 +40,9 @@ func AesBs64Decrypt(cipherstr string, secret []byte) ([]byte, error) {
 		return nil, err
 	}
 	plaintext, err := AesCbcDecrypt(ciphertext, secret)
+	if err != nil {
+		return nil, err
+	}
 	return plaintext, nil
 }
 

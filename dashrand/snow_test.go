@@ -1,11 +1,12 @@
 package dashrand_test
 
 import (
-	"github.com/bwmarrin/snowflake"
 	"log"
 	"math/rand"
 	"sync"
 	"testing"
+
+	"github.com/bwmarrin/snowflake"
 )
 
 var (

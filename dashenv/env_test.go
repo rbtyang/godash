@@ -1,10 +1,11 @@
 package dashenv_test
 
 import (
-	"github.com/rbtyang/godash/dashenv"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/rbtyang/godash/dashenv"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

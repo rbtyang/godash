@@ -2,13 +2,14 @@ package dashsort_test
 
 import (
 	"fmt"
+	"log"
+	"sort"
+	"testing"
+
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/rbtyang/godash/dashsort"
 	"github.com/rbtyang/godash/dashtime"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"sort"
-	"testing"
 )
 
 /*

@@ -1,10 +1,11 @@
 package dashast
 
 import (
-	"github.com/rbtyang/godash/dashlog"
 	"go/ast"
 	"go/parser"
 	"go/token"
+
+	"github.com/rbtyang/godash/dashlog"
 )
 
 /*
@@ -70,8 +71,8 @@ func (a *Ast) ParseFile(inputPath string) (err error) {
 ParseScopes @Editor robotyang at 2023
 */
 func (a *Ast) ParseScopes(Scope *ast.Scope) (err error) {
-	structs := map[int]interface{}{}    //用来排序
-	interfaces := map[int]interface{}{} //用来排序
+	structs := map[int]any{}    //用来排序
+	interfaces := map[int]any{} //用来排序
 	for _, obj := range Scope.Objects {
 		if obj.Kind != ast.Typ {
 			continue

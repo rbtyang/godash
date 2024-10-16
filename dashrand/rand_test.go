@@ -1,11 +1,12 @@
 package dashrand_test
 
 import (
+	"log"
+	"testing"
+
 	"github.com/rbtyang/godash/dashrand"
 	"github.com/rbtyang/godash/dashstr"
 	"github.com/stretchr/testify/assert"
-	"log"
-	"testing"
 )
 
 /*

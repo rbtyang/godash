@@ -1,9 +1,10 @@
 package dashvalid_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashvalid"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 var v = dashvalid.New()

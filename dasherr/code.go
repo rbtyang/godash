@@ -4,7 +4,6 @@ import (
 	"github.com/rbtyang/godash/dashlog"
 	"github.com/spf13/cast"
 	"google.golang.org/grpc/codes"
-	"math"
 )
 
 // 常规错误码 errdash code [10000~20000)
@@ -94,8 +93,8 @@ ParseCode @Editor robotyang at 2023
 
 @Param code 可能是 grpc code、errdash code 的 uint32 或 codes.Code;
 */
-func ParseCode(code interface{}) uint32 {
-	var cCode codes.Code = math.MaxUint32
+func ParseCode(code any) uint32 {
+	var cCode codes.Code
 	switch code.(type) {
 	case nil:
 		cCode = codes.Internal

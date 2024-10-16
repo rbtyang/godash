@@ -1,7 +1,6 @@
 package dashconv
 
 import (
-	"reflect"
 	"unsafe"
 )
 
@@ -44,6 +43,8 @@ func ByteToStrByUnsafe(b []byte) string {
 }
 
 /*
+Deprecated: StrToByteByReflect @Editor robotyang at 2023（运行时可能不可靠，仅供学习）
+
 StrToByteByReflect @Editor robotyang at 2023
 
 # StrToByteByReflect 将字符串转换为字节片而不分配内存。注意，如果字符串和/或切片头在未来的go版本中改变，它可能会中断。
@@ -52,7 +53,8 @@ StrToByteByReflect @Editor robotyang at 2023
 Note it may break if string and/or slice header will change in the future go versions.
 */
 func StrToByteByReflect(s string) []byte {
-	sh := (*reflect.StringHeader)(unsafe.Pointer(&s))
-	bh := reflect.SliceHeader{Data: sh.Data, Len: sh.Len, Cap: sh.Len}
-	return *(*[]byte)(unsafe.Pointer(&bh))
+	//sh := (*reflect.StringHeader)(unsafe.Pointer(&s))
+	//bh := reflect.SliceHeader{Data: sh.Data, Len: sh.Len, Cap: sh.Len}
+	//return *(*[]byte)(unsafe.Pointer(&bh))
+	return nil
 }

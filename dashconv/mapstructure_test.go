@@ -1,22 +1,23 @@
 package dashconv_test
 
 import (
+	"testing"
+
 	"github.com/rbtyang/godash/dashconv"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 /*
 WeakMapToStructWithTag is a ...
 */
 func TestWeakMapToStcWithTag(t *testing.T) {
-	inMap := map[string]interface{}{
-		"myName":   123,                      // number => string
-		"myAge":    "42",                     // string => number
-		"myEmails": map[string]interface{}{}, // empty map => empty array
-		"xxName":   456,                      // number => string
-		"xxAge":    "53",                     // string => number
-		"xxEmails": map[string]interface{}{}, // empty map => empty array
+	inMap := map[string]any{
+		"myName":   123,              // number => string
+		"myAge":    "42",             // string => number
+		"myEmails": map[string]any{}, // empty map => empty array
+		"xxName":   456,              // number => string
+		"xxAge":    "53",             // string => number
+		"xxEmails": map[string]any{}, // empty map => empty array
 	}
 	type Person struct {
 		Name   string   `json:"name" yaml:"name" mapstructure:"name" myTag:"myName" xxTag:"xxName"`

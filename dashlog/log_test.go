@@ -1,9 +1,10 @@
 package dashlog_test
 
 import (
-	"github.com/rbtyang/godash/dashlog"
 	"log"
 	"testing"
+
+	"github.com/rbtyang/godash/dashlog"
 )
 
 /*

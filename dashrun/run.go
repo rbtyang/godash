@@ -39,7 +39,7 @@ LastCallerPlace @Editor robotyang at 2023
 
 # LastCallerPlace 获取包外的最后一个调用位置
 
-@Param curFileName 调用者所在文件路径，通过 _, curFileName, _, _ = runtime.Caller(0) 获得
+@Param curFileName 调用者所在文件路径，通过 _, curFileName, _, _ := runtime.Caller(0) 获得
 */
 func LastCallerPlace(curFileName string) string {
 	stack := ""

@@ -13,7 +13,7 @@ ObjToMap @Editor robotyang at 2023
 
 @Param data：支持 struct、map、slice 以及它们的指针类型
 
-@Return maps：可为 map[string]interface{}、[]interface{}
+@Return maps：可为 map[string]any、[]any
 */
 func ObjToMap(data any) (maps any, err error) {
 	jsonb, err := json.Marshal(data)
@@ -29,11 +29,11 @@ KindSwitch:
 		rtKind = rType.Elem().Kind()
 		goto KindSwitch
 	case reflect.Map, reflect.Struct:
-		var rMaps map[string]interface{}
+		var rMaps map[string]any
 		err = json.Unmarshal(jsonb, &rMaps)
 		maps = rMaps
 	case reflect.Slice:
-		var rMaps []interface{}
+		var rMaps []any
 		err = json.Unmarshal(jsonb, &rMaps)
 		maps = rMaps
 	default:

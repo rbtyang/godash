@@ -3,10 +3,11 @@ package dasherr_test
 import (
 	"errors"
 	"fmt"
-	"github.com/rbtyang/godash/dasherr"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
+
+	"github.com/rbtyang/godash/dasherr"
+	"github.com/stretchr/testify/assert"
 )
 
 /*

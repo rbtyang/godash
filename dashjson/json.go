@@ -46,7 +46,7 @@ Unmarshal @Editor robotyang at 2023
 */
 func Unmarshal(data string, v any) error {
 	var json = jsoniter.ConfigCompatibleWithStandardLibrary
-	return json.Unmarshal(dashconv.StrToByteByReflect(data), v)
+	return json.Unmarshal(dashconv.StrToByte(data), v)
 }
 
 /*

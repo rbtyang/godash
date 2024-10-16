@@ -9,6 +9,12 @@ In short, it is similar to the utils or helper toolkits that you have packaged i
 */
 package godash
 
+//执行所有包的静态代码检测
+//go:generate go vet ./...
+
+//执行所有包的无效赋值检测
+//go:generate ineffassign ./...
+
 //执行所有包的单测
 //go:generate go test ./...
 

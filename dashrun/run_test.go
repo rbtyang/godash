@@ -5,6 +5,7 @@ import (
 	"github.com/rbtyang/godash/dashrun"
 	"github.com/rbtyang/godash/dashrun/internal/runtest"
 	"github.com/stretchr/testify/assert"
+	"log"
 	"os"
 	"strings"
 	"testing"
@@ -19,7 +20,7 @@ func TestPanicTrace(t *testing.T) {
 	defer func() {
 		if e := recover(); e != nil {
 			msg := fmt.Sprint(e)
-			assert.Equal(t, "TestPanic", msg)
+			assert.Equal(t, "TestPanic[11:14 22:19 22:28]", msg)
 			stacks := string(dashrun.PanicTrace(1))
 			stacks = strings.ReplaceAll(stacks, "/", string(os.PathSeparator))
 
@@ -59,6 +60,6 @@ func testPanicTrace1(t *testing.T, data []string) []string {
 func testPanicTrace2(t *testing.T, data []string) []string {
 	data = append(data, "22:19")
 	data = append(data, "22:28")
-	panic("TestPanic")
+	log.Panic("TestPanic", data)
 	return data
 }

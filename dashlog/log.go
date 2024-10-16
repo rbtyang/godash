@@ -2,8 +2,9 @@ package dashlog
 
 import (
 	"fmt"
-	"github.com/rbtyang/godash/dashrun"
 	"log"
+
+	"github.com/rbtyang/godash/dashrun"
 )
 
 // 用户 自定义前缀

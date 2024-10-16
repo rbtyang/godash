@@ -8,6 +8,7 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"fmt"
+
 	"github.com/rbtyang/godash/dashconv"
 )
 
@@ -15,7 +16,7 @@ import (
 Md5 @Editor robotyang at 2023
 */
 func Md5(str string) string {
-	return fmt.Sprintf("%x", md5.Sum(dashconv.StrToByteByReflect(str)))
+	return fmt.Sprintf("%x", md5.Sum(dashconv.StrToByte(str)))
 }
 
 /*
@@ -29,21 +30,21 @@ func Md5ByteToStr(byts []byte) string {
 Sha1 @Editor robotyang at 2023
 */
 func Sha1(str string) string {
-	return fmt.Sprintf("%x", sha1.Sum(dashconv.StrToByteByReflect(str)))
+	return fmt.Sprintf("%x", sha1.Sum(dashconv.StrToByte(str)))
 }
 
 /*
 Sha256 @Editor robotyang at 2023
 */
 func Sha256(str string) string {
-	return fmt.Sprintf("%x", sha256.Sum256(dashconv.StrToByteByReflect(str)))
+	return fmt.Sprintf("%x", sha256.Sum256(dashconv.StrToByte(str)))
 }
 
 /*
 Sha512 @Editor robotyang at 2023
 */
 func Sha512(str string) string {
-	return fmt.Sprintf("%x", sha512.Sum512(dashconv.StrToByteByReflect(str)))
+	return fmt.Sprintf("%x", sha512.Sum512(dashconv.StrToByte(str)))
 }
 
 /*
